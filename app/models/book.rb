@@ -3,4 +3,5 @@ class Book < ActiveRecord::Base
 
   belongs_to :language
   has_one :approved_submission, class_name: 'BookSubmission', conditions: ['approved = true']
+  has_many :submissions, class_name: 'BookSubmission'
 end

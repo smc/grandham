@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20130602053040) do
   end
 
   create_table "marc_data", :force => true do |t|
-    t.text     "field"
+    t.integer  "marc_field_id"
     t.text     "value"
     t.integer  "book_submission_id"
     t.datetime "created_at",         :null => false

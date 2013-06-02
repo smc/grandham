@@ -1,7 +1,7 @@
 class CreateMarcData < ActiveRecord::Migration
   def change
     create_table :marc_data do |t|
-      t.text :field
+      t.integer :marc_field_id
       t.text :value
       t.integer :book_submission_id
 
