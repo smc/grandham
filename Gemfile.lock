@@ -68,6 +68,9 @@ GEM
     highline (1.6.18)
     hike (1.2.2)
     i18n (0.6.1)
+    jbuilder (1.4.1)
+      activesupport (>= 3.0.0)
+      multi_json (>= 1.2.0)
     journey (1.0.4)
     jquery-rails (3.0.0)
       railties (>= 3.0, < 5.0)
@@ -160,6 +163,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.0)
   haml
   haml-rails
+  jbuilder
   jquery-rails
   jquery-ui-rails
   mysql2
