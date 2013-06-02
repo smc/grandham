@@ -1,0 +1,31 @@
+development:
+  adapter: 
+  database:
+  pool: 5
+  timeout: 5000
+  username: 
+  password:
+
+test:
+  adapter: 
+  database:
+  pool: 5
+  timeout: 5000
+  username: 
+  password:
+
+staging:
+  adapter: 
+  database:
+  pool: 5
+  timeout: 5000
+  username:
+  password:
+
+production:
+  adapter: 
+  database:
+  pool: 5
+  timeout: 5000
+  username:
+  password:
