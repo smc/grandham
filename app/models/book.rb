@@ -10,6 +10,6 @@ class Book < ActiveRecord::Base
   private
 
   def set_grandham_id
-    self.grandham_id = SecureRandom.hex(16)
+    self.grandham_id = SecureRandom.hex(8)
   end
 end
