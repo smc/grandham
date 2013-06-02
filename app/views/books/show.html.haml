@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Grandham:
+  = @book.grandham_id
+%p
+  %b Language:
+  = @book.language_id
+
+= link_to 'Edit', edit_book_path(@book)
+\|
+= link_to 'Back', books_path
