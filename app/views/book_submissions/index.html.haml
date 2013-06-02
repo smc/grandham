@@ -1,0 +1,19 @@
+%h1 Listing book_submissions
+
+%table
+  %tr
+    %th Book
+    %th
+    %th
+    %th
+
+  - @book_submissions.each do |book_submission|
+    %tr
+      %td= book_submission.book_id
+      %td= link_to 'Show', book_submission
+      %td= link_to 'Edit', edit_book_submission_path(book_submission)
+      %td= link_to 'Destroy', book_submission, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Book submission', new_book_submission_path
