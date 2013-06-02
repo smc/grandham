@@ -127,6 +127,7 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
+    ruby-progressbar (1.0.2)
     sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -164,5 +165,6 @@ DEPENDENCIES
   mysql2
   rails (= 3.2.13)
   rspec-rails
+  ruby-progressbar
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
