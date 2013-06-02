@@ -1,10 +1,12 @@
 Grandham::Application.routes.draw do
   resources :book_submissions
-  resources :books
   resources :languages
 
   root to: 'books#index'
 
+  resources :language do
+    resources :books
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
