@@ -5,7 +5,7 @@ fields = ["ISBN", "DDC", "Publisher subject category", "Original language if tra
           "Volume/Part", "Edition", "SOR (Statement of responsibility- Author", "Real Name- Author",
           "Publisher", "Place", "Year", "Series", "Series No.", "Number of Volumes", "Pages", "Price",
           "Dimensions (LengthXwidth)", "Subject KW1", "Subject KW2", "Subject KW3", "Note/Abstract",
-          "Rewies/ comments by Readers", "Grandham Unique ID like ISBN"]
+          "Rewies/ comments by Readers"]
 
 fields.each do |field|
   MarcField.create name: field
