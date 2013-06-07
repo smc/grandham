@@ -1,4 +1,7 @@
 Grandham::Application.routes.draw do
+  resources :publishers
+
+
   resources :authors
 
 

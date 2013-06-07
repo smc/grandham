@@ -6,4 +6,7 @@ class BookSubmission < ActiveRecord::Base
 
   has_many :authorships
   has_many :authors, through: :authorships
+
+  has_many :publications
+  has_many :publishers, through: :publications
 end
