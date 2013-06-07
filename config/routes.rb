@@ -1,4 +1,7 @@
 Grandham::Application.routes.draw do
+  resources :authors
+
+
   resources :book_submissions
   resources :books
   resources :languages

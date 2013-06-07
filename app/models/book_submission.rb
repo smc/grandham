@@ -3,4 +3,7 @@ class BookSubmission < ActiveRecord::Base
 
   belongs_to :book
   has_many :marc_data
+
+  has_many :authorships
+  has_many :authors, through: :authorships
 end
