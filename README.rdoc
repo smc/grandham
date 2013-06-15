@@ -1,1 +1,3 @@
 Grandham.org, Bibliographic Data Project.
+
+{<img src="https://travis-ci.org/smc/grandham.png?branch=master" alt="Build Status" />}[https://travis-ci.org/smc/grandham]
