@@ -6,6 +6,14 @@ describe BooksController do
   end
 
   describe "GET index" do
+    context "current_language" do
+      it "should set current language" do
+        language = FactoryGirl.create :language
+        get :index, language_id: language.short_code
+        expect(controller.send :current_language).not_to be_nil
+      end
+    end
+
     it "assigns all books as @books" do
       get :index
       assigns(:books).should be_a Array
