@@ -3,7 +3,7 @@ class CreateMarcData < ActiveRecord::Migration
     create_table :marc_data do |t|
       t.integer :marc_field_id
       t.text :value
-      t.integer :book_submission_id
+      t.integer :submission_id
 
       t.timestamps
     end

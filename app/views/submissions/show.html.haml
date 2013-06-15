@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Book:
+  = @submission.book_id
+%p
+  %b Approved:
+  = @submission.approved
+
+= link_to 'Edit', edit_submission_path(@submission)
+\|
+= link_to 'Back', submissions_path

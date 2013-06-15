@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :marc_datum do
     field "MyText"
     value "MyText"
-    book_submission_id 1
+    submission_id 1
   end
 end

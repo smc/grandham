@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :publication do
     publisher_id ""
-    book_submission_id 1
+    submission_id 1
   end
 end

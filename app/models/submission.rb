@@ -1,5 +1,5 @@
-class BookSubmission < ActiveRecord::Base
-  attr_accessible :book_id, :approved
+class Submission < ActiveRecord::Base
+  attr_accessible :approved, :book_id
 
   belongs_to :book
   has_many :marc_data

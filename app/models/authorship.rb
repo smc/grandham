@@ -1,6 +1,6 @@
 class Authorship < ActiveRecord::Base
-  attr_accessible :author_id, :book_submission_id
+  attr_accessible :author_id, :submission_id
 
   belongs_to :author
-  belongs_to :book_submission
+  belongs_to :submission
 end

@@ -1,9 +1,10 @@
 require 'spec_helper'
 
-describe "book_submissions/show" do
+describe "submissions/show" do
   before(:each) do
-    @book_submission = assign(:book_submission, stub_model(BookSubmission,
-      :book_id => 1
+    @submission = assign(:submission, stub_model(Submission,
+      :book_id => 1,
+      :approved => false
     ))
   end
 
@@ -11,5 +12,6 @@ describe "book_submissions/show" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/1/)
+    rendered.should match(/false/)
   end
 end

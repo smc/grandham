@@ -39,10 +39,10 @@ books.each do |book|
   import_progress_bar.increment
 
   book_obj = language.books.create
-  book_submission = book_obj.submissions.create approved: true
+  submission = book_obj.submissions.create approved: true
   (book.keys - ["id", "Language"]).each do |key|
     unless book[key] == "None"
-      book_submission.marc_data.create value: book[key], marc_field_id: MarcField.find_by_name(import_data_map[key]).id
+      submission.marc_data.create value: book[key], marc_field_id: MarcField.find_by_name(import_data_map[key]).id
     end
   end
 end
