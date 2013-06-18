@@ -21,16 +21,9 @@ ActiveRecord::Schema.define(:version => 20130618030701) do
 
   create_table "authorships", :force => true do |t|
     t.integer  "author_id"
-    t.integer  "book_submission_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-  end
-
-  create_table "book_submissions", :force => true do |t|
-    t.integer  "book_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.boolean  "approved"
+    t.integer  "submission_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "books", :force => true do |t|
@@ -56,31 +49,17 @@ ActiveRecord::Schema.define(:version => 20130618030701) do
   end
 
   create_table "languages", :force => true do |t|
-    t.string   "name"
-    t.text     "short_code"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "marc_data", :force => true do |t|
-    t.integer  "marc_field_id"
-    t.text     "value"
-    t.integer  "book_submission_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-  end
-
-  create_table "marc_fields", :force => true do |t|
     t.text     "name"
+    t.string   "short_code"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "publications", :force => true do |t|
     t.integer  "publisher_id"
-    t.integer  "book_submission_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.integer  "submission_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "publishers", :force => true do |t|
