@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130615182441) do
+ActiveRecord::Schema.define(:version => 20130618030701) do
 
   create_table "authors", :force => true do |t|
     t.text     "name"
@@ -21,9 +21,16 @@ ActiveRecord::Schema.define(:version => 20130615182441) do
 
   create_table "authorships", :force => true do |t|
     t.integer  "author_id"
-    t.integer  "submission_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer  "book_submission_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "book_submissions", :force => true do |t|
+    t.integer  "book_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.boolean  "approved"
   end
 
   create_table "books", :force => true do |t|
@@ -31,6 +38,21 @@ ActiveRecord::Schema.define(:version => 20130615182441) do
     t.integer  "language_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "data", :force => true do |t|
+    t.integer  "field_id"
+    t.string   "value"
+    t.integer  "submission_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "fields", :force => true do |t|
+    t.text     "name"
+    t.string   "short_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "languages", :force => true do |t|
@@ -43,9 +65,9 @@ ActiveRecord::Schema.define(:version => 20130615182441) do
   create_table "marc_data", :force => true do |t|
     t.integer  "marc_field_id"
     t.text     "value"
-    t.integer  "submission_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer  "book_submission_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "marc_fields", :force => true do |t|
@@ -56,9 +78,9 @@ ActiveRecord::Schema.define(:version => 20130615182441) do
 
   create_table "publications", :force => true do |t|
     t.integer  "publisher_id"
-    t.integer  "submission_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer  "book_submission_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "publishers", :force => true do |t|
