@@ -7,8 +7,10 @@ Grandham::Application.routes.draw do
   resources :books
 
   resources :languages
-  
+
   resources :submissions
+
+  resources :fields, only: [:show]
 
   root to: 'books#index'
 
