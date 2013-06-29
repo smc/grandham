@@ -8,7 +8,7 @@ Grandham::Application.routes.draw do
 
   resources :languages
 
-  # resources :submissions
+  resources :submissions
 
   resources :fields, only: [:show]
 

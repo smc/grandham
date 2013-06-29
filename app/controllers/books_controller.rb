@@ -7,7 +7,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
+    @book = Book.find_by_grandham_id(params[:id])
     respond_with @book
   end
 
