@@ -1,6 +1,5 @@
 class SubmissionsController < ApplicationController
-  # GET /submissions
-  # GET /submissions.json
+
   def index
     @submissions = Submission.all
 
@@ -10,8 +9,6 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # GET /submissions/1
-  # GET /submissions/1.json
   def show
     @submission = Submission.find(params[:id])
 
@@ -21,8 +18,6 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # GET /submissions/new
-  # GET /submissions/new.json
   def new
     @submission = Submission.new
 
@@ -32,20 +27,25 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # GET /submissions/1/edit
   def edit
     @submission = Submission.find(params[:id])
   end
 
-  # POST /submissions
-  # POST /submissions.json
   def create
-    @submission = Submission.new(params[:submission])
+    if params[:book_id]
+      book = Book.find_by_grandham_id(params[:book_id])
+      redirect_path = book_path(book)
+    else
+      book = current_language.books.create
+      redirect_path = root_url
+    end
+
+    @submission = book.submissions.new(params[:submission])
 
     respond_to do |format|
       if @submission.save
-        format.html { redirect_to @submission, notice: 'Submission was successfully created.' }
-        format.json { render json: @submission, status: :created, location: @submission }
+        format.html { redirect_to redirect_path, notice: 'Your submission has been posted and has gone for moderation' }
+        format.json { render json: @submission, status: :created }
       else
         format.html { render action: "new" }
         format.json { render json: @submission.errors, status: :unprocessable_entity }
@@ -53,8 +53,6 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # PUT /submissions/1
-  # PUT /submissions/1.json
   def update
     @submission = Submission.find(params[:id])
 
@@ -69,8 +67,6 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # DELETE /submissions/1
-  # DELETE /submissions/1.json
   def destroy
     @submission = Submission.find(params[:id])
     @submission.destroy

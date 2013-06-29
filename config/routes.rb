@@ -8,13 +8,14 @@ Grandham::Application.routes.draw do
 
   resources :languages
 
-  resources :submissions
+  # resources :submissions
 
   resources :fields, only: [:show]
 
   root to: 'books#index'
 
   resources :language do
+    resources :submissions, only: [ :new, :create ]
     resources :books do
       resources :submissions
     end

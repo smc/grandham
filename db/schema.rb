@@ -70,9 +70,9 @@ ActiveRecord::Schema.define(:version => 20130629163439) do
 
   create_table "submissions", :force => true do |t|
     t.integer  "book_id"
-    t.boolean  "approved"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "approved",   :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.text     "title"
     t.string   "isbn"
     t.string   "pages"
