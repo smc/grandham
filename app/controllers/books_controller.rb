@@ -17,7 +17,7 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = Book.find(params[:id])
+    @book = Book.find_by_grandham_id(params[:id])
   end
 
   def create
@@ -35,7 +35,7 @@ class BooksController < ApplicationController
   end
 
   def update
-    @book = Book.find(params[:id])
+    @book = Book.find_by_grandham_id(params[:id])
 
     respond_to do |format|
       if @book.update_attributes(params[:book])
@@ -49,7 +49,7 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book = Book.find(params[:id])
+    @book = Book.find_by_grandham_id(params[:id])
     @book.destroy
 
     respond_to do |format|
