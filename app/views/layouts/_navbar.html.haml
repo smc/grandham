@@ -5,23 +5,23 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.brand{:href => "/"} Grandham
+      %a.brand{:href => "/"}= I18n.t '.grandham'
       #main-menu.nav-collapse.collapse
         %ul#main-menu-left.nav
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              Languages
+              = I18n.t '.languages'
               %b.caret
             %ul#swatch-menu.dropdown-menu
               - Language.all.each do |language|
                 %li
-                  %a{:href => "#"}= language.name
+                  = link_to language.name, language_books_path(language)
           %li
-            %a{:href => '#'} Books
+            = link_to I18n.t('.books'), current_language_path('books')
           %li
-            %a{:href => '#'} Authors
+            = link_to I18n.t('.authors'), current_language_path('authors')
           %li
-            %a{:href => '#'} Publishers
+            = link_to I18n.t('.publishers'), current_language_path('publishers')
           %li
             %a{:href => '#'} Libraries
 

@@ -16,6 +16,7 @@ Grandham::Application.routes.draw do
 
   resources :language do
     resources :submissions, only: [ :new, :create ]
+    resources :authors, :publishers
     resources :books do
       resources :submissions
     end

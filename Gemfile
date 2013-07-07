@@ -10,6 +10,7 @@ gem 'mysql2'
 gem 'haml-rails'
 gem 'devise'
 gem 'ruby-progressbar'
+gem 'jquery-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -28,11 +29,15 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :development do
-  gem 'sextant'
+group :test do
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
-gem 'jquery-rails'
+group :development do
+  gem 'sextant'
+  gem 'better_errors'
+end
 
 group :test, :development do
   gem 'rspec-rails'
