@@ -1,21 +1,12 @@
-%h1 Listing books
-
-%table
-  %tr
-    %th Grandham
-    %th Language
-    %th
-    %th
-    %th
-
-  - @books.each do |book|
-    %tr
-      %td= book.grandham_id
-      %td= book.language_id
-      %td= link_to 'Show', book
-      %td= link_to 'Edit', edit_book_path(book)
-      %td= link_to 'Destroy', book, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Book', new_book_path
+.container
+  - @books.each_slice(2).each do |book_row|
+    .row
+      - book_row.each do |book|
+        .span6
+          .well
+            .row
+              .span1
+                = image_tag 'rails.png'
+              .span4
+                %h3= book.approved_submission.title
+                %h5= book.approved_submission.authors.first.name

@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   respond_to :html, :json
 
   def index
-    @books = Book.all
+    @books = Book.find(:all, include: :approved_submission)
     respond_with @book
   end
 
