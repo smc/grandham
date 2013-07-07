@@ -167,6 +167,9 @@ GEM
       websocket (~> 1.0.4)
     sextant (0.2.4)
       rails (>= 3.2)
+    simple_form (2.1.0)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -212,4 +215,5 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   selenium-webdriver
   sextant
+  simple_form
   uglifier (>= 1.0.3)

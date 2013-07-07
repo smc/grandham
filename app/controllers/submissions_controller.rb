@@ -4,7 +4,7 @@ class SubmissionsController < ApplicationController
     @submissions = Submission.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @submissions }
     end
   end
@@ -13,16 +13,17 @@ class SubmissionsController < ApplicationController
     @submission = Submission.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @submission }
     end
   end
 
   def new
     @submission = Submission.new
+    @submission.authors.build
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @submission }
     end
   end
@@ -34,9 +35,11 @@ class SubmissionsController < ApplicationController
   def create
     if params[:book_id]
       book = Book.find_by_grandham_id(params[:book_id])
+      new_book = false
       redirect_path = book_path(book)
     else
       book = current_language.books.create
+      new_book = true
       redirect_path = root_url
     end
 
@@ -47,6 +50,7 @@ class SubmissionsController < ApplicationController
         format.html { redirect_to redirect_path, notice: 'Your submission has been posted and has gone for moderation' }
         format.json { render json: @submission, status: :created }
       else
+        book.destroy if new_book
         format.html { render action: "new" }
         format.json { render json: @submission.errors, status: :unprocessable_entity }
       end
