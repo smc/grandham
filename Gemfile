@@ -20,6 +20,7 @@ group :assets do
   gem 'jquery-ui-rails'
   gem 'bootstrap-sass'
   gem 'bootswatch-rails'
+  gem 'font-awesome-sass-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
