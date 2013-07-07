@@ -10,3 +10,7 @@
               .span4
                 %h3= book.approved_submission.title
                 %h5= book.approved_submission.authors.first.name
+                %h5
+                  = book.approved_submission.year
+                  ,
+                  = book.approved_submission.publishers.first.name

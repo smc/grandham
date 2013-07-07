@@ -6,6 +6,9 @@
     = f.fields_for :authors do |author_form|
       = author_form.input :name, as: :string, input_html: { class: 'input-xxlarge' }, label: 'Author'
 
+    = f.fields_for :publishers do |publisher_form|
+      = publisher_form.input :name, as: :string, input_html: { class: 'input-xxlarge' }, label: 'Publisher'
+
     = f.input :isbn, as: :string, input_html: { class: 'input-xxlarge' }, label: 'ISBN'
     = f.input :year, as: :string, input_html: { class: 'input-xxlarge' }
     = f.input :pages, as: :string, input_html: { class: 'input-xxlarge' }

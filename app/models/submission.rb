@@ -1,5 +1,5 @@
 class Submission < ActiveRecord::Base
-  attr_accessible :book_id, :title, :isbn, :pages, :year, :description, :edition, :authors_attributes, :approved_submission
+  attr_accessible :book_id, :title, :isbn, :pages, :year, :description, :edition, :authors_attributes, :approved_submission, :publishers_attributes
 
   belongs_to :book
 
@@ -9,6 +9,7 @@ class Submission < ActiveRecord::Base
 
   has_many :publications
   has_many :publishers, through: :publications
+  accepts_nested_attributes_for :publishers
 
   has_many :data
 

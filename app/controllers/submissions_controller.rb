@@ -21,6 +21,7 @@ class SubmissionsController < ApplicationController
   def new
     @submission = Submission.new
     @submission.authors.build
+    @submission.publishers.build
 
     respond_to do |format|
       format.html
@@ -44,6 +45,9 @@ class SubmissionsController < ApplicationController
     end
 
     @submission = book.submissions.new(params[:submission])
+
+    # Approve all submissions for now. Should remove it later
+    @submission.approved = true
 
     respond_to do |format|
       if @submission.save

@@ -34,7 +34,8 @@ describe SubmissionsController do
         response.should redirect_to root_url
       end
 
-      it "should not change the default 'approved' value of submission" do
+      # All submissions are approved for now
+      xit "should not change the default 'approved' value of submission" do
         post :create, title: 'Hello World', language_id: @language.short_code
         expect(assigns[:submission].approved?).to be_false
       end
