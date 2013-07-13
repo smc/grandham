@@ -4,7 +4,9 @@ Grandham::Application.routes.draw do
 
   resources :authors
 
-  resources :books
+  resources :books do
+    resources :submissions
+  end
 
   resources :languages
 

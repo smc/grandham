@@ -1,16 +1,4 @@
 .container
   - @books.each_slice(2).each do |book_row|
     .row
-      - book_row.each do |book|
-        .span6
-          .well
-            .row
-              .span1
-                = image_tag 'rails.png'
-              .span4
-                %h3= book.approved_submission.title
-                %h5= book.approved_submission.authors.first.name
-                %h5
-                  = book.approved_submission.year
-                  ,
-                  = book.approved_submission.publishers.first.name
+      = render partial: 'book', collection: book_row

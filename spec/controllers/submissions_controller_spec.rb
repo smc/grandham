@@ -3,7 +3,23 @@ require 'spec_helper'
 describe SubmissionsController do
   before(:all) do
     @language = FactoryGirl.create :language
-    @submission = FactoryGirl.create :submission
+    @submission = FactoryGirl.create :submission, approved: true, book: FactoryGirl.create(:book)
+    @submission.authors << [ FactoryGirl.create(:author) ]
+    @submission.publishers << [ FactoryGirl.create(:publisher) ]
+  end
+
+  describe "new submission to an existing book" do
+    it "should return http_success" do
+      get :new, book: @submission.book
+
+      expect(response).to be_success
+    end
+
+    it "should get initialized with pre-assigned data" do
+      get :new, book_id: @submission.book.grandham_id
+
+      expect(assigns[:submission].details).to eq Submission.initialize_with_data(@submission.book).details
+    end
   end
 
   describe "create submission" do

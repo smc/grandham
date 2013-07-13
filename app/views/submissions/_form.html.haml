@@ -1,8 +1,7 @@
-= simple_form_for @submission, url: language_submissions_path(current_language), html: { class: 'form-horizontal' } do |f|
+= simple_form_for @submission, url: submission_url, html: { class: 'form-horizontal' } do |f|
   %fieldset
     %legend Add new book
     = f.input :title, as: :string, input_html: { class: 'input-xxlarge' }
-
     = f.fields_for :authors do |author_form|
       = author_form.input :name, as: :string, input_html: { class: 'input-xxlarge' }, label: 'Author'
 

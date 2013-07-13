@@ -14,6 +14,14 @@ describe BooksController do
       end
     end
 
+    context "current_book" do
+      it "should set current book" do
+        book = FactoryGirl.create :book
+        get :index, book_id: book.grandham_id
+        expect(controller.send :current_book).not_to be_nil
+      end
+    end
+
     it "assigns all books as @books" do
       get :index
       assigns(:books).should be_a Array

@@ -7,4 +7,9 @@ class ApplicationController < ActionController::Base
     Language.where('short_code = ?', params[:language_id]).first
   end
   helper_method :current_language
+
+  def current_book
+    Book.where('grandham_id = ?', params[:book_id]).first
+  end
+  helper_method :current_book
 end

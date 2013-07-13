@@ -1,0 +1,13 @@
+.span6
+  .well
+    .row
+      .span1
+        = image_tag 'rails.png'
+      .span4
+        %h3= book.approved_submission.title
+        %h5= book.approved_submission.authors.first.name
+        %h5
+          = book.approved_submission.year
+          ,
+          = book.approved_submission.publishers.first.name
+        = link_to 'edit', new_book_submission_path(book)

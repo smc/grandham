@@ -19,9 +19,13 @@ class SubmissionsController < ApplicationController
   end
 
   def new
-    @submission = Submission.new
-    @submission.authors.build
-    @submission.publishers.build
+    if current_book
+      @submission = Submission.initialize_with_data(current_book)
+    else
+      @submission = Submission.new
+      @submission.authors.build
+      @submission.publishers.build
+    end
 
     respond_to do |format|
       format.html
@@ -34,8 +38,7 @@ class SubmissionsController < ApplicationController
   end
 
   def create
-    if params[:book_id]
-      book = Book.find_by_grandham_id(params[:book_id])
+    if book = current_book
       new_book = false
       redirect_path = book_path(book)
     else
@@ -47,6 +50,7 @@ class SubmissionsController < ApplicationController
     @submission = book.submissions.new(params[:submission])
 
     # Approve all submissions for now. Should remove it later
+    book.submissions.update_all approved: false
     @submission.approved = true
 
     respond_to do |format|
