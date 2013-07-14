@@ -25,6 +25,11 @@
           %li
             %a{:href => '#'} Libraries
 
+          / TODO: Remove this link
+          - if current_language
+            %li
+              = link_to 'Add new book', new_language_submission_path(current_language)
+
         %ul#main-menu-right.nav.pull-right
           %li
             %a{:href => "#"}
