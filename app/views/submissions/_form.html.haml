@@ -14,4 +14,6 @@
     = f.input :edition, as: :string, input_html: { class: 'input-xxlarge' }
     = f.input :description, as: :text, input_html: { rows: 5, cols: 50, class: 'input-xxlarge' }
 
-    = f.submit 'Submit', class: 'btn btn-primary'
+    .form-actions
+      = f.submit 'Submit', class: 'btn btn-primary'
+      %button.btn Cancel
