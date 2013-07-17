@@ -4,7 +4,8 @@
       .span1
         = image_tag 'rails.png'
       .span4
-        %h3= book.approved_submission.title
+        %h3
+          = link_to book.approved_submission.title, language_book_path(book.language, book)
         %h5= book.approved_submission.authors.first.name
         %h5
           = book.approved_submission.year

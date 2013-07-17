@@ -1,12 +1,19 @@
-%p#notice= notice
-
-%p
-  %b Grandham:
-  = @book.grandham_id
-%p
-  %b Language:
-  = @book.language_id
-
-= link_to 'Edit', edit_book_path(@book)
-\|
-= link_to 'Back', books_path
+.container
+  .row
+    .span2.well.book-cover-page-large
+      = image_tag 'rails.png'
+    .span8
+      %h3= @book.approved_submission.title
+      %h5= @book.approved_submission.authors.first.name
+      %h5
+        = @book.approved_submission.year
+        ,
+        = @book.approved_submission.publishers.first.name
+      .inline
+        %h5
+          = "ISBN #{@book.approved_submission.isbn}"
+          = "| #{@book.approved_submission.pages} Pages"
+          = "| #{@book.approved_submission.edition}"
+      %br
+      %p
+        Lorem ipsum Anim minim nostrud exercitation dolore proident labore sunt exercitation exercitation sit in non dolor mollit reprehenderit exercitation tempor laboris dolore veniam dolore officia sint Ut pariatur tempor.

@@ -45,4 +45,11 @@ describe BooksController do
       assigns(:book).should eq @book
     end
   end
+
+  describe "GET show" do
+    it "should find and assign @book" do
+      get :show, id: @book, language_id: @book.language
+      expect(assigns[:book]).to eq @book
+    end
+  end
 end
