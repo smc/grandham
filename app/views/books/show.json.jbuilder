@@ -1,6 +1,3 @@
 json.(@book, :grandham_id)
 json.language @book.language.short_code
-
-json.data @book.approved_submission.data do |datum|
-  json.set! datum.field.short_id, datum.value
-end
+json.(@book.approved_submission, :title, :isbn, :pages, :year, :description, :edition)
