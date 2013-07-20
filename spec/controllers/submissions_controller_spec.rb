@@ -1,10 +1,15 @@
 require 'spec_helper'
 
 describe SubmissionsController do
+
+  def submission_attributes
+    { submission: { title: 'Hello World' }, language_id: @language.short_code }
+  end
+
   before(:all) do
-    @language = FactoryGirl.create :language
+    @language   = FactoryGirl.create :language
     @submission = FactoryGirl.create :submission, approved: true, book: FactoryGirl.create(:book)
-    @submission.authors << [ FactoryGirl.create(:author) ]
+    @submission.authors    << [ FactoryGirl.create(:author) ]
     @submission.publishers << [ FactoryGirl.create(:publisher) ]
   end
 
@@ -23,6 +28,46 @@ describe SubmissionsController do
   end
 
   describe "create submission" do
+
+    describe "associated records" do
+      context "author" do
+        context "exists" do
+          xit "should not create new author" do
+            -> {
+              post :create, submission: { title: 'Hello World', authors_attributes: [ FactoryGirl.attributes_for(:author, name: 'Ezhuthachan') ] }, language_id: @language.short_code
+            }.should_not change { Author.count }.by 1
+          end
+        end
+
+        context "doesn't exist" do
+          xit "should create new author" do
+            -> {
+              attrs = submission_attributes.merge()
+              post :create, submission: { title: 'Hello World', authors_attributes: [ FactoryGirl.attributes_for(:author, name: 'Ezhuthachan') ] }, language_id: @language.short_code
+            }.should change { Author.count }.by 1
+          end
+        end
+      end
+
+      context "publisher" do
+        context "exists" do
+          xit "should not create new publisher" do
+            -> {
+              post :create, submission: { title: 'Hello World', publishers_attributes: [ FactoryGirl.attributes_for(:publisher, name: 'Sample Publisher') ] }, language_id: @language.short_code
+            }.should_not change { Publisher.count }.by 1
+          end
+        end
+
+        context "doesn't exist" do
+          xit "should create new publisher" do
+            -> {
+              post :create, submission: { title: 'Hello World', publishers_attributes: [ FactoryGirl.attributes_for(:publisher, name: 'Sample Publisher') ] }, language_id: @language.short_code
+            }.should change { Publisher.count }.by 1
+          end
+        end
+      end
+    end
+
     context "new book" do
 
       it "should create a book if params[:book_id] doesn't exist" do
