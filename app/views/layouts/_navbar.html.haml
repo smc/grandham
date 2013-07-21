@@ -32,5 +32,7 @@
 
         %ul#main-menu-right.nav.pull-right
           %li
-            %a{:href => "#"}
-              Sign in
+            - if user_signed_in?
+              = link_to I18n.t('.sign_out'), destroy_user_session_path, method: :delete
+            - else
+              = link_to I18n.t('.sign_in'), new_user_session_path
