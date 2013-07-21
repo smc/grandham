@@ -1,5 +1,7 @@
 Grandham::Application.routes.draw do
 
+  devise_for :users
+
   resources :publishers
 
   resources :authors
