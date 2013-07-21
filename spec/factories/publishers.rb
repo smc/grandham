@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :publisher do
-    name "MyText"
+    name "Sample Publisher"
   end
 end

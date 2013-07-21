@@ -1,8 +1,17 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :book do
-    grandham_id "MyString"
-    language_id 1
+    language
+
+    ignore do
+      submissions_count 5
+    end
+
+    after(:create) do |book, evaluator|
+      FactoryGirl.create_list(:submission, evaluator.submissions_count, book: book)
+    end
+
+    after(:create) do |book, evaluator|
+      FactoryGirl.create(:approved_submission, book: book)
+    end
   end
 end

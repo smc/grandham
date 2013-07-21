@@ -7,5 +7,17 @@ FactoryGirl.define do
     title 'ABCDEFG'
     year '2013'
     pages '13'
+
+    factory :approved_submission do
+      approved true
+    end
+
+    after(:create) do |submission, evaluator|
+      submission.authors << FactoryGirl.create(:author)
+    end
+
+    after(:create) do |submission, evaluator|
+      submission.publishers << FactoryGirl.create(:publisher)
+    end
   end
 end

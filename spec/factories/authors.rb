@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :author do
-    name "MyText"
+    name "Sample Author"
   end
 end

@@ -2,10 +2,7 @@ require 'spec_helper'
 
 describe "Books" do
   before (:all) do
-    @book = FactoryGirl.create :book, language: FactoryGirl.create(:language)
-    submission = FactoryGirl.create :submission, book_id: @book.id, approved: true
-    submission.authors << FactoryGirl.create(:author)
-    submission.publishers << FactoryGirl.create(:publisher)
+    @book = FactoryGirl.create :book
   end
 
   context "Books list" do

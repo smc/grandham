@@ -8,16 +8,14 @@ describe BooksController do
   describe "GET index" do
     context "current_language" do
       it "should set current language" do
-        language = FactoryGirl.create :language
-        get :index, language_id: language.short_code
+        get :index, language_id: @book.language.short_code
         expect(controller.send :current_language).not_to be_nil
       end
     end
 
     context "current_book" do
       it "should set current book" do
-        book = FactoryGirl.create :book
-        get :index, book_id: book.grandham_id
+        get :index, book_id: @book.grandham_id
         expect(controller.send :current_book).not_to be_nil
       end
     end
