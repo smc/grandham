@@ -1,0 +1,23 @@
+.container
+  %br
+  .row
+    .span12.offset2
+      %h2 Sign in
+      .row
+
+        .span4.sign-in-container
+          = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+            .form-inputs
+              = f.input :email, :required => false, :autofocus => true
+              = f.input :password, :required => false
+              = f.input :remember_me, :as => :boolean, inline_label: 'Remember me', label: false if devise_mapping.rememberable?
+            = f.button :submit, "Sign in", class: 'btn btn-primary'
+
+          = render "devise/shared/links"
+
+        .span5.social-sign-in-container
+          .row
+            .span2
+              %button.btn.btn-info.btn-large Sign in with Facebook
+            .span2
+              %button.btn.btn-success.btn-large Sign in with Google
