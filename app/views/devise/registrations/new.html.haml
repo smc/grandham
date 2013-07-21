@@ -1,0 +1,22 @@
+.container
+  %br
+  .row
+    .span12.offset2
+      %h2 Sign up
+      .row
+        .span4.sign-in-container
+          = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+            = f.error_notification
+            .form-inputs
+              = f.input :email, :autofocus => true
+              = f.input :password
+              = f.input :password_confirmation
+
+              = f.button :submit, "Sign up", class: 'btn btn-primary'
+
+        .span5.social-sign-in-container
+          .row
+            .span2
+              %button.btn.btn-info.btn-large Sign in with Facebook
+            .span2
+              %button.btn.btn-success.btn-large Sign in with Google

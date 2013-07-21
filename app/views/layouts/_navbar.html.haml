@@ -28,11 +28,16 @@
           / TODO: Remove this link
           - if current_language
             %li
-              = link_to 'Add new book', new_language_submission_path(current_language)
+              = link_to I18n.t('.add_new_book'), new_language_submission_path(current_language)
 
         %ul#main-menu-right.nav.pull-right
-          %li
-            - if user_signed_in?
+          - if user_signed_in?
+            %li
               = link_to I18n.t('.sign_out'), destroy_user_session_path, method: :delete
-            - else
-              = link_to I18n.t('.sign_in'), new_user_session_path
+          - else
+            %li
+              = link_to I18n.t('.create_an_account'), new_user_registration_path
+            %li
+              = link_to new_user_session_path do
+                %i.icon-user
+                = I18n.t('.sign_in')

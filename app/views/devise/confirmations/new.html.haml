@@ -1,0 +1,12 @@
+.container
+  .row
+    .span8.offset3
+      %br
+      %h2 Resend confirmation instructions
+      %br
+      = simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
+        = f.error_notification
+        = f.full_error :confirmation_token
+        .form-inputs
+          = f.input :email, :required => true, :autofocus => true, input_html: { class: 'input-xlarge' }
+          = f.button :submit, "Resend", class: 'btn btn-primary'
