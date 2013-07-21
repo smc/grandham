@@ -39,6 +39,7 @@ end
 group :development do
   gem 'sextant'
   gem 'better_errors'
+  gem "letter_opener"
 end
 
 group :production do
