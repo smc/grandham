@@ -7,7 +7,7 @@ describe SubmissionsController do
   end
 
   def submission_attributes
-    { submission: { title: 'Hello World' }, language_id: @book.language.short_code }
+    { submission: { title: 'Hello World', authors_attributes: [ FactoryGirl.attributes_for(:author, name: 'Ezhuthachan') ] }, language_id: @book.language.short_code }
   end
 
   describe "new submission to an existing book" do
@@ -28,37 +28,52 @@ describe SubmissionsController do
 
     describe "associated records" do
       context "author" do
+        before(:each) do
+          @params = { submission: { title: 'Hello World', authors_attributes: [ FactoryGirl.attributes_for(:author, name: 'Ezhuthachan') ] }, language_id: @book.language.short_code }
+        end
+
         context "exists" do
-          xit "should not create new author" do
+          it "should not create new author" do
+            FactoryGirl.create(:author, name: 'Ezhuthachan')
             -> {
-              post :create, submission: { title: 'Hello World', authors_attributes: [ FactoryGirl.attributes_for(:author, name: 'Ezhuthachan') ] }, language_id: @book.language.short_code
+              post :create, @params
             }.should_not change { Author.count }.by 1
           end
         end
 
         context "doesn't exist" do
-          xit "should create new author" do
+          it "should create new author" do
             -> {
-              attrs = submission_attributes.merge()
-              post :create, submission: { title: 'Hello World', authors_attributes: [ FactoryGirl.attributes_for(:author, name: 'Ezhuthachan') ] }, language_id: @book.language.short_code
+              post :create, @params
             }.should change { Author.count }.by 1
+          end
+
+          it "should create new author for the specific submission" do
+            post :create, @params
+            expect(assigns[:submission].authors.count).to eq 1
           end
         end
       end
 
       context "publisher" do
+        before(:each) do
+          @params = { submission: { title: 'Hello World', authors_attributes: [ FactoryGirl.attributes_for(:author, name: 'Ezhuthachan') ], publishers_attributes: [ FactoryGirl.attributes_for(:publisher, name: 'Publisher ABC') ] }, language_id: @book.language.short_code }
+        end
+
         context "exists" do
-          xit "should not create new publisher" do
+          it "should not create new publisher" do
+            @params[:submission][:publishers_attributes].first[:name] = 'XYZ Publisher'
+            FactoryGirl.create(:publisher, name: 'XYZ Publisher')
             -> {
-              post :create, submission: { title: 'Hello World', publishers_attributes: [ FactoryGirl.attributes_for(:publisher, name: 'Sample Publisher') ] }, language_id: @book.language.short_code
+              post :create, @params
             }.should_not change { Publisher.count }.by 1
           end
         end
 
         context "doesn't exist" do
-          xit "should create new publisher" do
+          it "should create new publisher" do
             -> {
-              post :create, submission: { title: 'Hello World', publishers_attributes: [ FactoryGirl.attributes_for(:publisher, name: 'Sample Publisher') ] }, language_id: @book.language.short_code
+              post :create, @params
             }.should change { Publisher.count }.by 1
           end
         end
@@ -69,13 +84,13 @@ describe SubmissionsController do
 
       it "should create a book if params[:book_id] doesn't exist" do
         -> {
-          post :create, submission: { title: 'Hello World' }, language_id: @book.language.short_code
+          post :create, submission_attributes
         }.should change { Book.count }.by 1
       end
 
       it "should create a submission for the correct book" do
         -> {
-          post :create, submission: { title: 'Hello World' }, language_id: @book.language.short_code
+          post :create, submission_attributes
         }.should change { Submission.count }.by 1
 
         expect(assigns[:submission].book).not_to be_nil
@@ -83,12 +98,12 @@ describe SubmissionsController do
 
       it "should not create book if submission is invalid" do
         -> {
-          post :create, language_id: @book.language.short_code
+          post :create, language_id: @book.language.short_code, submission: {}
         }.should_not change { Book.count }.by 1
       end
 
       it "should redirect to root_url if successful" do
-        post :create, submission: { title: 'Hello World' }, language_id: @book.language.short_code
+        post :create, submission_attributes
         response.should redirect_to root_url
       end
 

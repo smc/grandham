@@ -15,6 +15,7 @@ class Submission < ActiveRecord::Base
 
   validates_presence_of :title
 
+  after_create :process_associated_records
 
   def self.initialize_with_data(book)
     submission = new book.approved_submission.details
@@ -31,4 +32,18 @@ class Submission < ActiveRecord::Base
     attrs
   end
 
+  private
+
+  def remove_duplicate_associated_objects(klass)
+    self.send(klass.to_s.downcase.pluralize).each do |object|
+      if existing_object = klass.where([ "name = ? and id <> ?", object.name, object.id]).first
+        existing_object.submissions << self
+        object.destroy
+      end
+    end
+  end
+
+  def process_associated_records
+    [Author, Publisher].each{ |klass| remove_duplicate_associated_objects(klass) }
+  end
 end
