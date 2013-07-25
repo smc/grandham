@@ -1,19 +1,15 @@
-%h1 Listing authors
-
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - @authors.each do |author|
-    %tr
-      %td= author.name
-      %td= link_to 'Show', author
-      %td= link_to 'Edit', edit_author_path(author)
-      %td= link_to 'Destroy', author, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Author', new_author_path
+.container
+  .row
+    .span10
+      %h1 Authors
+      .row
+        .span5
+          %h4 Name
+        .span3
+          %h4 Grandham ID
+      - @authors.each do |author|
+        .well.row
+          .span5
+            %p= author.name
+          .span3
+            %p=author.grandham_id
