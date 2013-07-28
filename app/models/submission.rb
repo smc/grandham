@@ -3,6 +3,8 @@ class Submission < ActiveRecord::Base
 
   belongs_to :book
 
+  has_many :data
+
   has_many :authorships
   has_many :authors, through: :authorships
   accepts_nested_attributes_for :authors
@@ -11,11 +13,11 @@ class Submission < ActiveRecord::Base
   has_many :publishers, through: :publications
   accepts_nested_attributes_for :publishers
 
-  has_many :data
-
   validates_presence_of :title
 
   after_create :process_associated_records
+
+  scope :not_reviewed, -> { where(reviewed: false) }
 
   def self.initialize_with_data(book)
     submission = new book.approved_submission.details
@@ -26,10 +28,18 @@ class Submission < ActiveRecord::Base
   end
 
   def details
-    restricted_keys = [:id, :created_at, :updated_at, :approved]
+    restricted_keys = [:id, :created_at, :updated_at, :approved, :reviewed]
     attrs = attributes.with_indifferent_access
     restricted_keys.collect{ |key| attrs.delete key }
     attrs
+  end
+
+  def set_reviewed!
+    update_attribute :reviewed, true
+  end
+
+  def set_approved!
+    update_attribute :approved, true
   end
 
   private

@@ -49,10 +49,6 @@ class SubmissionsController < ApplicationController
 
     @submission = book.submissions.new(params[:submission])
 
-    # Approve all submissions for now. Should remove it later
-    book.submissions.update_all approved: false
-    @submission.approved = true
-
     respond_to do |format|
       if @submission.save
         format.html { redirect_to redirect_path, notice: 'Your submission has been posted and has gone for moderation' }

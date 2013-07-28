@@ -5,6 +5,8 @@ class Language < ActiveRecord::Base
   has_many :authors
   has_many :publishers
 
+  has_many :submissions, through: :books
+
   def to_param
     short_code
   end

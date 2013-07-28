@@ -57,4 +57,33 @@ describe Submission do
       expect(submission.authors.first.name).to eq @book.approved_submission.authors.first.name
     end
   end
+
+  describe "set_reviewed!" do
+    it "should set reviewed to false by default" do
+      submission = FactoryGirl.create :submission
+      expect(submission.reviewed?).to be_false
+    end
+
+    it "should mark submission as reviewed" do
+      submission = FactoryGirl.create :submission
+      submission.set_reviewed!
+
+      expect(submission.reviewed?).to be_true
+    end
+  end
+
+  describe "set_approved!" do
+    it "should set approved to false by default" do
+      submission = FactoryGirl.create :submission
+      expect(submission.approved?).to be_false
+    end
+
+    it "should mark submission as approved" do
+      submission = FactoryGirl.create :submission
+      submission.set_approved!
+
+      expect(submission.approved?).to be_true
+    end
+  end
+
 end

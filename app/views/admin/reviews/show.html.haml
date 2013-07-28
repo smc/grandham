@@ -1,1 +1,32 @@
-hello
+.container
+  .row
+    .span12.inline
+      .pull-right
+        %p= I18n.t('review.pending', count: @submissions.count)
+      .pull-left
+        %h3= I18n.t('review.reviews')
+  .row
+    .span12
+      - @submissions.each do |submission|
+        .submission-item
+          - submission.details.each do |key, value|
+            %p
+              .row
+                %code.span2.submission-attribute= key.capitalize
+                .span8
+                  = value
+
+          = render partial: 'associated_records', locals: { submission: submission, object: 'author' }
+          = render partial: 'associated_records', locals: { submission: submission, object: 'publisher' }
+
+          .pull-right
+            %p
+              Submitted by
+              = link_to 'Radha', '#'
+              on 23 July 2013
+          %br
+
+          .form-actions
+            = link_to 'Approve', '#', class: 'btn btn-success'
+            = link_to 'Archive', '#', class: 'btn btn-primary'
+            = link_to 'Comments (5)', '#', class: 'btn btn-info'

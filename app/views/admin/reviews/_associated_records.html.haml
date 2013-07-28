@@ -1,0 +1,6 @@
+- submission.send(object.pluralize).each_with_index do |object_record, i|
+  %p
+    .row
+      %code.span2.submission-attribute= "#{object.capitalize} #{i + 1}"
+      .span5
+        = object_record.name
