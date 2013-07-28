@@ -19,8 +19,8 @@ Grandham::Application.routes.draw do
   root to: 'books#index'
 
   resources :language do
-    namespace :admin do
-      resource :review
+    resource :admin do
+        resources :reviews,  module: 'admin'
     end
 
     resources :submissions, only: [ :new, :create ]
