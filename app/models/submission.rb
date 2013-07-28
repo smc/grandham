@@ -39,7 +39,10 @@ class Submission < ActiveRecord::Base
   end
 
   def set_approved!
+    self.book.submissions.update_all approved: false
+
     update_attribute :approved, true
+    self.set_reviewed!
   end
 
   private

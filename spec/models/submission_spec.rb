@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Submission do
-  before(:all) do
+  before(:each) do
     @book = FactoryGirl.create(:book)
   end
 
@@ -78,8 +78,26 @@ describe Submission do
       expect(submission.approved?).to be_false
     end
 
+    it "should disapprove all previous submissions" do
+      submission_1 = @book.submissions.create
+      submission_1.update_attribute :approved, true
+
+      submission_2 = @book.submissions.create
+      submission_2.set_approved!
+
+      expect(submission_1.reload.approved?).to be_false
+      expect(submission_2.reload.approved?).to be_true
+    end
+
+    it "should mark the submission as reviewed" do
+      submission = @book.submissions.create
+
+      submission.set_approved!
+      expect(submission.reload.reviewed?).to be_true
+    end
+
     it "should mark submission as approved" do
-      submission = FactoryGirl.create :submission
+      submission = @book.submissions.create
       submission.set_approved!
 
       expect(submission.approved?).to be_true

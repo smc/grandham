@@ -20,7 +20,10 @@ Grandham::Application.routes.draw do
 
   resources :language do
     resource :admin do
-        resources :reviews,  module: 'admin'
+        resources :reviews,  module: 'admin' do
+          post :approve, on: :member
+          post :archive, on: :member
+        end
     end
 
     resources :submissions, only: [ :new, :create ]

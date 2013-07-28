@@ -20,10 +20,10 @@
       = submission.created_at.strftime('%e %b %Y (%I:%M %p)')
       - if defined? show_perma_link
         |
-        = link_to "Review ##{submission.id}", language_admin_review_path(language_id: current_language.short_code, id: submission.id)
+        = link_to "Review ##{submission.id}", language_admin_review_path(language_id: current_language, id: submission)
   %br
 
   .form-actions
-    = link_to 'Approve', '#', class: 'btn btn-success'
-    = link_to 'Archive', '#', class: 'btn btn-primary'
+    = link_to 'Approve', approve_language_admin_review_path(language_id: current_language, id: submission), class: 'btn btn-success', method: :post
+    = link_to 'Archive', archive_language_admin_review_path(language_id: current_language, id: submission), class: 'btn btn-primary', method: :post
     = link_to 'Comments (5)', '#', class: 'btn btn-info'
