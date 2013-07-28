@@ -1,16 +1,23 @@
 .submission-item
   - submission.details.each do |key, value|
-    %p
-      .row
-        %code.span2.submission-attribute= key.capitalize
-        .span8
-          = value
+    - if key == 'book_id'
+      %p
+        .row
+          %code.span2.submission-attribute Book
+          .span8
+            - if submission.book.approved_submission
+              = link_to submission.book.grandham_id, language_book_path(current_language, submission.book), target: '_blank'
+            - else
+              New Book
+    - else
+      %p
+        .row
+          %code.span2.submission-attribute= key.capitalize
+          .span8
+            = value
 
   = render partial: 'associated_records', locals: { submission: submission, object: 'author' }
   = render partial: 'associated_records', locals: { submission: submission, object: 'publisher' }
-
-  .pull-left
-
 
   .pull-right
     %p
