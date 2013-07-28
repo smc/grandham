@@ -1,20 +1,15 @@
 class AuthorsController < ApplicationController
+  respond_to :html
 
   def index
     @authors = Author.all
 
-    respond_to do |format|
-      format.html
-      format.json { render json: @authors }
-    end
+    respond_with @authors
   end
 
   def show
     @author = Author.find(params[:id])
 
-    respond_to do |format|
-      format.html
-      format.json { render json: @author }
-    end
+    respond_with @author
   end
 end
