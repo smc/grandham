@@ -7,6 +7,8 @@ class Book < ActiveRecord::Base
 
   before_create :set_grandham_id
 
+  scope :has_approved_submission, include: [:submissions], conditions: ['submissions.approved = 1']
+
   def to_param
     grandham_id
   end

@@ -1,9 +1,10 @@
 class BooksController < ApplicationController
   respond_to :html, :json
 
+  before_filter :find_books_collection, only: [:index]
+
   def index
-    @books = Book.find(:all, include: :approved_submission)
-    respond_with @book
+    respond_with @books
   end
 
   def show
@@ -11,50 +12,9 @@ class BooksController < ApplicationController
     respond_with @book
   end
 
-  def new
-    @book = Book.new
-    respond_with @book
-  end
+  private
 
-  def edit
-    @book = Book.find_by_grandham_id(params[:id])
-  end
-
-  def create
-    @book = Book.new(params[:book])
-
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
-        format.json { render json: @book, status: :created, location: @book }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def update
-    @book = Book.find_by_grandham_id(params[:id])
-
-    respond_to do |format|
-      if @book.update_attributes(params[:book])
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def destroy
-    @book = Book.find_by_grandham_id(params[:id])
-    @book.destroy
-
-    respond_to do |format|
-      format.html { redirect_to books_url }
-      format.json { head :no_content }
-    end
+  def find_books_collection
+    @books = current_language ? current_language.books.has_approved_submission : Book.has_approved_submission
   end
 end
