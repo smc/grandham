@@ -2,7 +2,7 @@ class Admin::ReviewsController < AdminController
   before_filter :find_submission, only: [ :show, :approve, :archive ]
 
   def index
-    @submissions = current_language.submissions.not_reviewed.first(20)
+    @submissions = current_language.submissions.not_reviewed
   end
 
   def show
