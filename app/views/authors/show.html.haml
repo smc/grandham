@@ -1,9 +1,4 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @author.name
-
-= link_to 'Edit', edit_author_path(@author)
-\|
-= link_to 'Back', authors_path
+.container
+  .row
+    .span7.offset1
+      %h3= @author.name
