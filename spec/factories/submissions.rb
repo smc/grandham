@@ -13,11 +13,11 @@ FactoryGirl.define do
     end
 
     after(:create) do |submission, evaluator|
-      submission.authors << FactoryGirl.create(:author)
+      submission.authors << FactoryGirl.create(:author, language_id: Language.default.id)
     end
 
     after(:create) do |submission, evaluator|
-      submission.publishers << FactoryGirl.create(:publisher)
+      submission.publishers << FactoryGirl.create(:publisher, language_id: Language.default.id)
     end
   end
 end
