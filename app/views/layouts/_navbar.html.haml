@@ -19,13 +19,19 @@
 
         %ul#main-menu-right.nav.pull-right
           %li
-            = link_to I18n.t('.add_new_book'), new_language_submission_path(current_language || Language.default)
+            = link_to new_language_submission_path(current_language || Language.default) do
+              %i.icon-plus
+              = I18n.t('.add_new_book')
+
+          %li
+            = link_to '#' do
+              %i.icon-search
+              = I18n.t('.search')
+
           - if user_signed_in?
             %li
               = link_to I18n.t('.sign_out'), destroy_user_session_path, method: :delete
           - else
-            %li
-              = link_to I18n.t('.create_an_account'), new_user_registration_path
             %li
               = link_to new_user_session_path do
                 %i.icon-user
