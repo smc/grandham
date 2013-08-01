@@ -1,7 +1,7 @@
 .container
   %br
   .row
-    .span12.offset2
+    .span10.offset2
       %h2 Sign in
       .row
 
@@ -16,6 +16,11 @@
           = render "devise/shared/links"
 
         .span5.social-sign-in-container
+          %p
+            Doesn't have an account?
+            = link_to 'Register', new_user_registration_path
+          %br
+          %p Or you can
           .row
             .span2
               %button.btn.btn-info Sign in with Facebook
