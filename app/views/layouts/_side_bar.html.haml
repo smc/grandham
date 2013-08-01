@@ -1,18 +1,21 @@
-.span3.bs-docs-sidebar
+.span3.side-bar
   %br
-  %ul.nav.nav-list.bs-docs-sidenav
+  %ul.side-bar-list
     %li
       = link_to current_language_path('books') do
-        - if active == 'books'
-          %i.icon-chevron-right
         = I18n.t('.books')
+        .pull-right
+          - if active == 'books'
+            %i.icon-chevron-right
     %li
       = link_to current_language_path('authors') do
-        - if active == 'authors'
-          %i.icon-chevron-right
         = I18n.t('.authors')
+        .pull-right
+          - if active == 'authors'
+            %i.icon-chevron-right
     %li
       = link_to current_language_path('publishers') do
-        - if active == 'publishers'
-          %i.icon-chevron-right
         = I18n.t('.publishers')
+        .pull-right
+          - if active == 'publishers'
+            %i.icon-chevron-right

@@ -12,7 +12,7 @@
  *= require_tree .
  */
 
-@import "bootswatch/flatly/variables";
+@import "bootswatch/readable/variables";
 
 @import "bootstrap";
 
@@ -20,6 +20,30 @@ body { padding-top: 60px; }
 
 @import "bootstrap-responsive";
 
-@import "bootswatch/flatly/bootswatch";
+@import "bootswatch/readable/bootswatch";
 
 @import 'font-awesome';
+
+
+ul.side-bar-list > li {
+  background-color: rgba(238, 238, 238, 0.37);
+  padding: 12px;
+  list-style-type: none;
+  margin-bottom: 15px;
+
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+     -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+          box-shadow: 0 1px 4px rgba(0,0,0,.065);
+}
+
+
+ul.actions {
+  margin-top: 200px;
+}
+ul.actions > li {
+  list-style-type: none;
+}

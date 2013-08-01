@@ -18,6 +18,8 @@
                   = link_to language.name, language_books_path(language)
 
         %ul#main-menu-right.nav.pull-right
+          %li
+            = link_to I18n.t('.add_new_book'), new_language_submission_path(current_language || Language.default)
           - if user_signed_in?
             %li
               = link_to I18n.t('.sign_out'), destroy_user_session_path, method: :delete

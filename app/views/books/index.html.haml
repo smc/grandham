@@ -1,8 +1,4 @@
 .container
-  .row
-    .span12
-      .pull-right
-        = link_to I18n.t('.add_new_book'), new_language_submission_path(current_language || Language.default), class: 'btn btn-info'
   %br
   .row
     = render partial: 'layouts/side_bar', locals: { active: 'books' }
