@@ -1,14 +1,8 @@
-.span6
-  .well
-    .row
-      .span1
-        = image_tag 'rails.png'
-      .span4
-        %h3
-          = link_to book.approved_submission.title, language_book_path(book.language, book)
-        %h5= book.approved_submission.authors.first.name
-        %h5
-          = book.approved_submission.year
-          ,
-          = book.approved_submission.publishers.first.name
-        = link_to 'edit', new_book_submission_path(book)
+%tr
+  %td= image_tag 'rails.png'
+  %td.tex-item
+    = link_to book.approved_submission.title, language_book_path(book.language, book)
+    %br
+    = link_to 'edit', new_book_submission_path(book)
+  %td.tex-item= book.approved_submission.authors.first.name
+  %td.tex-item= book.approved_submission.publishers.first.name

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130728072914) do
+ActiveRecord::Schema.define(:version => 20130801180429) do
 
   create_table "authors", :force => true do |t|
     t.text     "name"
@@ -53,8 +53,9 @@ ActiveRecord::Schema.define(:version => 20130728072914) do
   create_table "languages", :force => true do |t|
     t.text     "name"
     t.string   "short_code"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "default",    :default => false
   end
 
   create_table "publications", :force => true do |t|

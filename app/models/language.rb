@@ -10,4 +10,8 @@ class Language < ActiveRecord::Base
   def to_param
     short_code
   end
+
+  def self.default
+    where(default: true).first
+  end
 end

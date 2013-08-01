@@ -1,4 +1,4 @@
-language = Language.where(name: 'Malayalam', short_code: 'ML').first_or_create!
+language = Language.where(name: 'Malayalam', short_code: 'ML', default: true).first_or_create!
 
 fields = [["ISBN", "isbn"],
           ["DDC", "ddc"],

@@ -16,19 +16,6 @@
               - Language.all.each do |language|
                 %li
                   = link_to language.name, language_books_path(language)
-          %li
-            = link_to I18n.t('.books'), current_language_path('books')
-          %li
-            = link_to I18n.t('.authors'), current_language_path('authors')
-          %li
-            = link_to I18n.t('.publishers'), current_language_path('publishers')
-          %li
-            %a{:href => '#'} Libraries
-
-          / TODO: Remove this link
-          - if current_language
-            %li
-              = link_to I18n.t('.add_new_book'), new_language_submission_path(current_language)
 
         %ul#main-menu-right.nav.pull-right
           - if user_signed_in?
