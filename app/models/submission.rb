@@ -18,7 +18,7 @@ class Submission < ActiveRecord::Base
   after_create :process_associated_records
 
   scope :not_reviewed, -> { where(reviewed: false) }
-
+  scope :approved, -> { where(approved: true) }
   def self.initialize_with_data(book)
     submission = new book.approved_submission.details
     submission.authors.build      name: book.approved_submission.authors.first.name
