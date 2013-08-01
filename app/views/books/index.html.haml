@@ -14,3 +14,6 @@
         %tbody.grandham-list
           - @books.each do |book|
             = render partial: 'book', locals: { book: book }
+
+      .list-pagination
+        = will_paginate @books, renderer: BootstrapPagination::Rails

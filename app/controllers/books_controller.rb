@@ -15,6 +15,7 @@ class BooksController < ApplicationController
   private
 
   def find_books_collection
-    @books = current_language ? current_language.books.has_approved_submission : Book.has_approved_submission
+    books_collection = current_language ? current_language.books.has_approved_submission : Book.has_approved_submission
+    @books = books_collection.paginate(:page => params[:page], :per_page => 10)
   end
 end

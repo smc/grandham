@@ -11,6 +11,8 @@ gem 'haml-rails'
 gem 'devise'
 gem 'ruby-progressbar'
 gem 'jquery-rails'
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'
 gem 'simple_form'
 
 # Gems used only for assets and not required
