@@ -31,6 +31,9 @@ Grandham::Application.routes.draw do
     resources :books do
       resources :submissions
     end
+
+    resources :authors
+    resources :publishers
   end
 
   # The priority is based upon order of creation:

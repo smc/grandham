@@ -19,8 +19,8 @@ namespace :grandham do
       submission.save
       submission.update_attribute(:approved, true)
 
-      submission.authors << Author.where(name: book['Author']).first_or_create!
-      submission.publishers << Publisher.where(name: book['publisher']).first_or_create!
+      submission.authors << language.authors.where(name: book['Author']).first_or_create!
+      submission.publishers << language.publishers.where(name: book['publisher']).first_or_create!
     end
   end
 end

@@ -8,6 +8,10 @@ class Author < ActiveRecord::Base
 
   before_create :set_grandham_id
 
+  def to_param
+    grandham_id
+  end
+
   private
 
   def set_grandham_id
