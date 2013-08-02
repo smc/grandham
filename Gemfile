@@ -1,4 +1,3 @@
-
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
@@ -43,10 +42,6 @@ group :development do
   gem 'sextant'
   gem 'better_errors'
   gem "letter_opener"
-end
-
-group :production do
-  gem 'pg'
 end
 
 group :test, :development do
