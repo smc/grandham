@@ -15,7 +15,8 @@
         %tbody.grandham-list
           - @publishers.each do |publisher|
             %tr
-              %td= image_tag 'rails.png'
+              %td
+                .image
               %td.tex-item
                 = link_to publisher.name, language_publisher_path(publisher.language, publisher)
               %td.tex-item
