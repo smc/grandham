@@ -6,5 +6,3 @@ FactoryGirl.define do
     short_code "en"
   end
 end
-
-FactoryGirl.create(:language, default: true)

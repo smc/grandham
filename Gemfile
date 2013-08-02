@@ -33,6 +33,7 @@ group :assets do
 end
 
 group :test do
+  gem 'database_cleaner'
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'poltergeist'
