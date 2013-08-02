@@ -17,6 +17,9 @@
                 %li
                   = link_to language.name, language_books_path(language)
 
+        %form.navbar-search.pull-left{:action => ""}
+          %input.search-query.span2{:autocomplete => "off", :placeholder => "Search Title/Author/Publisher/Key word", :type => "text"}/
+
         %ul#main-menu-right.nav.pull-right
           %li
             = link_to new_language_submission_path(current_language || Language.default) do
