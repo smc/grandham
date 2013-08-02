@@ -1,5 +1,8 @@
 class Submission < ActiveRecord::Base
-  attr_accessible :book_id, :title, :isbn, :pages, :year, :description, :edition, :authors_attributes, :approved_submission, :publishers_attributes
+  attr_accessible :book_id, :title, :isbn, :pages, :year, :description, :edition, \
+                  :authors_attributes, :approved_submission, :publishers_attributes, \
+                  :ddc, :volume, :series, :price, :length, :title_orginal, :illustrator, \
+                  :note
 
   belongs_to :book
 

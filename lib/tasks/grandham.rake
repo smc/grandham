@@ -5,7 +5,21 @@ namespace :grandham do
     books = JSON.load(open(File.join(ENV['FROM'])).read)
     import_progress_bar = ProgressBar.create(:format => '%a |%b>%i| %p%% %t', :total => books.count)
 
-    import_params = [ 'title', 'pages', 'year' 'edition' ]
+    import_map = {
+      'Title'       => 'title',
+      'Pages'       => 'pages',
+      'Year'        => 'year',
+      'Edition'     => 'edition',
+      'Titleorg'    => 'title_orginal',
+      'Vol'         => 'volume',
+      'Series'      => 'series',
+      'Preface'     => 'preface',
+      'Length'      => 'length',
+      'Price'       => 'price',
+      'Note'        => 'Note',
+      'DDC'         => 'ddc',
+      'Illustrator' => 'illustrator'
+    }
 
     books.each do |book|
       import_progress_bar.increment
@@ -13,11 +27,11 @@ namespace :grandham do
       book_obj = language.books.create
       submission = book_obj.submissions.new
 
-      import_params.each do |key|
-        submission[key] = book[key.capitalize] unless book[key.capitalize] == 'None'
+      import_map.each do |old_key, new_key|
+        submission[new_key] = book[old_key] unless book[old_key] == 'None'
       end
+      submission.approved = submission.reviewed = true
       submission.save
-      submission.update_attribute(:approved, true)
 
       submission.authors << language.authors.where(name: book['Author']).first_or_create!
       submission.publishers << language.publishers.where(name: book['publisher']).first_or_create!
