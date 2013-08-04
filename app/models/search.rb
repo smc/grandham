@@ -33,6 +33,7 @@ class Search
   end
 
   def results
+    return {} if @query.blank?
     RESOURCES.inject({}) do |result_hash, resource|
       result_hash.merge!({ resource.to_s.downcase => search_with_plugin(resource) })
     end
