@@ -6,6 +6,8 @@ Grandham::Application.routes.draw do
 
   resources :authors
 
+  resource :search
+
   resources :books do
     resources :submissions
   end
