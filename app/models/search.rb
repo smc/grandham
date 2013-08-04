@@ -1,6 +1,6 @@
 class Search
 
-  RESOURCES = [ Submission ]
+  RESOURCES = [ Submission, Author ]
 
   def initialize(query)
     @query = query
@@ -23,7 +23,11 @@ class Search
   end
 
   def search(resource)
-    resource.search { fulltext search_term_for(resource) }.results
+    if search_term = search_term_for(resource)
+      resource.search { fulltext search_term }.results
+    else
+      Array.new
+    end
   end
 
   def results
