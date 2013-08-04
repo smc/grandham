@@ -1,4 +1,7 @@
 class Search
+
+  RESOURCES = [ Submission ]
+
   def initialize(query)
     @query = query
   end
@@ -15,7 +18,17 @@ class Search
     @query =~ /\S*:.*\S+;/
   end
 
+  def search_term_for(resource)
+    is_a_specific_query? ? to_hash[resource.to_s.downcase] : @query
+  end
+
+  def search(resource)
+    resource.search { fulltext search_term_for(resource) }.results
+  end
+
   def results
-    is_a_specific_query? ? to_hash : @query
+    RESOURCES.inject({}) do |result_hash, resource|
+      result_hash.merge!({ resource.to_s.downcase => search(resource) })
+    end
   end
 end

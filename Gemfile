@@ -13,8 +13,11 @@ gem 'jquery-rails'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
 gem 'simple_form'
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+
+group :development, :production do
+  gem 'sunspot_rails'
+  gem 'sunspot_solr'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
