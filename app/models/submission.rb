@@ -22,6 +22,13 @@ class Submission < ActiveRecord::Base
 
   scope :not_reviewed, -> { where(reviewed: false) }
   scope :approved, -> { where(approved: true) }
+
+  searchable do
+    text :title
+    text :description
+    text :title_orginal
+  end
+
   def self.initialize_with_data(book)
     submission = new book.approved_submission.details
     submission.authors.build      name: book.approved_submission.authors.first.name
