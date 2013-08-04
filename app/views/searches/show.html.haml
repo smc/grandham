@@ -1,0 +1,11 @@
+.container
+  .row
+    .span8.offset1
+      %br
+      %form{ action: search_path, method: 'get' }
+        %input{ name: 'query', value: params[:query], class: 'input-xxlarge', placeholder: 'Search Title, Author, Publisher, DDC, Keyword' }
+        %button.btn-success{ type: 'submit' }
+          %i.icon-search
+          = I18n.t('.search')
+        %br
+        = link_to 'More options', '#'
