@@ -38,6 +38,16 @@ ul.side-bar-list > li {
   -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
      -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
           box-shadow: 0 1px 4px rgba(0,0,0,.065);
+
+  & a:hover {
+    text-decoration: none;
+    color: #6D5030;
+  }
+}
+
+ul.side-bar-list > li:hover{
+  cursor: pointer;
+  background-color: rgba(211, 193, 193, 0.37);
 }
 
 

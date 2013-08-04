@@ -1,19 +1,19 @@
 .span3.side-bar
   %br
   %ul.side-bar-list
-    %li
+    %li{ onclick: "window.location = '#{current_language_path('books')}'" }
       = link_to current_language_path('books') do
         = I18n.t('.books')
         .pull-right
           - if active == 'books'
             %i.icon-chevron-right
-    %li
+    %li{ onclick: "window.location = '#{current_language_path('authors')}'" }
       = link_to current_language_path('authors') do
         = I18n.t('.authors')
         .pull-right
           - if active == 'authors'
             %i.icon-chevron-right
-    %li
+    %li{ onclick: "window.location = '#{current_language_path('publishers')}'" }
       = link_to current_language_path('publishers') do
         = I18n.t('.publishers')
         .pull-right
