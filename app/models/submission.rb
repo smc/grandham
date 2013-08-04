@@ -27,6 +27,7 @@ class Submission < ActiveRecord::Base
     text :title
     text :description
     text :title_orginal
+    boolean :approved
   end
 
   def self.initialize_with_data(book)

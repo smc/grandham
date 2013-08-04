@@ -24,7 +24,16 @@ class Search
 
   def search(resource)
     if search_term = search_term_for(resource)
-      resource.search { fulltext search_term }.results
+      if resource == Submission
+        resource.search do
+          fulltext search_term
+          all_of do
+            with(:approved, 1)
+          end
+        end.results
+      else
+        resource.search { fulltext search_term }.results
+      end
     else
       Array.new
     end
