@@ -3,14 +3,14 @@ require 'spec_helper'
 describe Search do
   let(:search) { Search.new('author: test; title: test;') }
 
-  describe "is_a_specific_query?" do
+  describe "query_is_specific?" do
     it "should return true if query is specific" do
-      expect(search.is_a_specific_query?).to be_true
+      expect(search.query_is_specific?).to be_true
     end
 
     it "should return false if query is not specific" do
       s = Search.new('hello world')
-      expect(s.is_a_specific_query?).to be_false
+      expect(s.query_is_specific?).to be_false
     end
   end
 
