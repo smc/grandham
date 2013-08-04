@@ -14,10 +14,8 @@ gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
 gem 'simple_form'
 
-group :development, :production do
-  gem 'sunspot_rails'
-  gem 'sunspot_solr'
-end
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 
 # Gems used only for assets and not required
 # in production environments by default.

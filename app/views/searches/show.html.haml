@@ -9,3 +9,17 @@
           = I18n.t('.search')
         %br
         = link_to 'More options', '#'
+
+  - unless @results['submission'].blank?
+    .row
+      .span8.offset1
+        %h4 Books
+        - @results['submission'].each do |submission|
+          %p= submission.title
+
+  - unless @results['author'].blank?
+    .row
+      .span8.offset1
+        %h4 Authors
+        - @results['author'].each do |author|
+          %p= author.name
