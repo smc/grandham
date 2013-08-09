@@ -1,0 +1,6 @@
+%a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+  Account
+  %b.caret
+%ul.dropdown-menu
+  %li
+    = link_to I18n.t('.sign_out'), destroy_user_session_path, method: :delete

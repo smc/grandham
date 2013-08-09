@@ -30,7 +30,7 @@
 
           - if user_signed_in?
             %li
-              = link_to I18n.t('.sign_out'), destroy_user_session_path, method: :delete
+              = render 'layouts/account_drop_down'
           - else
             %li
               = link_to new_user_session_path do
