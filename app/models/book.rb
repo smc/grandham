@@ -8,16 +8,6 @@ class Book < ActiveRecord::Base
 
   before_create :set_grandham_id
 
-  def to_param
-    grandham_id
-  end
-
-  private
-
-  def set_grandham_id
-    self.grandham_id = SecureRandom.hex(8)
-  end
-
   has_many :authorships
   has_many :authors, through: :authorships
   accepts_nested_attributes_for :authors
@@ -39,14 +29,6 @@ class Book < ActiveRecord::Base
     text :title_orginal
   end
 
-  def self.initialize_with_data(book)
-    submission = new book.approved_submission.details
-    submission.authors.build      name: book.approved_submission.authors.first.name
-    submission.publishers.build   name: book.approved_submission.publishers.first.name
-
-    submission
-  end
-
   def details
     restricted_keys = [:id, :created_at, :updated_at, :approved, :reviewed]
     attrs = attributes.with_indifferent_access
@@ -54,7 +36,15 @@ class Book < ActiveRecord::Base
     attrs
   end
 
+  def to_param
+    grandham_id
+  end
+
   private
+
+  def set_grandham_id
+    self.grandham_id = SecureRandom.hex(8)
+  end
 
   def remove_duplicate_associated_objects(klass)
     self.send(klass.to_s.downcase.pluralize).each do |object|
@@ -68,7 +58,7 @@ class Book < ActiveRecord::Base
   def process_associated_records
     self.authors.update_all(language_id: self.language_id)
     self.publishers.update_all(language_id: self.language_id)
-   
+
     [Author, Publisher].each{ |klass| remove_duplicate_associated_objects(klass) }
   end
 end

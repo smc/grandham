@@ -20,11 +20,9 @@
               %td.tex-item
                 = link_to author.name, language_author_path(author.language, author)
               %td.tex-item
-                = link_to author.submissions.approved.count
+                = link_to author.books.count
               %td.tex-item
                 \--
-
-
 
       .list-pagination
         = will_paginate @authors, renderer: BootstrapPagination::Rails

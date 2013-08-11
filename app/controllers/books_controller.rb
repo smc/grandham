@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   respond_to :html, :json
 
   def index
-    @books = Book.all
+    @books = Book.paginate(:page => params[:page], :per_page => 10)
     respond_with @books
   end
 
