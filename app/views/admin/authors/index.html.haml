@@ -1,7 +1,10 @@
 .container
   .row
-    .span12
+    .span8
       %h3= I18n.t('author.authors')
+    .span4
+      .pull-right
+        = link_to 'Add', new_language_admin_author_path(current_language), class: 'btn btn-primary'
 
   .row
     .span12

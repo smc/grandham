@@ -1,7 +1,7 @@
 class Admin::AuthorsController < ApplicationController
   respond_to :html
 
-  before_filter :find_author, except: [ :index ]
+  before_filter :find_author, except: [ :index, :new ]
 
   def index
     @authors = current_language.authors
@@ -10,6 +10,20 @@ class Admin::AuthorsController < ApplicationController
   end
 
   def edit
+  end
+
+  def new
+    @author = current_language.authors.new
+  end
+
+  def create
+    @author = current_language.authors.new(params[:author])
+
+    if @author.save
+      redirect_to language_admin_authors_path(current_language), notice: 'Author was successfully created.'
+    else
+      render action: "new"
+    end
   end
 
   def update

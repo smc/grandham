@@ -1,7 +1,7 @@
 class Admin::PublishersController < ApplicationController
   respond_to :html
 
-  before_filter :find_publisher, except: [ :index ]
+  before_filter :find_publisher, except: [ :index, :new ]
 
   def index
     @publishers = current_language.publishers
@@ -10,6 +10,20 @@ class Admin::PublishersController < ApplicationController
   end
 
   def edit
+  end
+
+  def new
+    @publisher = current_language.publishers.new
+  end
+
+  def create
+    @publisher = current_language.publishers.new(params[:publisher])
+
+    if @publisher.save
+      redirect_to language_admin_publishers_path(current_language), notice: 'Publisher was successfully created.'
+    else
+      render action: "new"
+    end
   end
 
   def update

@@ -50,4 +50,22 @@ describe Admin::PublishersController do
       expect(@publisher.reload.name).to eq 'Uniq sample plublisher name'
     end
   end
+
+  describe "POST create" do
+    before(:each) do
+      @params = FactoryGirl.attributes_for(:publisher, language_id: @language.id)
+    end
+
+    it "should redirect" do
+      post :create, language_id: @language.short_code, publisher: @params
+
+      expect(response).to be_redirect
+    end
+
+    it "should add a new publisher" do
+      -> {
+        post :create, language_id: @language.short_code, publisher: @params
+      }.should change{ @language.publishers.count }.by(1)
+    end
+  end
 end

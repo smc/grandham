@@ -50,4 +50,22 @@ describe Admin::AuthorsController do
       expect(@author.reload.name).to eq 'Uniq sample plublisher name'
     end
   end
+
+  describe "POST create" do
+    before(:each) do
+      @params = FactoryGirl.attributes_for(:author, language_id: @language.id)
+    end
+
+    it "should redirect" do
+      post :create, language_id: @language.short_code, author: @params
+
+      expect(response).to be_redirect
+    end
+
+    it "should add a new author" do
+      -> {
+        post :create, language_id: @language.short_code, author: @params
+      }.should change{ @language.authors.count }.by(1)
+    end
+  end
 end
