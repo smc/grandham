@@ -34,7 +34,9 @@ namespace :grandham do
       submission.save
 
       submission.authors << language.authors.where(name: book['Author']).first_or_create!
-      submission.publishers << language.publishers.where(name: book['publisher']).first_or_create!
+
+      publisher_name, publisher_place = book['publisher'].split(',')
+      submission.publishers << language.publishers.where(name: publisher_name, place: publisher_place).first_or_create!
     end
   end
 end

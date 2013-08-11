@@ -1,0 +1,24 @@
+.container
+  .row
+    .span12
+      %h3= I18n.t('publisher.publishers')
+
+  .row
+    .span12
+      %table.table.table-striped.admin-publishers-table
+        %thead
+          %th Name
+          %th Place
+          %th
+        %tbody.grandham-list
+          - @publishers.each do |publisher|
+            %tr
+              %td.tex-item
+                = link_to publisher.name, language_publisher_path(publisher.language, publisher)
+              %td.tex-item
+                = publisher.place
+              %td.tex-item
+
+                = link_to 'edit', edit_language_admin_publisher_path(current_language, publisher)
+                &nbsp;
+                = link_to 'delete', '#'

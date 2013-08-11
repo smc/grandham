@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :language do
     name "English"
-    short_code "en"
+    sequence(:short_code) { |n| "en#{n}" }
   end
 end

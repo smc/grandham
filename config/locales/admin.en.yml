@@ -2,3 +2,6 @@ en:
   review:
     reviews: Reviews
     pending: You have %{count} submissions to review
+
+  publisher:
+    publishers: Publishers
