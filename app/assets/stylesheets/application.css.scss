@@ -54,3 +54,19 @@ ul.side-bar-list > li:hover{
 a {
   color: #6D5030;
 }
+
+.purr {
+  position: fixed;
+  top: 30px;
+  right: 100px;
+  width: 250px;
+  padding: 20px;
+  background-color: #FCC;
+  border: solid 2px #C66;
+  &:first-letter { text-transform: uppercase; }
+}
+
+.best_in_place:hover {
+  background-color: #eee;
+  cursor: pointer;
+}

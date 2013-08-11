@@ -1,10 +1,13 @@
 .container
   .row
+    .span12
+      = render 'common/flash_notice'
+  .row
     .span2.well.book-cover-page-large
       = image_tag 'rails.png'
     .span8
-      %h3= @book.approved_submission.title
-      %h5= @book.approved_submission.authors.first.name
+      %h3= best_in_place @book.approved_submission, :title
+      %h5= best_in_place @book.approved_submission.authors.first, :name
       %h5
         = @book.approved_submission.year
         ,
