@@ -25,7 +25,7 @@ class SubmissionsController < ApplicationController
 
     respond_to do |format|
       if @submission.update_attributes(params[:submission])
-        flash[:notice] = 'Your edit(s) will appear moderation, thank you for your patience'
+        flash[:notice] = 'Your edit(s) will appear after moderation, thank you for your patience'
 
         format.html { redirect_to(@submission, :notice => 'Submission was successfully updated.') }
         format.json { respond_with_bip(@submission) }

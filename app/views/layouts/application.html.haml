@@ -7,4 +7,8 @@
     = csrf_meta_tags
   %body
     = render 'layouts/navbar'
+    .container
+      .row
+        .span12
+          = render 'common/flash_notice'
     = yield
