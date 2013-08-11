@@ -1,13 +1,14 @@
 class BooksController < ApplicationController
   respond_to :html, :json
 
+  before_filter :find_book, only: [ :show, :update ]
+
   def index
     @books = Book.paginate(:page => params[:page], :per_page => 10)
     respond_with @books
   end
 
   def show
-    @book = Book.find_by_grandham_id(params[:id])
     respond_with @book
   end
 
@@ -24,5 +25,25 @@ class BooksController < ApplicationController
     else
       render "new"
     end
+  end
+
+  def update
+    respond_to do |format|
+      if @book.update_attributes(params[:book])
+        flash[:notice] = 'Your edit has been submitted for approval.'
+        add_edit(@boo.id, @book.class, )
+        format.html { redirect_to(@book) }
+        format.json { respond_with_bip(@book) }
+      else
+        format.html { render :action => "edit" }
+        format.json { respond_with_bip(@book) }
+      end
+    end
+  end
+
+  private
+
+  def find_book
+    @book = Book.find_by_grandham_id(params[:id])
   end
 end

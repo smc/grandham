@@ -16,6 +16,8 @@ class Book < ActiveRecord::Base
   has_many :publishers, through: :publications
   accepts_nested_attributes_for :publishers
 
+  has_many :edits, as: :editable
+
   validates_presence_of :title
 
   after_create :process_associated_records
