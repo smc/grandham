@@ -23,24 +23,38 @@ ActiveRecord::Schema.define(:version => 20130811093949) do
 
   create_table "authorships", :force => true do |t|
     t.integer  "author_id"
-    t.integer  "submission_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer  "book_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "books", :force => true do |t|
     t.string   "grandham_id"
     t.integer  "language_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.text     "title"
+    t.string   "isbn"
+    t.string   "pages"
+    t.string   "year"
+    t.text     "description"
+    t.string   "edition"
+    t.string   "ddc"
+    t.string   "volume"
+    t.string   "series"
+    t.string   "price"
+    t.string   "length"
+    t.text     "title_orginal"
+    t.text     "illustrator"
+    t.text     "note"
   end
 
   create_table "data", :force => true do |t|
     t.integer  "field_id"
     t.string   "value"
-    t.integer  "submission_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer  "book_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "fields", :force => true do |t|
@@ -60,9 +74,9 @@ ActiveRecord::Schema.define(:version => 20130811093949) do
 
   create_table "publications", :force => true do |t|
     t.integer  "publisher_id"
-    t.integer  "submission_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer  "book_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "publishers", :force => true do |t|
@@ -72,28 +86,6 @@ ActiveRecord::Schema.define(:version => 20130811093949) do
     t.integer  "language_id"
     t.string   "grandham_id"
     t.text     "place"
-  end
-
-  create_table "submissions", :force => true do |t|
-    t.integer  "book_id"
-    t.boolean  "approved",      :default => false
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
-    t.text     "title"
-    t.string   "isbn"
-    t.string   "pages"
-    t.string   "year"
-    t.text     "description"
-    t.string   "edition"
-    t.boolean  "reviewed",      :default => false
-    t.string   "ddc"
-    t.string   "volume"
-    t.string   "series"
-    t.string   "price"
-    t.string   "length"
-    t.text     "title_orginal"
-    t.text     "illustrator"
-    t.text     "note"
   end
 
   create_table "users", :force => true do |t|
