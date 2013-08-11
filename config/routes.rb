@@ -21,11 +21,12 @@ Grandham::Application.routes.draw do
   root to: 'books#index'
 
   resources :language do
-    resource :admin do
-        resources :reviews,  module: 'admin' do
-          post :approve, on: :member
-          post :archive, on: :member
-        end
+    namespace :admin do
+      resources :publishers
+      resources :reviews do
+        post :approve, on: :member
+        post :archive, on: :member
+      end
     end
 
     resources :submissions, only: [ :new, :create ]
