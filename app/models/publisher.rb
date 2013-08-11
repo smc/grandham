@@ -3,6 +3,8 @@ class Publisher < ActiveRecord::Base
 
   belongs_to :language
 
+  validates_presence_of :name
+
   has_many :publications
   has_many :submissions, through: :publications
 
