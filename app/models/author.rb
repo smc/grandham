@@ -4,7 +4,7 @@ class Author < ActiveRecord::Base
   belongs_to :language
 
   has_many :authorships
-  has_many :submissions, through: :authorships
+  has_many :books, through: :authorships
 
   before_create :set_grandham_id
 

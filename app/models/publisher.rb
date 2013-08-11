@@ -6,7 +6,7 @@ class Publisher < ActiveRecord::Base
   validates_presence_of :name
 
   has_many :publications
-  has_many :submissions, through: :publications
+  has_many :books, through: :publications
 
   before_create :set_grandham_id
 
