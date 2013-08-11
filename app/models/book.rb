@@ -54,29 +54,21 @@ class Book < ActiveRecord::Base
     attrs
   end
 
-  def set_reviewed!
-    update_attribute :reviewed, true
-  end
-
-  def set_approved!
-    self.book.submissions.update_all approved: false
-
-    update_attribute :approved, true
-    self.set_reviewed!
-  end
-
   private
 
   def remove_duplicate_associated_objects(klass)
     self.send(klass.to_s.downcase.pluralize).each do |object|
       if existing_object = klass.where([ "name = ? and id <> ?", object.name, object.id]).first
-        existing_object.submissions << self
+        existing_object.books << self
         object.destroy
       end
     end
   end
 
   def process_associated_records
+    self.authors.update_all(language_id: self.language_id)
+    self.publishers.update_all(language_id: self.language_id)
+   
     [Author, Publisher].each{ |klass| remove_duplicate_associated_objects(klass) }
   end
 end
