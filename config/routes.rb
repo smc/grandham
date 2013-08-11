@@ -5,9 +5,8 @@ Grandham::Application.routes.draw do
   resources :publishers
   resources :authors
   resources :books
-  resources :languages
 
-  resource :search
+  resource :search, only: [ :show ]
 
   root to: 'books#index'
 

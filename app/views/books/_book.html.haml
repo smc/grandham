@@ -2,13 +2,11 @@
   %td
     .image
   %td.tex-item
-    = link_to book.approved_submission.title, language_book_path(book.language, book)
-    %br
-    = link_to 'edit', new_book_submission_path(book)
+    = link_to book.title, language_book_path(book.language, book)
   %td.tex-item
-    - book.approved_submission.authors.each do |author|
+    - book.authors.each do |author|
       = link_to author.name, language_author_path(author.language, author)
 
   %td.tex-item
-    - book.approved_submission.publishers.each do |publisher|
+    - book.publishers.each do |publisher|
       = link_to publisher.name, language_publisher_path(publisher.language, publisher)

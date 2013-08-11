@@ -3,17 +3,17 @@
     .span2.well.book-cover-page-large
       = image_tag 'rails.png'
     .span8
-      %h3= best_in_place @book.approved_submission, :title
-      %h5= best_in_place @book.approved_submission.authors.first, :name
+      %h3= best_in_place @book, :title
+      %h5= best_in_place @book.authors.first, :name
       %h5
-        = @book.approved_submission.year
+        = @book.year
         ,
-        = @book.approved_submission.publishers.first.name
+        = @book.publishers.first.name
       .inline
         %h5
-          = "ISBN #{@book.approved_submission.isbn}"
-          = "| #{@book.approved_submission.pages} Pages"
-          = "| #{@book.approved_submission.edition}"
+          = "ISBN #{@book.isbn}"
+          = "| #{@book.pages} Pages"
+          = "| #{@book.edition}"
       %br
       %p
-        = @book.approved_submission.description
+        = @book.description
