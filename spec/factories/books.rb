@@ -2,16 +2,13 @@ FactoryGirl.define do
   factory :book do
     language
 
-    ignore do
-      submissions_count 5
-    end
+    title 'Sample title'
+    year '2013'
+    pages '13'
 
     after(:create) do |book, evaluator|
-      FactoryGirl.create_list(:submission, evaluator.submissions_count, book: book)
-    end
-
-    after(:create) do |book, evaluator|
-      FactoryGirl.create(:approved_submission, book: book)
+      book.authors << FactoryGirl.create(:author, language_id: Language.default.id)
+      book.publishers << FactoryGirl.create(:publisher, language_id: Language.default.id)
     end
   end
 end

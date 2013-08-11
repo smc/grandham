@@ -9,7 +9,7 @@ describe "Books" do
     it "takes me to book's page" do
       visit language_book_path(@book.language, @book)
 
-      expect(page).to have_content @book.approved_submission.title
+      expect(page).to have_content @book.title
     end
   end
 end

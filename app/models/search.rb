@@ -1,6 +1,6 @@
 class Search
 
-  RESOURCES = [ Submission, Author ]
+  RESOURCES = [ Book, Author ]
 
   attr_reader :query
 
