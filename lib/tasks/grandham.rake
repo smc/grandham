@@ -24,19 +24,18 @@ namespace :grandham do
     books.each do |book|
       import_progress_bar.increment
 
-      book_obj = language.books.create
-      submission = book_obj.submissions.new
+      book_obj = language.books.new
 
       import_map.each do |old_key, new_key|
-        submission[new_key] = book[old_key] unless book[old_key] == 'None'
+        book_obj[new_key] = book[old_key] unless book[old_key] == 'None'
       end
-      submission.approved = submission.reviewed = true
-      submission.save
 
-      submission.authors << language.authors.where(name: book['Author']).first_or_create!
+      book_obj.save
+
+      book_obj.authors << language.authors.where(name: book['Author']).first_or_create!
 
       publisher_name, publisher_place = book['publisher'].split(',')
-      submission.publishers << language.publishers.where(name: publisher_name, place: publisher_place).first_or_create!
+      book_obj.publishers << language.publishers.where(name: publisher_name, place: publisher_place).first_or_create!
     end
   end
 end

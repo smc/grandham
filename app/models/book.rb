@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
   attr_accessible :title, :isbn, :pages, :year, :description, :edition, \
-                  :authors_attributes, :approved_submission, :publishers_attributes, \
+                  :authors_attributes, :publishers_attributes, \
                   :ddc, :volume, :series, :price, :length, :title_orginal, :illustrator, \
                   :note, :grandham_id, :language_id
 
