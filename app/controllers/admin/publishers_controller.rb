@@ -4,7 +4,7 @@ class Admin::PublishersController < ApplicationController
   before_filter :find_publisher, except: [ :index ]
 
   def index
-    @publishers = current_language.publishers.paginate(:page => params[:page], :per_page => 20)
+    @publishers = current_language.publishers
 
     respond_with @publishers
   end

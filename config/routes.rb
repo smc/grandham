@@ -23,6 +23,7 @@ Grandham::Application.routes.draw do
   resources :language do
     namespace :admin do
       resources :publishers
+      resources :authors
       resources :reviews do
         post :approve, on: :member
         post :archive, on: :member

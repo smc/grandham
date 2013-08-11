@@ -1,0 +1,20 @@
+.container
+  .row
+    .span12
+      %h3= I18n.t('author.authors')
+
+  .row
+    .span12
+      = render 'common/flash_notice'
+
+      %table.table.table-striped.admin-authors-table
+        %thead
+          %th Name
+          %th
+        %tbody.grandham-list
+          - @authors.each do |author|
+            %tr
+              %td.tex-item
+                = link_to author.name, language_author_path(author.language, author)
+              %td.tex-item
+                = link_to 'edit', edit_language_admin_author_path(current_language, author)
