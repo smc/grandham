@@ -31,8 +31,6 @@ ActiveRecord::Schema.define(:version => 20130812172414) do
   create_table "books", :force => true do |t|
     t.string   "grandham_id"
     t.integer  "language_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
     t.text     "title"
     t.string   "isbn"
     t.string   "pages"
@@ -47,14 +45,9 @@ ActiveRecord::Schema.define(:version => 20130812172414) do
     t.text     "title_orginal"
     t.text     "illustrator"
     t.text     "note"
-  end
-
-  create_table "data", :force => true do |t|
-    t.integer  "field_id"
-    t.string   "value"
-    t.integer  "book_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "preface"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "edits", :force => true do |t|
@@ -69,13 +62,6 @@ ActiveRecord::Schema.define(:version => 20130812172414) do
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
     t.integer  "language_id"
-  end
-
-  create_table "fields", :force => true do |t|
-    t.text     "name"
-    t.string   "short_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "languages", :force => true do |t|
@@ -119,8 +105,6 @@ ActiveRecord::Schema.define(:version => 20130812172414) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.string   "name"
-    t.string   "role"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

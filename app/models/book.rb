@@ -2,7 +2,7 @@ class Book < ActiveRecord::Base
   attr_accessible :title, :isbn, :pages, :year, :description, :edition, \
                   :authors_attributes, :publishers_attributes, \
                   :ddc, :volume, :series, :price, :length, :title_orginal, :illustrator, \
-                  :note, :grandham_id, :language_id
+                  :note, :grandham_id, :language_id, :preface
 
   belongs_to :language
 
