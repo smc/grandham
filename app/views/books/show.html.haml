@@ -6,9 +6,9 @@
       %h3= best_in_place @book, :title
       %h5= best_in_place @book.authors.first, :name
       %h5
-        = @book.year
+        = best_in_place @book, :year
         ,
-        = @book.publishers.first.name
+        = best_in_place @book.publishers.first, :name
       .inline
         %h5
           = "ISBN #{@book.isbn}"
@@ -16,4 +16,4 @@
           = "| #{@book.edition}"
       %br
       %p
-        = @book.description
+        = best_in_place @book, :description, type: :textarea
