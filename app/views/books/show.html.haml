@@ -1,19 +1,19 @@
 .container
   .row
     .span2.well.book-cover-page-large
-      = image_tag 'rails.png'
+
     .span8
       %h3= best_in_place @book, :title
-      %h5= best_in_place @book.authors.first, :name
+      %h4= best_in_place @book.authors.first, :name
       %h5
         = best_in_place @book, :year
         ,
         = best_in_place @book.publishers.first, :name
-      .inline
-        %h5
-          = "ISBN #{@book.isbn}"
-          = "| #{@book.pages} Pages"
-          = "| #{@book.edition}"
+
+      %p
+        = best_in_place @book, :pages
+        pages
+
       %br
       %p
         = best_in_place @book, :description, type: :textarea
