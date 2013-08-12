@@ -64,11 +64,10 @@ ActiveRecord::Schema.define(:version => 20130812172414) do
     t.integer  "user_id"
     t.integer  "editable_id"
     t.string   "editable_type"
-    t.boolean  "approved"
-    t.string   "status"
+    t.string   "state",               :default => "open"
     t.integer  "approved_by_user_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.integer  "language_id"
   end
 

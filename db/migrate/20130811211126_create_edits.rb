@@ -6,8 +6,7 @@ class CreateEdits < ActiveRecord::Migration
       t.text :new_value
       t.integer :user_id
       t.references :editable, polymorphic: true
-      t.boolean :approved
-      t.string :status
+      t.string :state, default: 'open'
       t.integer :approved_by_user_id
 
       t.timestamps
