@@ -3,7 +3,7 @@
     .row
       %code.span2.edit-attribute= edit.editable_type
       .span8
-        = link_to edit.editable.grandham_id, send("language_#{edit.editable_type.downcase}_path", edit.editable.language, edit.editable)
+        = link_to edit.editable.grandham_id, send("language_#{edit.editable_type.downcase}_path", edit.editable.language, edit.editable), target: '_blank'
   %p
     .row
       %code.span2.edit-attribute= "#{edit.field.capitalize} (old)"

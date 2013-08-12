@@ -19,3 +19,4 @@
 
 /solr/data/*
 /solr/pids/*
+/solr/pids/development/sunspot-solr-development.pid
