@@ -29,5 +29,5 @@
 
   .form-actions
     = link_to 'Approve', approve_language_admin_review_path(language_id: current_language, id: edit), class: 'btn btn-success', method: :post
-    = link_to 'Archive', archive_language_admin_review_path(language_id: current_language, id: edit), class: 'btn btn-primary', method: :post
+    = link_to 'Discard', discard_language_admin_review_path(language_id: current_language, id: edit), class: 'btn btn-primary', method: :post
     = link_to 'Comments (5)', '#', class: 'btn btn-info'

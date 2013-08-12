@@ -15,6 +15,12 @@ class Admin::ReviewsController < AdminController
     redirect_to language_admin_reviews_path(current_language)
   end
 
+  def discard
+    @edit.update_attribute(:state, 'discarded')
+
+    redirect_to language_admin_reviews_path(current_language)
+  end
+
   private
 
   def find_edit
