@@ -6,6 +6,8 @@ class Author < ActiveRecord::Base
   has_many :authorships
   has_many :books, through: :authorships
 
+  has_many :edits, as: :editable
+
   validates_presence_of :name
 
   before_create :set_grandham_id

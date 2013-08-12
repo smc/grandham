@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.submission-item {
+.edit-item {
   position: relative;
   margin: 15px 0;
   padding: 20px 20px 14px;
@@ -14,11 +14,11 @@
           border-radius: 4px;
 }
 
-.submission-item + .prettyprint {
+.edit-item + .prettyprint {
   margin-top: -20px;
   padding-top: 15px;
 }
 
-.submission-attribute {
+.edit-attribute {
   text-align: center;
 }

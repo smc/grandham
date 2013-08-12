@@ -1,36 +1,33 @@
-.submission-item
-  - submission.details.each do |key, value|
-    - if key == 'book_id'
-      %p
-        .row
-          %code.span2.submission-attribute Book
-          .span8
-            - if submission.book.approved_submission
-              = link_to submission.book.grandham_id, language_book_path(current_language, submission.book), target: '_blank'
-            - else
-              New Book
-    - else
-      %p
-        .row
-          %code.span2.submission-attribute= key.capitalize
-          .span8
-            = value
+.edit-item
+  %p
+    .row
+      %code.span2.edit-attribute= edit.editable_type
+      .span8
+        = link_to edit.editable.grandham_id, send("language_#{edit.editable_type.downcase}_path", edit.editable.language, edit.editable)
+  %p
+    .row
+      %code.span2.edit-attribute= "#{edit.field.capitalize} (old)"
+      .span8
+        = edit.old_value
 
-  = render partial: 'associated_records', locals: { submission: submission, object: 'author' }
-  = render partial: 'associated_records', locals: { submission: submission, object: 'publisher' }
+  %p
+    .row
+      %code.span2.edit-attribute= "#{edit.field.capitalize} (new)"
+      .span8
+        = edit.new_value
 
   .pull-right
     %p
       Submitted by
       = link_to 'Radha', '#'
       on
-      = submission.created_at.strftime('%e %b %Y (%I:%M %p)')
+      = edit.created_at.strftime('%e %b %Y (%I:%M %p)')
       - if defined? show_perma_link
         |
-        = link_to "Review ##{submission.id}", language_admin_review_path(language_id: current_language, id: submission)
+        = link_to "Review ##{edit.id}", language_admin_review_path(language_id: current_language, id: edit)
   %br
 
   .form-actions
-    = link_to 'Approve', approve_language_admin_review_path(language_id: current_language, id: submission), class: 'btn btn-success', method: :post
-    = link_to 'Archive', archive_language_admin_review_path(language_id: current_language, id: submission), class: 'btn btn-primary', method: :post
+    = link_to 'Approve', approve_language_admin_review_path(language_id: current_language, id: edit), class: 'btn btn-success', method: :post
+    = link_to 'Archive', archive_language_admin_review_path(language_id: current_language, id: edit), class: 'btn btn-primary', method: :post
     = link_to 'Comments (5)', '#', class: 'btn btn-info'

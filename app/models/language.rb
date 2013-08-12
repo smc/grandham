@@ -6,6 +6,7 @@ class Language < ActiveRecord::Base
   has_many :publishers
 
   has_many :books
+  has_many :edits
 
   def to_param
     short_code

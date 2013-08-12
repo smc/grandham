@@ -2,10 +2,10 @@
   .row
     .span12.inline
       .pull-right
-        %p= I18n.t('review.pending', count: @submissions.count)
+        %p= I18n.t('review.pending', count: @edits.count)
       .pull-left
         %h3= I18n.t('review.reviews')
   .row
     .span12
-      - @submissions.each do |submission|
-        = render partial: 'review', locals: { submission: submission, show_perma_link: true }
+      - @edits.each do |edit|
+        = render partial: 'review', locals: { edit: edit }

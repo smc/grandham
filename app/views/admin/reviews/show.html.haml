@@ -1,7 +1,7 @@
 .container
   .row
     .span12.inline
-      %h3= "Review ##{@submission.id}"
+      %h3= "Review ##{@edit.id}"
   .row
     .span12
-      = render partial: 'review', locals: { submission: @submission }
+      = render partial: 'review', locals: { edit: @edit }
