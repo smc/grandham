@@ -29,15 +29,8 @@ class BooksController < ApplicationController
 
   def update
     respond_to do |format|
-      if @book.update_attributes(params[:book])
-        flash[:notice] = 'Your edit has been submitted for approval.'
-        add_edit(@boo.id, @book.class, )
-        format.html { redirect_to(@book) }
-        format.json { respond_with_bip(@book) }
-      else
-        format.html { render :action => "edit" }
-        format.json { respond_with_bip(@book) }
-      end
+      record_edit @book, params[:book]
+      format.json { respond_with_bip(@book) }
     end
   end
 
