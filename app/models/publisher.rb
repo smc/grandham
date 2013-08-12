@@ -8,6 +8,8 @@ class Publisher < ActiveRecord::Base
   has_many :publications
   has_many :books, through: :publications
 
+  has_many :edits, as: :editable
+
   before_create :set_grandham_id
 
   def to_param
