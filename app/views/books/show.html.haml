@@ -4,11 +4,14 @@
 
     .span8
       %h3= best_in_place @book, :title
-      %h4= best_in_place @book.authors.first, :name
+      %h4
+        = best_in_place @book.authors.first, :name
+        = external_link @book.authors.first
       %h5
         = best_in_place @book, :year
         ,
         = best_in_place @book.publishers.first, :name
+        = external_link @book.publishers.first
 
       %p
         = best_in_place @book, :pages
