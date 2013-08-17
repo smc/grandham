@@ -17,6 +17,7 @@ Grandham::Application.routes.draw do
       resources :reviews do
         post :approve, on: :member
         post :discard, on: :member
+        post :replace, on: :member
       end
     end
 

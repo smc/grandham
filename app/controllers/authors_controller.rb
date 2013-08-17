@@ -15,7 +15,7 @@ class AuthorsController < ApplicationController
 
   def update
     respond_to do |format|
-      record_edit @author, params[:author]
+      record_edit @author, params[:author], Book.find_by_grandham_id(params[:book_id]).id
       format.json { respond_with_bip(@author) }
     end
   end

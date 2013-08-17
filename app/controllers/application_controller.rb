@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_language
 
   def current_book
-    Book.where('grandham_id = ?', params[:book_id]).first
+    Book.where('grandham_id = ?', params[:id]).first
   end
   helper_method :current_book
 end

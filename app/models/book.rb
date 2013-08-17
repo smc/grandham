@@ -42,6 +42,10 @@ class Book < ActiveRecord::Base
     grandham_id
   end
 
+  def self.associated_records
+    ['Author', 'Publisher']
+  end
+
   private
 
   def set_grandham_id

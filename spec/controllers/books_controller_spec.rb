@@ -15,7 +15,7 @@ describe BooksController do
 
     context "current_book" do
       it "should set current book" do
-        get :index, book_id: @book.grandham_id
+        get :show, id: @book.grandham_id
         expect(controller.send :current_book).not_to be_nil
       end
     end

@@ -21,6 +21,18 @@ class Admin::ReviewsController < AdminController
     redirect_to language_admin_reviews_path(current_language)
   end
 
+  def replace
+    old_author = @edit.editable
+    objects_collection = @edit.editable_type.downcase.pluralize
+
+    @edit.book.send(objects_collection).delete(old_author)
+    @edit.book.send(objects_collection).create(name: @edit.new_value, language_id: @edit.book.language.id )
+
+    @edit.update_attribute(:state, 'replaced')
+
+    redirect_to language_admin_reviews_path(current_language)
+  end
+
   private
 
   def find_edit
