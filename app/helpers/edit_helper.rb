@@ -8,6 +8,6 @@ module EditHelper
 
     object.edits.create old_value: old_value, new_value: new_value, user_id: 1, field: field, language_id: object.language.id
 
-    flash[:notice] = 'Your edit(s) has been submitted for approval.'
+    flash[:notice] = 'Your edit(s) have been submitted for approval.'
   end
 end

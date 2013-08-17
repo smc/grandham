@@ -1,4 +1,16 @@
 .edit-item
+  %p{style: 'display: inline;'}
+    %i.icon-user
+    = link_to 'Radha', '#'
+
+  .pull-right
+    %i.icon-time
+      = edit.created_at.strftime('%e %b %Y %I:%M %p')
+
+    - if defined? show_perma_link
+      |
+      = link_to 'permalink', language_admin_review_path(language_id: current_language, id: edit)
+
   %p
     .row
       %code.span2.edit-attribute= edit.editable_type
@@ -16,18 +28,8 @@
       .span8
         = edit.new_value
 
-  .pull-right
-    %p
-      Submitted by
-      = link_to 'Radha', '#'
-      on
-      = edit.created_at.strftime('%e %b %Y (%I:%M %p)')
-      - if defined? show_perma_link
-        |
-        = link_to "Review ##{edit.id}", language_admin_review_path(language_id: current_language, id: edit)
   %br
 
-  .form-actions
-    = link_to 'Approve', approve_language_admin_review_path(language_id: current_language, id: edit), class: 'btn btn-success', method: :post
-    = link_to 'Discard', discard_language_admin_review_path(language_id: current_language, id: edit), class: 'btn btn-primary', method: :post
-    = link_to 'Comments (5)', '#', class: 'btn btn-info'
+  = link_to 'Approve', approve_language_admin_review_path(language_id: current_language, id: edit), class: 'btn btn-small btn-success', method: :post
+  = link_to 'Discard', discard_language_admin_review_path(language_id: current_language, id: edit), class: 'btn btn-small btn-primary', method: :post
+  = link_to 'Comments (5)', '#', class: 'btn btn-small btn-info'

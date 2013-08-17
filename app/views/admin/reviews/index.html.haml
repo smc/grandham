@@ -8,4 +8,4 @@
   .row
     .span12
       - @edits.each do |edit|
-        = render partial: 'review', locals: { edit: edit }
+        = render partial: 'review', locals: { edit: edit, show_perma_link: true }
