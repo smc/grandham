@@ -3,6 +3,9 @@ module EditHelper
 
     field = object_params.keys.first
 
+    # Safeguarding the following .send call.
+    return unless object.class.new.attributes.keys.include?(field)
+
     old_value = object.send(field)
     new_value = object_params[field]
 
