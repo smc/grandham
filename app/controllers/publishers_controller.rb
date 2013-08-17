@@ -17,7 +17,9 @@ class PublishersController < ApplicationController
 
   def update
     respond_to do |format|
-      record_edit @publisher, params[:publisher], Book.find_by_grandham_id(params[:book_id]).id
+      book_id = (book = Book.find_by_grandham_id(params[:book_id])) ? book.id : nil
+      record_edit @publisher, params[:publisher], book_id
+
       format.json { respond_with_bip(@publisher) }
     end
   end
