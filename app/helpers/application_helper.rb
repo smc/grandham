@@ -31,8 +31,16 @@ module ApplicationHelper
   end
 
   def inplace_edit(object, field, params = {})
-    params.merge!(activator: "##{inplace_edit_activator_id(@book, :title)}" )
-    bip = best_in_place(object, field, params) + edit_icon(object, field)
-    bip.html_safe
+    params.merge!(activator: "##{inplace_edit_activator_id(object, field)}" )
+
+    content_tag :div, class: 'inplace-edit-container' do
+      if params[:grandham_link]
+        path = "language_#{object.class.to_s.downcase}_path"
+        link = link_to best_in_place(object, field, params), send(path, object.language, object)
+        "#{link} #{edit_icon(object, field)}".html_safe
+      else
+        "#{best_in_place(object, field, params)} #{edit_icon(object, field)}".html_safe
+      end
+    end
   end
 end

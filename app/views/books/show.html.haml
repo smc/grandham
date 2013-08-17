@@ -7,18 +7,16 @@
         = inplace_edit @book, :title
 
       %h4
-        = best_in_place @book.authors.first, :name
-        = external_link @book.authors.first
+        = inplace_edit @book.authors.first, :name, grandham_link: true
+
       %h5
-        = best_in_place @book, :year
+        = inplace_edit @book, :year
         ,
-        = best_in_place @book.publishers.first, :name
-        = external_link @book.publishers.first
+        = inplace_edit @book.publishers.first, :name, grandham_link: true
 
       %p
-        = best_in_place @book, :pages
+        = inplace_edit @book, :pages
         pages
 
-      %br
       %p
-        = best_in_place @book, :description, type: :textarea, nil: 'click here to add description', ok_button: 'OK'
+        = inplace_edit @book, :description, type: :textarea, nil: '<span>Add description</span>', ok_button: 'OK'

@@ -77,4 +77,20 @@ span.external_link {
 
 span.inplace-edit{
   font-size: 15px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.inplace-edit-container {
+  display: inline;
+  & span.inplace-edit {
+    visibility: hidden;
+  }
+
+  &:hover {
+    & span.inplace-edit {
+      visibility: visible;
+    }
+  }
 }
