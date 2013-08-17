@@ -18,4 +18,21 @@ module ApplicationHelper
       end
     end
   end
+
+  def inplace_edit_activator_id(object, field)
+    "#{object.class.to_s.downcase}-#{object.grandham_id}-#{field}"
+  end
+
+  def edit_icon(object, field)
+    content_tag :span, class: 'inplace-edit', id: inplace_edit_activator_id(object, field) do
+      content_tag :i, class: 'icon-edit' do
+      end
+    end
+  end
+
+  def inplace_edit(object, field, params = {})
+    params.merge!(activator: "##{inplace_edit_activator_id(@book, :title)}" )
+    bip = best_in_place(object, field, params) + edit_icon(object, field)
+    bip.html_safe
+  end
 end

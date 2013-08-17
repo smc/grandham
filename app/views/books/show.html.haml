@@ -3,7 +3,9 @@
     .span2.well.book-cover-page-large
 
     .span8
-      %h3= best_in_place @book, :title
+      %h3
+        = inplace_edit @book, :title
+
       %h4
         = best_in_place @book.authors.first, :name
         = external_link @book.authors.first

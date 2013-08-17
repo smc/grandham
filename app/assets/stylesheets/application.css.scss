@@ -66,11 +66,15 @@ a {
   &:first-letter { text-transform: uppercase; }
 }
 
-.best_in_place:hover {
-  background-color: #eee;
-  cursor: pointer;
-}
+// .best_in_place:hover {
+//   background-color: #eee;
+//   cursor: pointer;
+// }
 
 span.external_link {
+  font-size: 15px;
+}
+
+span.inplace-edit{
   font-size: 15px;
 }
