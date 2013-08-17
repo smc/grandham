@@ -6,17 +6,36 @@
       %h3
         = inplace_edit @book, :title
 
-      %h4
-        = inplace_edit @book.authors.first, :name, grandham_link: true
+      %h5
+        = 'Author'.pluralize(@book.authors.count)
+        %br
+        - @book.authors.each do |author|
+          = inplace_edit author, :name, grandham_link: true
+          %br
+
+      %a
+        %i.icon-plus
+        Add author
 
       %h5
-        = inplace_edit @book, :year
-        ,
-        = inplace_edit @book.publishers.first, :name, grandham_link: true
+        = 'Publisher'.pluralize(@book.publishers.count)
+        %br
+        - @book.publishers.each do |publisher|
+          = inplace_edit publisher, :name, grandham_link: true
+          %br
+      %a
+        %i.icon-plus
+        Add publisher
 
-      %p
-        = inplace_edit @book, :pages
-        pages
+      %h5
+        Year
+      %p= inplace_edit @book, :year
 
+      %h5
+        Pages
+      %p= inplace_edit @book, :pages
+
+      %h5
+        Description
       %p
         = inplace_edit @book, :description, type: :textarea, nil: '<span>Add description</span>', ok_button: 'OK'

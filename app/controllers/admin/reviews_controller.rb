@@ -26,7 +26,7 @@ class Admin::ReviewsController < AdminController
     objects_collection = @edit.editable_type.downcase.pluralize
 
     @edit.book.send(objects_collection).delete(old_author)
-    @edit.book.send(objects_collection).create(name: @edit.new_value, language_id: @edit.book.language.id )
+    @edit.book.send(objects_collection) << Author.where(name: @edit.new_value, language_id: @edit.book.language.id ).first_or_create!
 
     @edit.update_attribute(:state, 'replaced')
 
