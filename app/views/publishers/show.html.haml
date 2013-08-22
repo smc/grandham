@@ -2,3 +2,12 @@
   .row
     .span7.offset1
       %h3= inplace_edit @publisher, :name
+
+      %h4 Books
+
+      %ul.associated-books-list
+        - @publisher.books.each do |book|
+          %li
+            %i.icon-book
+            = link_to language_book_path(book.language, book) do
+              = book.title
