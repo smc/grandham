@@ -36,8 +36,8 @@ module ApplicationHelper
     content_tag :div, class: 'inplace-edit-container' do
       if params[:grandham_link]
         path = "language_#{object.class.to_s.downcase}_path"
-        link = link_to best_in_place(object, field, params), send(path, object.language, object)
-        "#{link} #{edit_icon(object, field)}".html_safe
+        text = best_in_place(object, field, params)
+        "#{external_link(object)} #{text} #{edit_icon(object, field)}".html_safe
       else
         "#{best_in_place(object, field, params)} #{edit_icon(object, field)}".html_safe
       end
