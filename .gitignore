@@ -18,6 +18,7 @@
 .DS_Store
 /public/system/
 
+/solr/pids/development/
 /solr/data/*
 /solr/pids/*
 /solr/pids/development/sunspot-solr-development.pid
