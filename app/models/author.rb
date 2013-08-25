@@ -12,9 +12,9 @@ class Author < ActiveRecord::Base
 
   before_create :set_grandham_id
 
-  searchable do
-    text :name
-  end
+  # searchable do
+  #   text :name
+  # end
 
   def to_param
     grandham_id

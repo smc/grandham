@@ -28,11 +28,11 @@ class Book < ActiveRecord::Base
   scope :not_reviewed, -> { where(reviewed: false) }
   scope :approved, -> { where(approved: true) }
 
-  searchable do
-    text :title
-    text :description
-    text :title_orginal
-  end
+  # searchable do
+  #   text :title
+  #   text :description
+  #   text :title_orginal
+  # end
 
   def details
     restricted_keys = [:id, :created_at, :updated_at, :approved, :reviewed]
