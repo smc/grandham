@@ -2,7 +2,7 @@ class Book < ActiveRecord::Base
   attr_accessible :title, :isbn, :pages, :year, :description, :edition, \
                   :authors_attributes, :publishers_attributes, \
                   :ddc, :volume, :series, :price, :length, :title_orginal, :illustrator, \
-                  :note, :grandham_id, :language_id, :preface
+                  :note, :grandham_id, :language_id, :preface, :book_covers_attributes
 
   belongs_to :language
 
@@ -17,6 +17,9 @@ class Book < ActiveRecord::Base
   accepts_nested_attributes_for :publishers
 
   has_many :edits, as: :editable
+
+  has_many :book_covers
+  accepts_nested_attributes_for :book_covers
 
   validates_presence_of :title
 

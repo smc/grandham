@@ -16,6 +16,7 @@
 /tmp
 /config/database.yml
 .DS_Store
+/public/system/
 
 /solr/data/*
 /solr/pids/*

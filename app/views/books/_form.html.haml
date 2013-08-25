@@ -1,4 +1,4 @@
-= simple_form_for @book, html: { class: 'form-horizontal' } do |f|
+= simple_form_for @book, html: { class: 'form-horizontal' }, multipart: true do |f|
   %fieldset
     %legend= 'Add new book'
     .control-group
@@ -18,6 +18,12 @@
     = f.input :pages, as: :string, input_html: { class: 'input-xxlarge' }
     = f.input :edition, as: :string, input_html: { class: 'input-xxlarge' }
     = f.input :description, as: :text, input_html: { rows: 5, cols: 50, class: 'input-xxlarge' }
+
+    = f.fields_for :book_covers do |book_cover_form|
+      .control-group
+        = book_cover_form.label :image, 'Book cover', class: 'control-label'
+        .controls
+          = book_cover_form.file_field :image
 
     .form-actions
       = f.submit 'Submit', class: 'btn btn-primary'
