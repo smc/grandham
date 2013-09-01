@@ -24,6 +24,7 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to root_path
     else
+      @book.book_covers.build
       render "new"
     end
   end

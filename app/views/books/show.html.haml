@@ -1,6 +1,8 @@
 .container
   .row
-    .span2.well.book-cover-page-large
+    .span2
+      - unless @book.book_covers.empty?
+        = image_tag @book.book_covers.first.image.url(:medium), class: 'book-cover-page-large'
 
     .span8
       %h3
