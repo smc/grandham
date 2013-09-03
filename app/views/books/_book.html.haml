@@ -1,12 +1,12 @@
-%tr
-  %td
-    .image
-  %td.tex-item
-    = link_to book.title, language_book_path(book.language, book)
-  %td.tex-item
-    - book.authors.each do |author|
-      = link_to author.name, language_author_path(author.language, author)
+%li.book-list-item
+  .row
+    .span1
+      .list-item-book-cover
+        = image_tag book.book_covers.first.image.url(:medium), class: 'img-polaroid'
+    .span6
+      %h4.list-book-title
+        = link_to book.title, language_book_path(book.language, book)
 
-  %td.tex-item
-    - book.publishers.each do |publisher|
-      = link_to publisher.name, language_publisher_path(publisher.language, publisher)
+      %p
+        = link_to book.authors.first.name, language_authors_path(book.authors.first.language, book.authors.first)
+        = ", ..." if book.authors.count > 1

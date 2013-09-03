@@ -3,17 +3,10 @@
   .row
     = render partial: 'layouts/side_bar', locals: { active: 'books' }
 
-    .span9
-      %table.table.table-striped
-        %thead
-          %tr
-            %th
-            %th Title
-            %th Author
-            %th Publisher
-        %tbody.grandham-list
-          - @books.each do |book|
-            = render partial: 'book', locals: { book: book }
+    .span8
+      %ul.grandham-items-list
+        - @books.each do |book|
+          = render partial: 'book', locals: { book: book }
 
       .list-pagination
         = will_paginate @books, renderer: BootstrapPagination::Rails
