@@ -8,5 +8,5 @@
         = link_to book.title, language_book_path(book.language, book)
 
       %p
-        = link_to book.authors.first.name, language_authors_path(book.authors.first.language, book.authors.first)
+        = link_to book.authors.first.name, language_author_path(book.authors.first.language, book.authors.first)
         = ", ..." if book.authors.count > 1
