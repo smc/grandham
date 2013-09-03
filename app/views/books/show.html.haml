@@ -9,13 +9,11 @@
         %i.icon-share
         share
 
-
   .row
-    .span2.well.book-cover-page-large
-      - unless @book.book_covers.empty?
-        = image_tag @book.book_covers.first.image.url(:medium)
+    .span2
+      = image_tag @book.book_covers.first.image.url(:medium), class: 'img-polaroid'
 
-    .span8
+    .span8.book-information-section
       %h4= @book.title
 
       .book-info
@@ -68,14 +66,14 @@
         .span1
           .book-info
             %p.book-sub-heading
-              PRICE
-            %p= @book.price
-
-        .span1
-          .book-info
-            %p.book-sub-heading
               LENGTH
             %p= @book.length
+
+        .span2
+          .book-info
+            %p.book-sub-heading
+              PRICE
+            %p= @book.price
 
       .book-info
         %p.book-sub-heading
