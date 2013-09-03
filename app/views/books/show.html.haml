@@ -1,43 +1,93 @@
 .container
+  .row.book-edit-share-links
+    .span3.offset9
+      = link_to '#', class: 'btn' do
+        %i.icon-edit
+        edit
+
+      = link_to '#', class: 'btn' do
+        %i.icon-share
+        share
+
+
   .row
-    .span2
+    .span2.well.book-cover-page-large
       - unless @book.book_covers.empty?
-        = image_tag @book.book_covers.first.image.url(:medium), class: 'book-cover-page-large'
+        = image_tag @book.book_covers.first.image.url(:medium)
 
     .span8
-      %h3
-        = inplace_edit @book, :title
+      %h4= @book.title
 
-      %h5
-        = 'Author'.pluralize(@book.authors.count)
-        %br
+      .book-info
+        %p.book-sub-heading
+          AUTHOR(S)
         - @book.authors.each do |author|
-          = inplace_edit author, :name, grandham_link: true
-          %br
+          %p= link_to author.name, language_author_path(author.language, author)
 
-      %a
-        %i.icon-plus
-        Add author
-
-      %h5
-        = 'Publisher'.pluralize(@book.publishers.count)
-        %br
+      .book-info
+        %p.book-sub-heading
+          PUBLISHER(S)
         - @book.publishers.each do |publisher|
-          = inplace_edit publisher, :name, grandham_link: true
-          %br
-      %a
-        %i.icon-plus
-        Add publisher
+          %p= link_to publisher.name, language_publisher_path(publisher.language, publisher)
 
-      %h5
-        Year
-      %p= inplace_edit @book, :year
+      .book-info
+        %p.book-sub-heading
+          TITLE ORIGINAL
+        %p= @book.title_orginal
 
-      %h5
-        Pages
-      %p= inplace_edit @book, :pages
+      .row
+        .span1
+          .book-info
+            %p.book-sub-heading
+              YEAR
+            %p= @book.year
+        .span1
+          .book-info
+            %p.book-sub-heading
+              PAGES
+            %p= @book.pages
 
-      %h5
-        Description
-      %p
-        = inplace_edit @book, :description, type: :textarea, nil: '<span>Add description</span>', ok_button: 'OK'
+        .span1
+          .book-info
+            %p.book-sub-heading
+              EDITION
+            %p= @book.edition
+
+        .span1
+          .book-info
+            %p.book-sub-heading
+              DDC
+            %p= @book.ddc
+
+        .span1
+          .book-info
+            %p.book-sub-heading
+              SERIES
+            %p= @book.series
+      .row
+        .span1
+          .book-info
+            %p.book-sub-heading
+              PRICE
+            %p= @book.price
+
+        .span1
+          .book-info
+            %p.book-sub-heading
+              LENGTH
+            %p= @book.length
+
+      .book-info
+        %p.book-sub-heading
+          DESCRIPTION
+        %p= @book.description
+
+      .book-info
+        %p.book-sub-heading
+          PREFACE
+        %p= @book.preface
+
+      .book-info
+        %p.book-sub-heading
+          NOTE
+        %p= @book.note
