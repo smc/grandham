@@ -1,7 +1,7 @@
 .container
   .row.book-edit-share-links
     .span3.offset9
-      = link_to '#', class: 'btn' do
+      = link_to edit_language_book_path(@book.language, @book), class: 'btn' do
         %i.icon-edit
         edit
 
