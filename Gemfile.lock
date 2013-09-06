@@ -49,6 +49,7 @@ GEM
     bootswatch-rails (0.5.0)
       railties (>= 3.1)
     builder (3.0.4)
+    cancan (1.6.10)
     capistrano (2.15.5)
       highline
       net-scp (>= 1.0.0)
@@ -245,6 +246,7 @@ DEPENDENCIES
   better_errors
   bootstrap-sass
   bootswatch-rails
+  cancan
   capistrano
   capybara
   coffee-rails (~> 3.2.1)
