@@ -5,10 +5,14 @@ class Ability
     user ||= User.new
     if user.role? :super_admin
       can :manage, :all
+
     elsif user.role? :admin
-      can [ :index, :approve, :discard, :replace ], :admin_reviews
+      can [ :index, :show, :approve, :discard, :replace ], 'admin/reviews'
+      can :manage, [Book, Author, Publisher]
+
     elsif user.role? :contributor
       can :manage, [Book, Author, Publisher]
+
     else
       can :read, [Book, Author, Publisher]
     end

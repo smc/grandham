@@ -60,4 +60,6 @@ RSpec.configure do |config|
   config.before(:suite) do
     ::Sunspot.session = ::Sunspot::Rails::StubSessionProxy.new(::Sunspot.session)
   end
+
+  config.include Devise::TestHelpers, :type => :controller
 end

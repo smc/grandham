@@ -20,6 +20,6 @@ class User < ActiveRecord::Base
   private
 
   def set_role
-    self.update_attribute :role, 'contributor'
+    self.update_attribute :role, 'contributor' unless role
   end
 end
