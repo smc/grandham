@@ -11,8 +11,15 @@ class User < ActiveRecord::Base
 
   ROLES = %w[super_admin admin contributor publisher librarian]
 
+  after_create :set_role
 
   def role?(key)
     role == key.to_s
+  end
+
+  private
+
+  def set_role
+    self.update_attribute :role, 'contributor'
   end
 end

@@ -7,6 +7,8 @@ class Ability
       can :manage, :all
     elsif user.role? :admin
       can [ :index, :approve, :discard, :replace ], :admin_reviews
+    elsif user.role? :contributor
+      can :manage, [Book, Author, Publisher]
     else
       can :read, [Book, Author, Publisher]
     end
