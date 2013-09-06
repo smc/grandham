@@ -1,4 +1,5 @@
 class Admin::ReviewsController < AdminController
+  authorize_resource class: false
 
   before_filter :find_edit, except: [ :index ]
 

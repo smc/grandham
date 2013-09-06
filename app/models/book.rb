@@ -69,5 +69,7 @@ class Book < ActiveRecord::Base
     self.publishers.update_all(language_id: self.language_id)
 
     [Author, Publisher].each{ |klass| remove_duplicate_associated_objects(klass) }
+
+    self.book_covers.create if self.book_covers.empty?
   end
 end

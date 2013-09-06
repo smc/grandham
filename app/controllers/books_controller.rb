@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  load_and_authorize_resource :book, :find_by => :find_by_grandham_id
+
   respond_to :html, :json
 
   before_filter :find_book, only: [ :show, :update ]
