@@ -10,4 +10,9 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   ROLES = %w[super_admin admin contributor publisher librarian]
+
+
+  def role?(key)
+    role == key.to_s
+  end
 end
