@@ -1,7 +1,7 @@
 en:
-  review:
-    reviews: Reviews
-    pending: You have %{count} submissions to review
+  edit:
+    edits: Edits
+    pending: You have %{count} submissions to edit
 
   publisher:
     publishers: Publishers

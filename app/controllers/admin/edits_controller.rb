@@ -1,4 +1,4 @@
-class Admin::ReviewsController < AdminController
+class Admin::EditsController < AdminController
   authorize_resource class: false
 
   before_filter :find_edit, except: [ :index ]
@@ -13,13 +13,13 @@ class Admin::ReviewsController < AdminController
     object.update_attribute(@edit.field, @edit.new_value)
     @edit.update_attribute(:state, 'approved')
 
-    redirect_to language_admin_reviews_path(current_language)
+    redirect_to language_admin_edits_path(current_language)
   end
 
   def discard
     @edit.update_attribute(:state, 'discarded')
 
-    redirect_to language_admin_reviews_path(current_language)
+    redirect_to language_admin_edits_path(current_language)
   end
 
   def replace
@@ -31,7 +31,7 @@ class Admin::ReviewsController < AdminController
 
     @edit.update_attribute(:state, 'replaced')
 
-    redirect_to language_admin_reviews_path(current_language)
+    redirect_to language_admin_edits_path(current_language)
   end
 
   private

@@ -14,7 +14,7 @@ Grandham::Application.routes.draw do
     namespace :admin do
       resources :publishers
       resources :authors
-      resources :reviews do
+      resources :edits do
         post :approve, on: :member
         post :discard, on: :member
         post :replace, on: :member

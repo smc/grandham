@@ -1,0 +1,11 @@
+.container
+  .row
+    .span12.inline
+      .pull-right
+        %p= I18n.t('edit.pending', count: @edits.count)
+      .pull-left
+        %h3= I18n.t('edit.edits')
+  .row
+    .span12
+      - @edits.each do |edit|
+        = render partial: 'edit', locals: { edit: edit, show_perma_link: true }

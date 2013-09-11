@@ -1,0 +1,7 @@
+.container
+  .row
+    .span12.inline
+      %h3= "Edit ##{@edit.id}"
+  .row
+    .span12
+      = render partial: 'edit', locals: { edit: @edit }

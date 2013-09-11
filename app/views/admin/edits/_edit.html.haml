@@ -9,7 +9,7 @@
 
     - if defined? show_perma_link
       |
-      = link_to 'permalink', language_admin_review_path(language_id: current_language, id: edit)
+      = link_to 'permalink', language_admin_edit_path(language_id: current_language, id: edit)
 
   - if Book.associated_records.include?(edit.editable_type) && edit.book_id
 
@@ -39,13 +39,13 @@
   %br
 
   - if Book.associated_records.include?(edit.editable_type) && edit.book_id
-    = link_to "Save #{edit.editable_type.downcase}", approve_language_admin_review_path(language_id: current_language, id: edit), class: 'btn btn-small btn-success', method: :post
+    = link_to "Save #{edit.editable_type.downcase}", approve_language_admin_edit_path(language_id: current_language, id: edit), class: 'btn btn-small btn-success', method: :post
 
-    = link_to "Replace #{edit.editable_type.downcase} in book", replace_language_admin_review_path(language_id: current_language, id: edit), class: 'btn btn-small btn-success', method: :post
+    = link_to "Replace #{edit.editable_type.downcase} in book", replace_language_admin_edit_path(language_id: current_language, id: edit), class: 'btn btn-small btn-success', method: :post
   - else
-    = link_to 'Approve', approve_language_admin_review_path(language_id: current_language, id: edit), class: 'btn btn-small btn-success', method: :post
+    = link_to 'Approve', approve_language_admin_edit_path(language_id: current_language, id: edit), class: 'btn btn-small btn-success', method: :post
 
 
-  = link_to 'Discard', discard_language_admin_review_path(language_id: current_language, id: edit), class: 'btn btn-small btn-primary', method: :post
+  = link_to 'Discard', discard_language_admin_edit_path(language_id: current_language, id: edit), class: 'btn btn-small btn-primary', method: :post
 
   = link_to 'Comments (5)', '#', class: 'btn btn-small btn-info'
