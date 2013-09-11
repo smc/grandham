@@ -1,5 +1,7 @@
 Grandham::Application.routes.draw do
 
+  get "error/access_denied"
+
   devise_for :users
 
   resources :publishers

@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     if user_signed_in?
-      redirect_to '/403'
+      session[:access_denied_path] = request.url
+      redirect_to error_access_denied_path
     else
       session[:redirect_url] = request.url
       redirect_to new_user_session_path, :alert => alert_message
