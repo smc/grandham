@@ -1,20 +1,19 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
+  def initialize(user, controller_namespace)
     user ||= User.new
-    if user.role? :super_admin
-      can :manage, :all
 
-    elsif user.role? :admin
-      can [ :index, :show, :approve, :discard, :replace ], 'admin/reviews'
-      can :manage, [Book, Author, Publisher]
-
-    elsif user.role? :contributor
-      can :manage, [Book, Author, Publisher]
-
-    else
-      can :read, [Book, Author, Publisher]
+    case controller_namespace
+      when 'Admin'
+        can :manage, :all if user.role? :admin
+        can :manage, :all if user.role? :super_admin
+      else
+        if user.role? :contributor
+          can :manage, [Book, Author, Publisher]
+        else
+          can :read, [Book, Author, Publisher]
+        end
     end
   end
 end

@@ -1,5 +1,5 @@
 class Admin::EditsController < AdminController
-  authorize_resource class: false
+  load_and_authorize_resource :edit
 
   before_filter :find_edit, except: [ :index ]
 
