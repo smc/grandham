@@ -9,6 +9,9 @@ class Ability
         can :manage, :all if user.role? :admin
         can :manage, :all if user.role? :super_admin
       else
+        can :manage, :all if user.role? :admin
+        can :manage, :all if user.role? :super_admin
+
         if user.role? :contributor
           can :manage, [Book, Author, Publisher]
         else

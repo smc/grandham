@@ -1,7 +1,88 @@
-%h1 Editing book
+.container
+  .row.book-edit-share-links
+    .span3.offset9
 
-= render 'form'
+      = link_to language_book_path(@book.language, @book), class: 'btn' do
+        %i.icon-backward
+        back
 
-= link_to 'Show', @book
-\|
-= link_to 'Back', books_path
+  .row
+    .span2
+      = image_tag @book.book_covers.first.image.url(:medium), class: 'img-polaroid'
+
+    .span8.book-information-section
+      %h4= inplace_edit @book, :title
+
+      .book-info
+        %p.book-sub-heading
+          AUTHOR(S)
+        - @book.authors.each do |author|
+          %p= inplace_edit author, :name
+
+      .book-info
+        %p.book-sub-heading
+          PUBLISHER(S)
+        - @book.publishers.each do |publisher|
+          %p= inplace_edit publisher, :name
+
+      .book-info
+        %p.book-sub-heading
+          TITLE ORIGINAL
+        %p= inplace_edit @book, :title_orginal
+
+      .row
+        .span1
+          .book-info
+            %p.book-sub-heading
+              YEAR
+            %p= inplace_edit @book, :year
+        .span1
+          .book-info
+            %p.book-sub-heading
+              PAGES
+            %p= inplace_edit @book, :pages
+
+        .span1
+          .book-info
+            %p.book-sub-heading
+              EDITION
+            %p= inplace_edit @book, :edition
+
+        .span1
+          .book-info
+            %p.book-sub-heading
+              DDC
+            %p= inplace_edit @book, :ddc
+
+        .span1
+          .book-info
+            %p.book-sub-heading
+              SERIES
+            %p= inplace_edit @book, :series
+      .row
+        .span1
+          .book-info
+            %p.book-sub-heading
+              LENGTH
+            %p= inplace_edit @book, :length
+
+        .span2
+          .book-info
+            %p.book-sub-heading
+              PRICE
+            %p= inplace_edit @book, :price
+
+      .book-info
+        %p.book-sub-heading
+          DESCRIPTION
+        %p= inplace_edit @book, :description
+
+      .book-info
+        %p.book-sub-heading
+          PREFACE
+        %p= inplace_edit @book, :preface
+
+      .book-info
+        %p.book-sub-heading
+          NOTE
+        %p= inplace_edit @book, :note

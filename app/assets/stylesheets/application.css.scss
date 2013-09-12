@@ -84,15 +84,16 @@ span.inplace-edit{
 
 .inplace-edit-container {
   display: inline;
-  & span.inplace-edit {
-    visibility: hidden;
-  }
 
-  &:hover {
-    & span.inplace-edit {
-      visibility: visible;
-    }
-  }
+  // & span.inplace-edit {
+  //   visibility: hidden;
+  // }
+
+  // &:hover {
+  //   & span.inplace-edit {
+  //     visibility: visible;
+  //   }
+  // }
 }
 
 .inline-add {
