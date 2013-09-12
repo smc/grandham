@@ -75,14 +75,14 @@
       .book-info
         %p.book-sub-heading
           DESCRIPTION
-        %p= inplace_edit @book, :description
+        %p= inplace_edit @book, :description, type: :textarea
 
       .book-info
         %p.book-sub-heading
           PREFACE
-        %p= inplace_edit @book, :preface
+        %p= inplace_edit @book, :preface, type: :textarea
 
       .book-info
         %p.book-sub-heading
           NOTE
-        %p= inplace_edit @book, :note
+        %p= inplace_edit @book, :note, type: :textarea
