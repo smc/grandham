@@ -1,10 +1,10 @@
-%li.book-list-item
+%li.grandham-list-item
   .row
     .span1
       .list-item-book-cover
         = image_tag book.book_covers.first.image.url(:medium), class: 'img-polaroid'
     .span6
-      %h4.list-book-title
+      %h4.list-grandham-title
         = link_to book.title, language_book_path(book.language, book)
 
       %p

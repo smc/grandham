@@ -1,0 +1,13 @@
+%li.grandham-list-item
+  .row
+    .span1
+      .list-item-author-cover
+        = image_tag 'http://grandham.dev/book_cover_missing.png', class: 'img-polaroid'
+    .span6
+      %h4.list-grandham-title
+        = link_to author.name, language_author_path(author.language, author)
+      - books_count = author.books.count
+
+      %p
+        = books_count
+        = 'book'.pluralize books_count

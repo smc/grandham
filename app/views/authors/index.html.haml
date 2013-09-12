@@ -3,26 +3,10 @@
   .row
     = render partial: 'layouts/side_bar', locals: { active: 'authors' }
 
-    .span9
-      %table.table.table-striped
-        %thead
-          %tr
-            %th
-            %th Name
-            %th No. of books
-            %th Genres
-
-        %tbody.grandham-list
-          - @authors.each do |author|
-            %tr
-              %td
-                .image
-              %td.tex-item
-                = link_to author.name, language_author_path(author.language, author)
-              %td.tex-item
-                = link_to author.books.count
-              %td.tex-item
-                \--
+    .span8
+      %ul.grandham-items-list
+        - @authors.each do |author|
+          = render partial: 'author', locals: { author: author }
 
       .list-pagination
         = will_paginate @authors, renderer: BootstrapPagination::Rails
