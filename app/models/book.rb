@@ -70,6 +70,6 @@ class Book < ActiveRecord::Base
 
     [Author, Publisher].each{ |klass| remove_duplicate_associated_objects(klass) }
 
-    # self.covers.create if self.covers.empty?
+    self.covers.create if self.covers.empty?
   end
 end

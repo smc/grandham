@@ -2,7 +2,7 @@
   .row
     .span1
       .list-item-book-cover
-        = image_tag book.covers.first.image.url(:medium), class: 'img-polaroid'
+        = image_tag book.covers.last.image.url(:medium), class: 'img-polaroid'
     .span6
       %h4.list-grandham-title
         = link_to book.title, language_book_path(book.language, book)

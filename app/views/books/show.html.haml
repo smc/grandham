@@ -11,7 +11,7 @@
 
   .row
     .span2
-      = image_tag @book.covers.first.image.url(:medium), class: 'img-polaroid'
+      = image_tag @book.covers.last.image.url(:medium), class: 'img-polaroid'
 
     .span8.book-information-section
       %h4= @book.title
