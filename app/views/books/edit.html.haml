@@ -1,5 +1,5 @@
 .container
-  .row.book-edit-share-links
+  .row.item-control-links
     .span3.offset9
 
       = link_to language_book_path(@book.language, @book), class: 'btn' do
@@ -10,7 +10,7 @@
     .span2
       = image_tag @book.covers.last.image.url(:medium), class: 'img-polaroid'
 
-    .span8.book-information-section
+    .span8.item-information-section
       %h4= inplace_edit @book, :title
 
       .book-info

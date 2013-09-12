@@ -1,9 +1,18 @@
 .container
-  .row
-    .span7.offset1
-      %h3= inplace_edit @author, :name
+  .row.item-control-links
+    .span3.offset9
+      = link_to edit_language_author_path(@author.language, @author), class: 'btn' do
+        %i.icon-edit
+        edit
 
-      %h4 Books
+  .row
+    .span2
+      = image_tag @author.profile_pictures.last.image.url(:medium), class: 'img-polaroid'
+
+    .span8.item-information-section
+      %h4= @author.name
+
+      %h5 Books
 
       %ul.associated-books-list
         - @author.books.each do |book|
@@ -11,3 +20,4 @@
             %i.icon-book
             = link_to language_book_path(book.language, book) do
               = book.title
+              = "  (#{book.year})" if book.year
