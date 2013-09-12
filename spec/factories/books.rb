@@ -9,7 +9,7 @@ FactoryGirl.define do
     after(:create) do |book, evaluator|
       book.authors << FactoryGirl.create(:author, language_id: Language.default.id)
       book.publishers << FactoryGirl.create(:publisher, language_id: Language.default.id)
-      book.book_covers.create
+      book.covers.create
     end
   end
 end

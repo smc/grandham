@@ -18,7 +18,7 @@ class BooksController < ApplicationController
     @book = Book.new
     @book.authors.build
     @book.publishers.build
-    @book.book_covers.build
+    @book.covers.build
   end
 
   def create
@@ -26,7 +26,7 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to root_path
     else
-      @book.book_covers.build
+      @book.covers.build
       render "new"
     end
   end

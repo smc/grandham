@@ -2,7 +2,7 @@ class Book < ActiveRecord::Base
   attr_accessible :title, :isbn, :pages, :year, :description, :edition, \
                   :authors_attributes, :publishers_attributes, \
                   :ddc, :volume, :series, :price, :length, :title_orginal, :illustrator, \
-                  :note, :grandham_id, :language_id, :preface, :book_covers_attributes
+                  :note, :grandham_id, :language_id, :preface, :covers_attributes
 
   belongs_to :language
 
@@ -18,8 +18,8 @@ class Book < ActiveRecord::Base
 
   has_many :edits, as: :editable
 
-  has_many :book_covers, as: :imageable
-  accepts_nested_attributes_for :book_covers
+  has_many :covers, as: :imageable
+  accepts_nested_attributes_for :covers
 
   validates_presence_of :title
 
@@ -70,6 +70,6 @@ class Book < ActiveRecord::Base
 
     [Author, Publisher].each{ |klass| remove_duplicate_associated_objects(klass) }
 
-    # self.book_covers.create if self.book_covers.empty?
+    # self.covers.create if self.covers.empty?
   end
 end
