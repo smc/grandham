@@ -3,5 +3,5 @@ class Picture < ActiveRecord::Base
 
   has_attached_file :image, styles: { large: "600x600>", medium: "300x300>", thumb: "100x100>" }, :default_url => "/book_cover_missing.png"
 
-  belongs_to :image, polymorphic: true
+  belongs_to :imageable, polymorphic: true
 end

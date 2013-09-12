@@ -18,7 +18,7 @@ class Book < ActiveRecord::Base
 
   has_many :edits, as: :editable
 
-  has_many :book_covers
+  has_many :book_covers, as: :imageable
   accepts_nested_attributes_for :book_covers
 
   validates_presence_of :title
@@ -70,6 +70,6 @@ class Book < ActiveRecord::Base
 
     [Author, Publisher].each{ |klass| remove_duplicate_associated_objects(klass) }
 
-    self.book_covers.create if self.book_covers.empty?
+    # self.book_covers.create if self.book_covers.empty?
   end
 end

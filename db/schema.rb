@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130906021151) do
+ActiveRecord::Schema.define(:version => 20130912183049) do
 
   create_table "authors", :force => true do |t|
     t.text     "name"
@@ -24,11 +24,6 @@ ActiveRecord::Schema.define(:version => 20130906021151) do
   create_table "authorships", :force => true do |t|
     t.integer  "author_id"
     t.integer  "book_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "book_covers", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -79,13 +74,15 @@ ActiveRecord::Schema.define(:version => 20130906021151) do
   end
 
   create_table "pictures", :force => true do |t|
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "book_id"
+    t.string   "type"
   end
 
   create_table "publications", :force => true do |t|
