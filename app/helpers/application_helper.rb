@@ -25,7 +25,7 @@ module ApplicationHelper
 
   def edit_icon(object, field)
     content_tag :span, class: 'inplace-edit', id: inplace_edit_activator_id(object, field) do
-      content_tag :i, class: 'icon-pencil' do
+      content_tag :i, class: 'icon-pencil grandham-field-edit' do
       end
     end
   end
