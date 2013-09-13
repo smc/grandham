@@ -2,7 +2,7 @@
   .row
     .span1
       .list-item-author-cover
-        = image_tag 'http://grandham.dev/book_cover_missing.png', class: 'img-polaroid'
+        = image_tag author.profile_pictures.last.image.url, class: 'img-polaroid'
     .span6
       %h4.list-grandham-title
         = link_to author.name, language_author_path(author.language, author)
