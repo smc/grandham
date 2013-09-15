@@ -19,3 +19,9 @@
         .pull-right
           - if active == 'publishers'
             %i.icon-chevron-right
+    %li{ onclick: "window.location = '#{current_language_path('libraries')}'" }
+      = link_to current_language_path('libraries') do
+        = I18n.t('.libraries')
+        .pull-right
+          - if active == 'libraries'
+            %i.icon-chevron-right

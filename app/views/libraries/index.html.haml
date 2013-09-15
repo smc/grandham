@@ -1,23 +1,12 @@
-%h1 Listing libraries
+.container
+  %br
+  .row
+    = render partial: 'layouts/side_bar', locals: { active: 'libraries' }
 
-%table
-  %tr
-    %th Name
-    %th Grandham
-    %th Language
-    %th
-    %th
-    %th
+    .span8
+      %ul.grandham-items-list
+        - @libraries.each do |library|
+          = render partial: 'library', locals: { library: library }
 
-  - @libraries.each do |library|
-    %tr
-      %td= library.name
-      %td= library.grandham_id
-      %td= library.language_id
-      %td= link_to 'Show', library
-      %td= link_to 'Edit', edit_library_path(library)
-      %td= link_to 'Destroy', library, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Library', new_library_path
+      .list-pagination
+        = will_paginate @libraries, renderer: BootstrapPagination::Rails

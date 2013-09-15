@@ -1,15 +1,23 @@
-%p#notice= notice
+.container
+  .row.item-control-links
+    .span3.offset9
+      = link_to edit_language_library_path(@library.language, @library), class: 'btn' do
+        %i.icon-edit
+        edit
 
-%p
-  %b Name:
-  = @library.name
-%p
-  %b Grandham:
-  = @library.grandham_id
-%p
-  %b Language:
-  = @library.language_id
+  .row
+    .span2
+      = image_tag @library.logos.last.image.url(:medium), class: 'img-polaroid'
 
-= link_to 'Edit', edit_library_path(@library)
-\|
-= link_to 'Back', libraries_path
+    .span8.item-information-section
+      %h4= @library.name
+
+      %h5 Books
+
+      %ul.associated-books-list
+        - @library.books.each do |book|
+          %li
+            %i.icon-book
+            = link_to language_book_path(book.language, book) do
+              = book.title
+              = "  (#{book.year})" if book.year

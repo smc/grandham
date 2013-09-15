@@ -1,10 +1,9 @@
-= simple_form_for(@library) do |f|
-  = f.error_notification
+= simple_form_for @library, html: { class: 'form-horizontal' }, multipart: true do |f|
+  %fieldset
+    %legend= 'Edit Library'
 
-  .form-inputs
-    = f.input :name
-    = f.input :grandham_id
-    = f.input :language_id
+  = f.input :name, as: :string, input_html: { class: 'input-xxlarge' }
 
   .form-actions
-    = f.button :submit
+    = f.submit 'Submit', class: 'btn btn-primary'
+    = link_to 'Cancel', language_library_path(@library.language, @library), class: 'btn'
