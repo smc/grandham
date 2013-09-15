@@ -13,9 +13,9 @@ class Ability
         can :manage, :all if user.role? :super_admin
 
         if user.role? :contributor
-          can :manage, [Book, Author, Publisher]
+          can :manage, [Book, Author, Publisher, Library]
         else
-          can :read, [Book, Author, Publisher]
+          can :read, [Book, Author, Publisher, Library]
         end
     end
   end
