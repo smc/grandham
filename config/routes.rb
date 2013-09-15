@@ -28,8 +28,14 @@ Grandham::Application.routes.draw do
     resources :authors, :publishers, :libraries
     resources :books
 
-    resources :authors
-    resources :publishers
+    resources :authors do
+      get :books, on: :member
+    end
+
+    resources :publishers do
+      get :books, on: :member
+    end
+
     resources :libraries do
       get :books, on: :member
     end

@@ -29,6 +29,10 @@ class PublishersController < ApplicationController
     end
   end
 
+  def books
+    @books = @publisher.books.paginate(:page => params[:page], :per_page => 20)
+  end
+
   private
 
   def find_publisher
