@@ -22,6 +22,7 @@ gem 'best_in_place'
 gem "cancan"
 
 gem 'turbolinks'
+gem 'nprogress-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -140,6 +140,7 @@ GEM
       net-ssh (>= 2.6.5)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
+    nprogress-rails (0.1.2.3)
     orm_adapter (0.4.0)
     paperclip (3.4.2)
       activemodel (>= 3.0.0)
@@ -264,6 +265,7 @@ DEPENDENCIES
   jquery-ui-rails
   letter_opener
   mysql2
+  nprogress-rails
   paperclip (~> 3.0)
   poltergeist
   rails (= 3.2.13)

@@ -19,6 +19,9 @@
 //= require turbolinks
 //= require_tree .
 
+//= require nprogress
+//= require nprogress-turbolinks
+
 // $(document).ready(function() {
 // /* Activating Best In Place */
 //   jQuery(".best_in_place").best_in_place();
@@ -34,17 +37,17 @@ ready = function() {
 $(document).ready(ready);
 $(document).on('page:load', ready);
 
-var startSpinner;
+// var startSpinner;
 
-startSpinner = function () {
-  $('.ajax-loader').show();
-}
+// startSpinner = function () {
+//   $('.ajax-loader').show();
+// }
 
-var stopSpinner;
+// var stopSpinner;
 
-stopSpinner = function () {
-  $('.ajax-loader').hide();
-}
+// stopSpinner = function () {
+//   $('.ajax-loader').hide();
+// }
 
-document.addEventListener("page:fetch", startSpinner);
-document.addEventListener("page:receive", stopSpinner);
+// document.addEventListener("page:fetch", startSpinner);
+// document.addEventListener("page:receive", stopSpinner);
