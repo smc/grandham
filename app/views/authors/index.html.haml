@@ -3,7 +3,7 @@
   .row
     = render partial: 'layouts/side_bar', locals: { active: 'authors' }
 
-    .span8
+    .span9
       %ul.grandham-items-list
         - @authors.each do |author|
           = render partial: 'author', locals: { author: author }

@@ -16,7 +16,7 @@ class Ability
           can :manage, [Book, Author, Publisher, Library]
         else
           can :read, [Book, Author, Publisher, Library]
-          can :books, [Library]
+          can :books, [Author, Publisher, Library]
         end
     end
   end
