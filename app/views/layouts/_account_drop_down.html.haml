@@ -1,5 +1,6 @@
 %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-  Account
+  %i.icon-user
+  = current_user.login
   %b.caret
 %ul.dropdown-menu
   %li
