@@ -30,6 +30,12 @@
 
       .book-info
         %p.book-sub-heading
+          LIBRARIES(S)
+        - @book.libraries.each do |library|
+          %p= link_to library.name, language_library_path(library.language, library)
+
+      .book-info
+        %p.book-sub-heading
           TITLE ORIGINAL
         %p= @book.title_orginal
 

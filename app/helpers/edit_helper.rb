@@ -23,4 +23,9 @@ module EditHelper
     book_path = current_book ? "?book_id=#{current_book.grandham_id}" : ''
     super(object, param) + book_path
   end
+
+  def library_path(object, param = nil)
+    book_path = current_book ? "?book_id=#{current_book.grandham_id}" : ''
+    super(object, param) + book_path
+  end
 end

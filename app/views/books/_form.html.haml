@@ -13,6 +13,9 @@
     = f.fields_for :publishers do |publisher_form|
       = publisher_form.input :name, as: :string, input_html: { class: 'input-xxlarge' }, label: 'Publisher'
 
+    = f.fields_for :libraries do |library_form|
+      = library_form.input :name, as: :string, input_html: { class: 'input-xxlarge' }, label: 'Library'
+
     = f.input :isbn, as: :string, input_html: { class: 'input-xxlarge' }, label: 'ISBN'
     = f.input :year, as: :string, input_html: { class: 'input-xxlarge' }
     = f.input :pages, as: :string, input_html: { class: 'input-xxlarge' }

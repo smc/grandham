@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @library.name
+%p
+  %b Grandham:
+  = @library.grandham_id
+%p
+  %b Language:
+  = @library.language_id
+
+= link_to 'Edit', edit_library_path(@library)
+\|
+= link_to 'Back', libraries_path

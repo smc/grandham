@@ -4,6 +4,7 @@ class Language < ActiveRecord::Base
   has_many :books
   has_many :authors
   has_many :publishers
+  has_many :libraries
 
   has_many :books
   has_many :edits
