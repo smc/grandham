@@ -23,11 +23,12 @@ class Admin::EditsController < AdminController
   end
 
   def replace
-    old_author = @edit.editable
+    old_object = @edit.editable
+    old_object_class = old_object.class
     objects_collection = @edit.editable_type.downcase.pluralize
 
-    @edit.book.send(objects_collection).delete(old_author)
-    @edit.book.send(objects_collection) << Author.where(name: @edit.new_value, language_id: @edit.book.language.id ).first_or_create!
+    @edit.book.send(objects_collection).delete(old_object)
+    @edit.book.send(objects_collection) << old_object_class.where(name: @edit.new_value, language_id: @edit.book.language.id ).first_or_create!
 
     @edit.update_attribute(:state, 'replaced')
 
