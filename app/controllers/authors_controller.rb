@@ -26,6 +26,10 @@ class AuthorsController < ApplicationController
     end
   end
 
+  def books
+    @books = @author.books.paginate(:page => params[:page], :per_page => 20)
+  end
+
   private
 
   def find_author

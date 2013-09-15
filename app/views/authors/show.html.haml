@@ -12,12 +12,18 @@
     .span8.item-information-section
       %h4= @author.name
 
-      %h5 Books
+      %h5= "Books (#{@author.books.count})"
 
       %ul.associated-books-list
-        - @author.books.each do |book|
+        - @author.books.first(10).each do |book|
           %li
             %i.icon-book
             = link_to language_book_path(book.language, book) do
               = book.title
               = "  (#{book.year})" if book.year
+
+        - if @author.books.count > 10
+          %li
+            %br
+            %i.icon-list-ul
+            = link_to 'more..', books_language_author_path(@author.language, @author)
