@@ -14,13 +14,13 @@ module EditHelper
     flash[:notice] = 'Your edit(s) have been submitted for approval.'
   end
 
-  def author_path(object)
+  def author_path(object, param = nil)
     book_path = current_book ? "?book_id=#{current_book.grandham_id}" : ''
-    super(object) + book_path
+    super(object, param) + book_path
   end
 
-  def publisher_path(object)
+  def publisher_path(object, param = nil)
     book_path = current_book ? "?book_id=#{current_book.grandham_id}" : ''
-    super(object) + book_path
+    super(object, param) + book_path
   end
 end

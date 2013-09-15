@@ -20,6 +20,7 @@ class AuthorsController < ApplicationController
       book_id = (book = Book.find_by_grandham_id(params[:book_id])) ? book.id : nil
       record_edit @author, params[:author], book_id
 
+      format.html { redirect_to language_author_path(@author.language, @author) }
       format.json { respond_with_bip(@author) }
     end
   end

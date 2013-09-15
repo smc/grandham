@@ -1,13 +1,9 @@
-= form_for @author do |f|
-  - if @author.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@author.errors.count, "error")} prohibited this author from being saved:"
-      %ul
-        - @author.errors.full_messages.each do |msg|
-          %li= msg
+= simple_form_for @author, html: { class: 'form-horizontal' }, multipart: true do |f|
+  %fieldset
+    %legend= 'Edit Author'
 
-  .field
-    = f.label :name
-    = f.text_area :name
-  .actions
-    = f.submit 'Save'
+  = f.input :name, as: :string, input_html: { class: 'input-xxlarge' }
+
+  .form-actions
+    = f.submit 'Submit', class: 'btn btn-primary'
+    = link_to 'Cancel', language_author_path(@author.language, @author), class: 'btn'
