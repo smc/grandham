@@ -21,6 +21,8 @@ gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-ra
 gem 'best_in_place'
 gem "cancan"
 
+gem 'turbolinks'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

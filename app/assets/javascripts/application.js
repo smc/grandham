@@ -16,9 +16,35 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
 //= require best_in_place
+//= require turbolinks
 //= require_tree .
 
-$(document).ready(function() {
-/* Activating Best In Place */
+// $(document).ready(function() {
+// /* Activating Best In Place */
+//   jQuery(".best_in_place").best_in_place();
+// });
+
+
+var ready;
+
+ready = function() {
   jQuery(".best_in_place").best_in_place();
-});
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
+
+var startSpinner;
+
+startSpinner = function () {
+  $('.ajax-loader').show();
+}
+
+var stopSpinner;
+
+stopSpinner = function () {
+  $('.ajax-loader').hide();
+}
+
+document.addEventListener("page:fetch", startSpinner);
+document.addEventListener("page:receive", stopSpinner);

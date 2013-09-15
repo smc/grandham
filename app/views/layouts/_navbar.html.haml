@@ -18,6 +18,9 @@
               - Language.all.each do |language|
                 %li
                   = link_to language.name, language_books_path(language)
+          %li
+            %a
+              = image_tag 'ajax_loader.gif', class: 'ajax-loader hide'
 
         %ul#main-menu-right.nav.pull-right
           %li
