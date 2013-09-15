@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130915103423) do
+ActiveRecord::Schema.define(:version => 20130915175715) do
 
   create_table "authors", :force => true do |t|
     t.text     "name"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20130915103423) do
     t.text     "preface"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.boolean  "approved"
   end
 
   create_table "edits", :force => true do |t|

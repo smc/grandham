@@ -38,6 +38,11 @@ class Book < ActiveRecord::Base
   #   text :title_orginal
   # end
 
+  def approve!
+    self.approved = true
+    self.save
+  end
+
   def details
     restricted_keys = [:id, :created_at, :updated_at, :approved, :reviewed]
     attrs = attributes.with_indifferent_access
