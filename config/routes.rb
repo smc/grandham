@@ -1,7 +1,4 @@
 Grandham::Application.routes.draw do
-
-
-
   get "error/access_denied"
 
   devise_for :users
@@ -33,6 +30,8 @@ Grandham::Application.routes.draw do
 
     resources :authors
     resources :publishers
-    resources :libraries
+    resources :libraries do
+      get :books, on: :member
+    end
   end
 end

@@ -3,7 +3,7 @@ class LibrariesController < ApplicationController
 
   respond_to :html
 
-  before_filter :find_library, only: [ :show, :update ]
+  before_filter :find_library, only: [ :show, :update, :books ]
 
   def index
     collection = (current_language && current_language.libraries) || Library
@@ -27,6 +27,10 @@ class LibrariesController < ApplicationController
       format.html { redirect_to language_library_path(@library.language, @library) }
       format.json { respond_with_bip(@library) }
     end
+  end
+
+  def books
+    @books = @library.books.paginate(:page => params[:page], :per_page => 20)
   end
 
   private

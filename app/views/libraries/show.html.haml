@@ -13,12 +13,18 @@
       %h4= @library.name
       %p= @library.place
 
-      %h5 Books
+      %h5= "Books (#{@library.books.count})"
 
       %ul.associated-books-list
-        - @library.books.each do |book|
+        - @library.books.first(10).each do |book|
           %li
             %i.icon-book
             = link_to language_book_path(book.language, book) do
               = book.title
               = "  (#{book.year})" if book.year
+
+        - if @library.books.count > 10
+          %li
+            %br
+            %i.icon-list-ul
+            = link_to 'more..', books_language_library_path(@library.language, @library)
