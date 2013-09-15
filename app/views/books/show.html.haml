@@ -18,19 +18,19 @@
 
       .book-info
         %p.book-sub-heading
-          AUTHOR(S)
+          = "AUTHOR".pluralize(@book.authors.count).upcase
         - @book.authors.each do |author|
           %p= link_to author.name, language_author_path(author.language, author)
 
       .book-info
         %p.book-sub-heading
-          PUBLISHER(S)
+          = "PUBLISHER".pluralize(@book.publishers.count).upcase
         - @book.publishers.each do |publisher|
           %p= link_to publisher.name, language_publisher_path(publisher.language, publisher)
 
       .book-info
         %p.book-sub-heading
-          LIBRARIES(S)
+          = "LIBRARY".pluralize(@book.libraries.count).upcase
         - @book.libraries.each do |library|
           %p= link_to library.name, language_library_path(library.language, library)
 

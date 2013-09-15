@@ -15,15 +15,21 @@
 
       .book-info
         %p.book-sub-heading
-          AUTHOR(S)
+          = "AUTHOR".pluralize(@book.authors.count).upcase
         - @book.authors.each do |author|
           %p= inplace_edit author, :name
 
       .book-info
         %p.book-sub-heading
-          PUBLISHER(S)
+          = "PUBLISHER".pluralize(@book.publishers.count).upcase
         - @book.publishers.each do |publisher|
           %p= inplace_edit publisher, :name
+
+      .book-info
+        %p.book-sub-heading
+          = "LIBRARY".pluralize(@book.libraries.count).upcase
+        - @book.libraries.each do |library|
+          %p= inplace_edit library, :name
 
       .book-info
         %p.book-sub-heading

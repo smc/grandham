@@ -7,4 +7,5 @@ class Edit < ActiveRecord::Base
   scope :not_reviewed, where(state: 'open')
 
   belongs_to :book
+  belongs_to :user
 end

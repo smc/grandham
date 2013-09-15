@@ -1,7 +1,7 @@
 .edit-item
   %p{style: 'display: inline;'}
     %i.icon-user
-    = link_to 'Radha', '#'
+    = edit.user.login
 
   .pull-right
     %i.icon-time
@@ -47,5 +47,3 @@
 
 
   = link_to 'Discard', discard_language_admin_edit_path(language_id: current_language, id: edit), class: 'btn btn-small btn-primary', method: :post
-
-  = link_to 'Comments (5)', '#', class: 'btn btn-small btn-info'

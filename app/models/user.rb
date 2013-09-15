@@ -6,12 +6,16 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :login
   # attr_accessible :title, :body
+
+  validates :login, uniqueness: true, presence: true
 
   ROLES = %w[super_admin admin contributor publisher librarian]
 
   after_create :set_role
+
+  has_many :edits
 
   def role?(key)
     role == key.to_s
