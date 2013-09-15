@@ -33,6 +33,7 @@ namespace :grandham do
       book_obj.save
 
       book_obj.authors << language.authors.where(name: book['Author']).first_or_create!
+      book_obj.libraries << language.libraries.where(name: book['Location']).first_or_create!
 
       publisher_name, publisher_place = book['publisher'].split(',')
       book_obj.publishers << language.publishers.where(name: publisher_name, place: publisher_place).first_or_create!
