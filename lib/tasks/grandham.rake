@@ -32,7 +32,14 @@ namespace :grandham do
 
       book_obj.save
 
-      book_obj.authors << language.authors.where(name: book['Author']).first_or_create!
+      author_info = book['Author']
+      if author_info.include?('[')
+        book_obj.authors << language.authors.where(name: book['Author']).first_or_create!
+      else
+        author_info.split(';').each do |author|
+          book_obj.authors << language.authors.where(name: author).first_or_create!
+        end
+      end
 
       book['Location'].split(';').each do |library|
         library_name, library_place = library.split(',')
