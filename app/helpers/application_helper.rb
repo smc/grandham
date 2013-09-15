@@ -1,4 +1,11 @@
 module ApplicationHelper
+  def languages_menu_heading
+    if current_language
+      "Language (#{current_language.short_code})"
+    else
+      "Language (all)"
+    end
+  end
 
   def current_language_path(resource)
     if current_language

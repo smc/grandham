@@ -6,7 +6,9 @@ class PublishersController < ApplicationController
   before_filter :find_publisher, only: [ :show, :update ]
 
   def index
-    @publishers = Publisher.paginate(:page => params[:page], :per_page => 10)
+    collection = (current_language && current_language.publishers) || Publisher
+
+    @publishers = collection.paginate(:page => params[:page], :per_page => 10)
 
     respond_with @publishers
   end

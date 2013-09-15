@@ -6,7 +6,8 @@ class BooksController < ApplicationController
   before_filter :find_book, only: [ :show, :update ]
 
   def index
-    @books = Book.paginate(:page => params[:page], :per_page => 10)
+    collection = (current_language && current_language.books) || Book
+    @books = collection.paginate(:page => params[:page], :per_page => 10)
     respond_with @books
   end
 

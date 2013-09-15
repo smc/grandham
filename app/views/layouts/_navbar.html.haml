@@ -10,9 +10,11 @@
         %ul#main-menu-left.nav
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              = I18n.t '.languages'
+              = languages_menu_heading
               %b.caret
             %ul#swatch-menu.dropdown-menu
+              %li
+                = link_to 'All', root_path
               - Language.all.each do |language|
                 %li
                   = link_to language.name, language_books_path(language)

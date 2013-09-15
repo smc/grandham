@@ -6,8 +6,9 @@ class AuthorsController < ApplicationController
   before_filter :find_author, only: [ :show, :update ]
 
   def index
-    @authors = Author.paginate(:page => params[:page], :per_page => 10)
+    collection = (current_language && current_language.authors) || Author
 
+    @authors = collection.paginate(:page => params[:page], :per_page => 10)
     respond_with @authors
   end
 
