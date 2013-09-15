@@ -1,0 +1,11 @@
+.container
+  .row
+    .span12.inline
+      .pull-right
+        %p= I18n.t('new_item.pending', count: @new_items.count)
+      .pull-left
+        %h3= I18n.t('new_item.new_items')
+  .row
+    .span12
+      - @new_items.each do |new_item|
+        = render partial: 'new_item', locals: { new_item: new_item, show_perma_link: true }

@@ -13,17 +13,31 @@ class User < ActiveRecord::Base
 
   ROLES = %w[super_admin admin contributor publisher librarian]
 
-  after_create :set_role
+  after_create :set_default_role
 
   has_many :edits
+  has_many :new_items
+
+  belongs_to :language
 
   def role?(key)
     role == key.to_s
   end
 
+  def set_as_super_admin(language)
+    self.role        = 'super_admin'
+    self.language_id = language.id
+
+    self.save
+  end
+
+  def is_a_admin?
+    ['super_admin', 'admin'].include? role
+  end
+
   private
 
-  def set_role
+  def set_default_role
     self.update_attribute :role, 'contributor' unless role
   end
 end

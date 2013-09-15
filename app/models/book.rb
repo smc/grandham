@@ -1,4 +1,7 @@
 class Book < ActiveRecord::Base
+
+  default_scope where(approved: true)
+
   attr_accessible :title, :isbn, :pages, :year, :description, :edition, \
                   :authors_attributes, :publishers_attributes, :libraries_attributes, \
                   :ddc, :volume, :series, :price, :length, :title_orginal, :illustrator, \
@@ -22,6 +25,8 @@ class Book < ActiveRecord::Base
 
   has_many :edits, as: :editable
 
+  has_many :new_items, as: :creatable
+
   has_many :covers, as: :imageable
   accepts_nested_attributes_for :covers
 
@@ -44,7 +49,7 @@ class Book < ActiveRecord::Base
   end
 
   def details
-    restricted_keys = [:id, :created_at, :updated_at, :approved, :reviewed]
+    restricted_keys = [:id, :created_at, :updated_at, :approved, :reviewed, :grandham_id, :language_id]
     attrs = attributes.with_indifferent_access
     restricted_keys.collect{ |key| attrs.delete key }
     attrs
@@ -55,7 +60,7 @@ class Book < ActiveRecord::Base
   end
 
   def self.associated_records
-    ['Author', 'Publisher']
+    ['Author', 'Publisher', 'Library']
   end
 
   private

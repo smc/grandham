@@ -8,6 +8,8 @@ class Language < ActiveRecord::Base
 
   has_many :books
   has_many :edits
+  has_many :new_items
+  has_many :users
 
   def to_param
     short_code

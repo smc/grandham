@@ -1,0 +1,20 @@
+.edit-item
+  %p{style: 'display: inline;'}
+    %i.icon-user
+    = new_item.user.login
+
+  .pull-right
+    %i.icon-time
+      = new_item.created_at.strftime('%e %b %Y %I:%M %p')
+
+    - if defined? show_perma_link
+      |
+      = link_to 'permalink', '#'
+
+  = render partial: "#{new_item.creatable_type.to_s.downcase}_review", locals: { new_item: new_item }
+
+  %br
+
+  = link_to 'Approve', approve_language_admin_new_item_path(language_id: current_language, id: new_item), class: 'btn btn-small btn-success', method: :post
+
+  = link_to 'Discard', discard_language_admin_new_item_path(language_id: current_language, id: new_item), class: 'btn btn-small btn-primary', method: :post

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130915175715) do
+ActiveRecord::Schema.define(:version => 20130917111822) do
 
   create_table "authors", :force => true do |t|
     t.text     "name"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(:version => 20130915175715) do
     t.integer  "editable_id"
     t.string   "editable_type"
     t.string   "state",               :default => "open"
-    t.integer  "approved_by_user_id"
+    t.integer  "reviewed_by_user_id"
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
     t.integer  "language_id"
@@ -88,6 +88,17 @@ ActiveRecord::Schema.define(:version => 20130915175715) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.text     "place"
+  end
+
+  create_table "new_items", :force => true do |t|
+    t.integer  "reviewed_by_user_id"
+    t.string   "state",               :default => "open"
+    t.integer  "user_id"
+    t.integer  "language_id"
+    t.integer  "creatable_id"
+    t.string   "creatable_type"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
   create_table "pictures", :force => true do |t|
@@ -137,6 +148,7 @@ ActiveRecord::Schema.define(:version => 20130915175715) do
     t.string   "unconfirmed_email"
     t.string   "role"
     t.string   "login"
+    t.integer  "language_id"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

@@ -3,5 +3,8 @@
   = current_user.login
   %b.caret
 %ul.dropdown-menu
+  - if current_user.is_a_admin?
+    %li
+      = link_to 'Dashboard', language_admin_dashboard_index_path(current_user.language)
   %li
     = link_to I18n.t('.sign_out'), destroy_user_session_path, method: :delete

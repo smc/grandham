@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
   respond_to :html, :json
 
-  before_filter :find_book, only: [ :show, :update ]
+  before_filter :find_book, only: [ :show, :update, :history ]
 
   def index
     collection = (current_language && current_language.books) || Book
@@ -16,7 +16,7 @@ class BooksController < ApplicationController
   end
 
   def new
-    @book = Book.new
+    @book = Book.unscoped.new
     @book.authors.build
     @book.publishers.build
     @book.covers.build
@@ -24,8 +24,10 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(params[:book])
+    @book = Book.unscoped.new(params[:book])
     if @book.save
+      @book.new_items.create user_id: current_user.id, language_id: @book.language.id
+      flash[:notice] = 'The book you added has been submitted for approval. Thank you!'
       redirect_to root_path
     else
       @book.covers.build
@@ -38,6 +40,11 @@ class BooksController < ApplicationController
       record_edit @book, params[:book]
       format.json { respond_with_bip(@book) }
     end
+  end
+
+  def history
+    @creation = @book.new_items.last
+    @edits    = (@book.edits.approved + current_language.edits.where(book_id: @book.id)).sort
   end
 
   private

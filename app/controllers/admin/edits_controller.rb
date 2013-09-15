@@ -11,15 +11,27 @@ class Admin::EditsController < AdminController
     object = @edit.editable
 
     object.update_attribute(@edit.field, @edit.new_value)
-    @edit.update_attribute(:state, 'approved')
+    @edit.update_attributes state: 'approved', reviewed_by_user_id: current_user.id
 
-    redirect_to language_admin_edits_path(current_language)
+    if current_language.edits.not_reviewed.empty?
+      path = language_admin_dashboard_index_path(current_language)
+    else
+      path = language_admin_edits_path(current_language)
+    end
+
+    redirect_to path
   end
 
   def discard
-    @edit.update_attribute(:state, 'discarded')
+    @edit.update_attributes state: 'discarded', reviewed_by_user_id: current_user.id
 
-    redirect_to language_admin_edits_path(current_language)
+    if current_language.edits.not_reviewed.empty?
+      path = language_admin_dashboard_index_path(current_language)
+    else
+      path = language_admin_edits_path(current_language)
+    end
+
+    redirect_to path
   end
 
   def replace
@@ -30,7 +42,7 @@ class Admin::EditsController < AdminController
     @edit.book.send(objects_collection).delete(old_object)
     @edit.book.send(objects_collection) << old_object_class.where(name: @edit.new_value, language_id: @edit.book.language.id ).first_or_create!
 
-    @edit.update_attribute(:state, 'replaced')
+    @edit.update_attributes state: 'replaced', reviewed_by_user_id: current_user.id
 
     redirect_to language_admin_edits_path(current_language)
   end

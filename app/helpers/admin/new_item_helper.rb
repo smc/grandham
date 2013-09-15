@@ -1,0 +1,2 @@
+module Admin::NewItemHelper
+end

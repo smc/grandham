@@ -1,10 +1,14 @@
 en:
   edit:
     edits: Edits
-    pending: You have %{count} submissions to edit
+    pending: You have %{count} edit(s) to review
 
   publisher:
     publishers: Publishers
 
   author:
     authors: Authors
+
+  new_item:
+    new_items: New
+    pending: You have %{count} new item(s) to review

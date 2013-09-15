@@ -21,6 +21,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def after_sign_in_path_for(user)
+    if user.is_a_admin?
+      language_admin_dashboard_index_path(user.language)
+    else
+      super(user)
+    end
+  end
+
   def current_ability
     controller_name_segments = params[:controller].split('/')
     controller_name_segments.pop

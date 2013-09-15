@@ -7,7 +7,7 @@ class CreateEdits < ActiveRecord::Migration
       t.integer :user_id
       t.references :editable, polymorphic: true
       t.string :state, default: 'open'
-      t.integer :approved_by_user_id
+      t.integer :reviewed_by_user_id
 
       t.timestamps
     end

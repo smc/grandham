@@ -11,6 +11,6 @@ FactoryGirl.define do
     user_id 1
     approved false
     status "MyString"
-    approved_by_user_id 1
+    reviewed_by_user_id 1
   end
 end

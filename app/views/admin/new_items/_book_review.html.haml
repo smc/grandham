@@ -1,0 +1,31 @@
+- book = current_language.books.unscoped.find(new_item.creatable_id)
+- book.details.select{ |key, value| !value.blank? }.each do |key, value|
+  %p
+    .row
+      %code.span2.edit-attribute= key.capitalize
+      .span8
+        = value
+%p
+  .row
+    %code.span2.edit-attribute Author
+    .span8
+      = book.authors.first.name
+
+%p
+  .row
+    %code.span2.edit-attribute Publisher
+    .span8
+      = book.publishers.first.name
+
+- if library = book.libraries.first
+  %p
+    .row
+      %code.span2.edit-attribute Library
+      .span8
+        = library.name
+
+%p
+  .row
+    %code.span2.edit-attribute Cover
+    .span8
+      = image_tag book.covers.first.image.url(:thumb), class: 'img-polaroid'

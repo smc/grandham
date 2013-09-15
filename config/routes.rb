@@ -17,6 +17,12 @@ Grandham::Application.routes.draw do
       resources :publishers
       resources :authors
       resources :libraries
+      resources :dashboard
+
+      resources :new_items do
+        post :approve, on: :member
+        post :discard, on: :member
+      end
 
       resources :edits do
         post :approve, on: :member
@@ -26,7 +32,9 @@ Grandham::Application.routes.draw do
     end
 
     resources :authors, :publishers, :libraries
-    resources :books
+    resources :books do
+      get :history, on: :member
+    end
 
     resources :authors do
       get :books, on: :member
