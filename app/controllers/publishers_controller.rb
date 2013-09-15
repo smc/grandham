@@ -22,6 +22,7 @@ class PublishersController < ApplicationController
       book_id = (book = Book.find_by_grandham_id(params[:book_id])) ? book.id : nil
       record_edit @publisher, params[:publisher], book_id
 
+      format.html { redirect_to language_publisher_path(@publisher.language, @publisher) }
       format.json { respond_with_bip(@publisher) }
     end
   end

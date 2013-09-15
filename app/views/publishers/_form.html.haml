@@ -1,13 +1,9 @@
-= form_for @publisher do |f|
-  - if @publisher.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@publisher.errors.count, "error")} prohibited this publisher from being saved:"
-      %ul
-        - @publisher.errors.full_messages.each do |msg|
-          %li= msg
+= simple_form_for @publisher, html: { class: 'form-horizontal' }, multipart: true do |f|
+  %fieldset
+    %legend= 'Edit Publisher'
 
-  .field
-    = f.label :name
-    = f.text_area :name
-  .actions
-    = f.submit 'Save'
+  = f.input :name, as: :string, input_html: { class: 'input-xxlarge' }
+
+  .form-actions
+    = f.submit 'Submit', class: 'btn btn-primary'
+    = link_to 'Cancel', language_publisher_path(@publisher.language, @publisher), class: 'btn'

@@ -1,0 +1,13 @@
+%li.grandham-list-item
+  .row
+    .span1
+      .list-item-publisher-cover
+        = image_tag publisher.logos.last.image.url, class: 'img-polaroid'
+    .span6
+      %h4.list-grandham-title
+        = link_to publisher.name, language_publisher_path(publisher.language, publisher)
+      - books_count = publisher.books.count
+
+      %p
+        = books_count
+        = 'book'.pluralize books_count
