@@ -11,7 +11,7 @@ class SolrSearch
   def normal_keyword_search
     query = @search.query
 
-    if @resource == Submission
+    if @resource == Book
       @resource.search do
         fulltext query
         all_of do

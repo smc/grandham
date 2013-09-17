@@ -7,15 +7,15 @@
         %button.btn-success{ type: 'submit' }
           %i.icon-search
           = I18n.t('.search')
-        / %br
-        / = link_to 'More options', '#'
 
-  - unless @results['submission'].blank?
+
+  - unless @results['book'].blank?
     .row
       .span8.offset1
         %h4 Books
-        - @results['submission'].each do |submission|
-          %p= submission.title
+        %ul.grandham-items-list
+          - @results['book'].each do |book|
+            = render partial: 'books/book', locals: { book: book }
 
   - unless @results['author'].blank?
     .row
