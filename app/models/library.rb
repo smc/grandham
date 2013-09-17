@@ -14,6 +14,10 @@ class Library < ActiveRecord::Base
   before_create :set_grandham_id
   after_create :set_default_logo
 
+  searchable do
+    text :name
+  end
+
   def to_param
     grandham_id
   end

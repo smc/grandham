@@ -16,9 +16,9 @@ class Author < ActiveRecord::Base
   before_create :set_grandham_id
   after_create :set_default_profile_picture
 
-  # searchable do
-  #   text :name
-  # end
+  searchable do
+    text :name
+  end
 
   def to_param
     grandham_id
