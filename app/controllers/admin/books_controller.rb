@@ -14,10 +14,6 @@ class Admin::BooksController < AdminController
     respond_with @book
   end
 
-  def edit
-    respond_with @book
-  end
-
   def new
     @book = Book.unscoped.new
     @book.authors.build
@@ -39,20 +35,6 @@ class Admin::BooksController < AdminController
     else
       @book.covers.build
       render "new"
-    end
-  end
-
-  def update
-    @book = Book.find_by_grandham_id(params[:id])
-
-    respond_to do |format|
-      if @book.update_attributes(params[:book])
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
     end
   end
 

@@ -8,7 +8,7 @@
 
   .row
     .span12
-      %table.table.table-striped.admin-authors-table
+      %table.table.table-striped.grandham-list-data-table
         %thead
           %th Book
           %th
@@ -18,7 +18,7 @@
               %td.tex-item
                 = link_to formatted_name(book), language_book_path(book.language, book)
               %td.tex-item
-                = link_to edit_language_admin_book_path(current_language, book) do
+                = link_to edit_language_book_path(current_language, book, return_to: 'admin') do
                   %i.icon-edit
                   edit
 

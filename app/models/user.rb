@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
     self.save
   end
 
-  def is_a_admin?
+  def is_an_admin?
     ['super_admin', 'admin'].include? role
   end
 

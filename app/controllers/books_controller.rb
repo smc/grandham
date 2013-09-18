@@ -37,6 +37,8 @@ class BooksController < ApplicationController
 
   def update
     respond_to do |format|
+      @book.update_attributes params[:book]
+
       record_edit @book, params[:book]
       format.json { respond_with_bip(@book) }
     end

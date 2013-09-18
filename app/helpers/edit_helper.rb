@@ -9,9 +9,15 @@ module EditHelper
     old_value = object.send(field)
     new_value = object_params[field]
 
-    object.edits.create old_value: old_value, new_value: new_value, user_id: current_user.id, field: field, language_id: object.language.id, book_id: book_id
+    if current_user.is_an_admin?
+      object.update_attributes object_params
+      state = 'approved'
+    else
+      flash[:notice] = 'Your edit(s) have been submitted for approval.'
+      state = nil
+    end
 
-    flash[:notice] = 'Your edit(s) have been submitted for approval.'
+    object.edits.create old_value: old_value, new_value: new_value, user_id: current_user.id, field: field, language_id: object.language.id, book_id: book_id, state: state
   end
 
   def author_path(object, param = nil)
