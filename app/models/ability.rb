@@ -8,6 +8,8 @@ class Ability
       when 'Admin'
         can :manage, :all if user.role? :admin
         can :manage, :all if user.role? :super_admin
+      when 'Publisher'
+        can :manage, :all if user.role? :publisher
       else
         can :manage, :all if user.role? :admin
         can :manage, :all if user.role? :super_admin

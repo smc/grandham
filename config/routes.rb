@@ -3,6 +3,8 @@ Grandham::Application.routes.draw do
 
   devise_for :users
 
+
+
   resources :publishers
   resources :libraries
   resources :authors
@@ -13,6 +15,10 @@ Grandham::Application.routes.draw do
   root to: 'books#index'
 
   resources :language do
+    namespace :publisher do
+      resources :books
+    end
+
     namespace :admin do
       resources :publishers
       resources :authors

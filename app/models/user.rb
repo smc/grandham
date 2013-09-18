@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :new_items
 
   belongs_to :language
+  belongs_to :publisher
 
   def role?(key)
     role == key.to_s

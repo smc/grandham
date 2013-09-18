@@ -6,5 +6,8 @@
   - if current_user.is_a_admin?
     %li
       = link_to 'Dashboard', language_admin_dashboard_index_path(current_user.language)
+  - elsif current_user.role == 'publisher'
+    %li
+      = link_to 'Add new publication', new_language_publisher_book_path(current_user.publisher.language)
   %li
     = link_to I18n.t('.sign_out'), destroy_user_session_path, method: :delete

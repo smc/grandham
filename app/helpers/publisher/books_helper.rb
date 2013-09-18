@@ -1,0 +1,2 @@
+module Publisher::BooksHelper
+end

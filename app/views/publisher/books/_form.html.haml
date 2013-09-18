@@ -1,0 +1,33 @@
+= simple_form_for @book, url: language_publisher_books_path(current_language), html: { class: 'form-horizontal' }, multipart: true do |f|
+  %fieldset
+    %legend
+      New book in
+      = link_to current_user.publisher.name, language_publisher_path(current_user.publisher.language, current_user.publisher)
+
+    .control-group
+      = f.label :state_id, 'Language', class: 'control-label'
+      .controls#region
+        = f.collection_select :language_id, Language.all, :id, :name
+
+    = f.input :title, as: :string, input_html: { class: 'input-xxlarge' }
+    = f.fields_for :authors do |author_form|
+      = author_form.input :name, as: :string, input_html: { class: 'input-xxlarge' }, label: 'Author'
+
+    = f.fields_for :libraries do |library_form|
+      = library_form.input :name, as: :string, input_html: { class: 'input-xxlarge' }, label: 'Library'
+
+    = f.input :isbn, as: :string, input_html: { class: 'input-xxlarge' }, label: 'ISBN'
+    = f.input :year, as: :string, input_html: { class: 'input-xxlarge' }
+    = f.input :pages, as: :string, input_html: { class: 'input-xxlarge' }
+    = f.input :edition, as: :string, input_html: { class: 'input-xxlarge' }
+    = f.input :description, as: :text, input_html: { rows: 5, cols: 50, class: 'input-xxlarge' }
+
+    = f.fields_for :covers do |cover_form|
+      .control-group
+        = cover_form.label :image, 'Book cover', class: 'control-label'
+        .controls
+          = cover_form.file_field :image
+
+    .form-actions
+      = f.submit 'Submit', class: 'btn btn-primary'
+      = link_to 'Cancel', root_path, class: 'btn'

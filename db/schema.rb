@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130917111822) do
+ActiveRecord::Schema.define(:version => 20130918163239) do
 
   create_table "authors", :force => true do |t|
     t.text     "name"
@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(:version => 20130917111822) do
     t.string   "role"
     t.string   "login"
     t.integer  "language_id"
+    t.integer  "publisher_id"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
