@@ -27,7 +27,7 @@
         .status
           .row
             .span2
-              %h4 Books
+              %h4= link_to 'Books', language_admin_books_path(current_language)
             .span3
               %h4= current_language.books.count
           .row

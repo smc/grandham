@@ -32,22 +32,6 @@ class Admin::BooksController < AdminController
     redirect_to language_admin_books_path(current_language), notice: "'#{@book.title}' has been unpublished."
   end
 
-  def create
-    @book = Book.unscoped.new(params[:book])
-
-    @book.publishers << current_user.publisher
-
-    if @book.save
-      @book.new_items.create user_id: current_user.id, language_id: @book.language.id, state: 'approved'
-      @book.approve!
-
-      redirect_to language_book_path(@book.language, @book)
-    else
-      @book.covers.build
-      render "new"
-    end
-  end
-
   def destroy
     @book = Book.find_by_grandham_id(params[:id])
     @book.destroy
