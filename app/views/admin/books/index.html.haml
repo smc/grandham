@@ -19,9 +19,14 @@
                 = link_to formatted_name(book), language_book_path(book.language, book)
               %td.tex-item
                 = link_to edit_language_book_path(current_language, book, return_to: 'admin') do
-                  %i.icon-edit
                   edit
 
-                = link_to language_admin_book_path(current_language, book), method: :delete, class: 'book-delete-link', confirm: 'Are you sure?' do
-                  %i.icon-remove
+                - if book.published?
+                  = link_to unpublish_language_admin_book_path(current_language, book), method: :post, class: 'book-manage-link' do
+                    unpublish
+                - else
+                  = link_to publish_language_admin_book_path(current_language, book), method: :post, class: 'book-manage-link' do
+                    publish
+
+                = link_to language_admin_book_path(current_language, book), method: :delete, class: 'book-manage-link', confirm: 'Are you sure?' do
                   delete

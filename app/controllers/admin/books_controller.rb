@@ -3,10 +3,10 @@ class Admin::BooksController < AdminController
 
   respond_to :html, :json
 
-  before_filter :find_book, only: [ :show, :update ]
+  before_filter :find_book, only: [ :show, :update, :publish, :unpublish ]
 
   def index
-    @books = current_language.books
+    @books = current_language.books.unscoped
     respond_with @books
   end
 
@@ -20,6 +20,16 @@ class Admin::BooksController < AdminController
     @book.publishers.build
     @book.covers.build
     @book.libraries.build
+  end
+
+  def publish
+    @book.publish!
+    redirect_to language_admin_books_path(current_language), notice: "'#{@book.title}' has been published."
+  end
+
+  def unpublish
+    @book.unpublish!
+    redirect_to language_admin_books_path(current_language), notice: "'#{@book.title}' has been unpublished."
   end
 
   def create
@@ -51,6 +61,6 @@ class Admin::BooksController < AdminController
   private
 
   def find_book
-    @book = Book.find_by_grandham_id(params[:id])
+    @book = Book.unscoped.find_by_grandham_id(params[:id])
   end
 end

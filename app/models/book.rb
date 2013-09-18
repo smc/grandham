@@ -1,11 +1,12 @@
 class Book < ActiveRecord::Base
 
-  default_scope where(approved: true)
+  default_scope where(approved: true, published: true)
 
   attr_accessible :title, :isbn, :pages, :year, :description, :edition, \
                   :authors_attributes, :publishers_attributes, :libraries_attributes, \
                   :ddc, :volume, :series, :price, :length, :title_orginal, :illustrator, \
-                  :note, :grandham_id, :language_id, :preface, :covers_attributes
+                  :note, :grandham_id, :language_id, :preface, :covers_attributes, \
+                  :published
 
   belongs_to :language
 
@@ -62,6 +63,14 @@ class Book < ActiveRecord::Base
 
   def self.associated_records
     ['Author', 'Publisher', 'Library']
+  end
+
+  def publish!
+    self.update_attribute :published, true
+  end
+
+  def unpublish!
+    self.update_attribute :published, false
   end
 
   private
