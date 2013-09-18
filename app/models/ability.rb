@@ -10,6 +10,8 @@ class Ability
         can :manage, :all if user.role? :super_admin
       when 'Publisher'
         can :manage, :all if user.role? :publisher
+      when 'Library'
+        can :manage, :all if user.role? :librarian
       else
         can :manage, :all if user.role? :admin
         can :manage, :all if user.role? :super_admin

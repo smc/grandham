@@ -9,5 +9,8 @@
   - elsif current_user.role == 'publisher'
     %li
       = link_to 'Add new publication', new_language_publisher_book_path(current_user.publisher.language)
+  - elsif current_user.role == 'librarian'
+    %li
+      = link_to 'Add new book in library', new_language_library_book_path(current_user.library.language)
   %li
     = link_to I18n.t('.sign_out'), destroy_user_session_path, method: :delete

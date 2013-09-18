@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :login
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :login, :publisher_id, :library_id
   # attr_accessible :title, :body
 
   validates :login, uniqueness: true, presence: true
@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 
   belongs_to :language
   belongs_to :publisher
+  belongs_to :library
 
   def role?(key)
     role == key.to_s

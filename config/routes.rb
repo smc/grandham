@@ -19,6 +19,10 @@ Grandham::Application.routes.draw do
       resources :books
     end
 
+    namespace :library do
+      resources :books
+    end
+
     namespace :admin do
       resources :publishers
       resources :authors
