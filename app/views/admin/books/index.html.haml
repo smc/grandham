@@ -1,0 +1,27 @@
+.container
+  .row
+    .span8
+      %h3 Books
+    .span4
+      .pull-right
+        = link_to 'Add', new_language_admin_book_path(current_language), class: 'btn btn-primary'
+
+  .row
+    .span12
+      %table.table.table-striped.admin-authors-table
+        %thead
+          %th Book
+          %th
+        %tbody.grandham-list
+          - @books.each do |book|
+            %tr
+              %td.tex-item
+                = link_to formatted_name(book), language_book_path(book.language, book)
+              %td.tex-item
+                = link_to edit_language_admin_book_path(current_language, book) do
+                  %i.icon-edit
+                  edit
+
+                = link_to language_admin_book_path(current_language, book), method: :delete, class: 'book-delete-link', confirm: 'Are you sure?' do
+                  %i.icon-remove
+                  delete

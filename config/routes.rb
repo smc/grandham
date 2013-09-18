@@ -28,6 +28,7 @@ Grandham::Application.routes.draw do
       resources :authors
       resources :libraries
       resources :dashboard
+      resources :books
 
       resources :new_items do
         post :approve, on: :member
