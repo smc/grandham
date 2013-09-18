@@ -26,9 +26,18 @@ class BooksController < ApplicationController
   def create
     @book = Book.unscoped.new(params[:book])
     if @book.save
-      @book.new_items.create user_id: current_user.id, language_id: @book.language.id
-      flash[:notice] = 'The book you added has been submitted for approval. Thank you!'
-      redirect_to root_path
+      if current_user.is_an_admin?
+        @book.approve!
+        state = 'approved'
+        redirect_path = language_book_path(@book.language, @book)
+      else
+        state = nil
+        redirect_path = root_path
+        flash[:notice] = 'The book you added has been submitted for approval. Thank you!'
+      end
+
+      @book.new_items.create user_id: current_user.id, language_id: @book.language.id, state: state
+      redirect_to redirect_path
     else
       @book.covers.build
       render "new"
