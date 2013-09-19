@@ -1,0 +1,2 @@
+module Admin::LibrariesHelper
+end

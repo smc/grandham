@@ -39,6 +39,6 @@
               %h4= current_language.publishers.count
           .row
             .span2
-              %h4 Libraries
+              %h4= link_to 'Libraries', language_admin_libraries_path(current_language)
             .span3
               %h4= current_language.libraries.count

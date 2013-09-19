@@ -9,6 +9,9 @@ en:
   author:
     authors: Authors
 
+  library:
+    libraries: Libraries
+
   new_item:
     new_items: New
     pending: You have %{count} new item(s) to review

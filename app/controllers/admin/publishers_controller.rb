@@ -1,4 +1,6 @@
-class Admin::PublishersController < ApplicationController
+class Admin::PublishersController < AdminController
+  load_and_authorize_resource :publisher, :find_by => :find_by_grandham_id
+
   respond_to :html
 
   before_filter :find_publisher, except: [ :index, :new ]

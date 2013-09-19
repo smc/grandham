@@ -1,0 +1,24 @@
+.container
+  .row
+    .span8
+      %h3= I18n.t('library.libraries')
+    .span4
+      .pull-right
+        = link_to 'Add', new_language_admin_library_path(current_language), class: 'btn btn-primary'
+
+  .row
+    .span12
+      %table.table.table-striped.grandham-list-data-table
+        %thead
+          %th Name
+          %th Place
+          %th
+        %tbody.grandham-list
+          - @libraries.each do |library|
+            %tr
+              %td.tex-item
+                = link_to library.name, language_library_path(library.language, library)
+              %td.tex-item
+                = library.place
+              %td.tex-item
+                = link_to 'edit', edit_language_admin_library_path(current_language, library)

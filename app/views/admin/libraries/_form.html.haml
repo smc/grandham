@@ -1,0 +1,11 @@
+- form_path = @library.new_record? ? language_admin_libraries_path : language_admin_library_path
+= simple_form_for @library, url: form_path, html: { class: 'form-horizontal' } do |f|
+  %fieldset
+    %legend= @library.new_record? ? 'Add Library' : 'Edit Library'
+
+    = f.input :name, as: :string, input_html: { class: 'input-xxlarge' }
+    = f.input :place, as: :string, input_html: { class: 'input-xxlarge' }
+
+    .form-actions
+      = f.submit 'Submit', class: 'btn btn-primary'
+      = link_to 'Cancel', language_admin_libraries_path(current_language), class: 'btn'
