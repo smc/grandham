@@ -15,9 +15,6 @@
         .value
           %p= link_to current_language.edits.not_reviewed.count, language_admin_edits_path(current_language)
 
-
-
-
   %br
   .row
     .span10.offset1
@@ -32,7 +29,7 @@
               %h4= current_language.books.count
           .row
             .span2
-              %h4 Authors
+              %h4= link_to 'Authors', language_admin_authors_path(current_language)
             .span3
               %h4= current_language.authors.count
           .row

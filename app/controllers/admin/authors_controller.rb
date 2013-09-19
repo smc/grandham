@@ -1,4 +1,6 @@
-class Admin::AuthorsController < ApplicationController
+class Admin::AuthorsController < AdminController
+  load_and_authorize_resource :author, :find_by => :find_by_grandham_id
+
   respond_to :html
 
   before_filter :find_author, except: [ :index, :new ]

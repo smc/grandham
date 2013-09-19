@@ -1,5 +1,5 @@
 class Admin::BooksController < AdminController
-  # load_and_authorize_resource :book, :find_by => :find_by_grandham_id
+  load_and_authorize_resource :book, :find_by => :find_by_grandham_id
 
   respond_to :html, :json
 
