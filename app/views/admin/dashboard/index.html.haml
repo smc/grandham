@@ -34,7 +34,7 @@
               %h4= current_language.authors.count
           .row
             .span2
-              %h4 Publishers
+              %h4= link_to 'Publishers', language_admin_publishers_path(current_language)
             .span3
               %h4= current_language.publishers.count
           .row
