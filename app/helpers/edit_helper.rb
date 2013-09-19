@@ -14,7 +14,7 @@ module EditHelper
       state = 'approved'
     else
       flash[:notice] = 'Your edit(s) have been submitted for approval.'
-      state = nil
+      state = 'open'
     end
 
     object.edits.create old_value: old_value, new_value: new_value, user_id: current_user.id, field: field, language_id: object.language.id, book_id: book_id, state: state

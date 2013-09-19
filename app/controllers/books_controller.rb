@@ -31,7 +31,7 @@ class BooksController < ApplicationController
         state = 'approved'
         redirect_path = language_book_path(@book.language, @book)
       else
-        state = nil
+        state = 'open'
         redirect_path = root_path
         flash[:notice] = 'The book you added has been submitted for approval. Thank you!'
       end
