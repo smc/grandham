@@ -37,6 +37,10 @@ ready = function() {
     "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
     "sPaginationType": "bootstrap"
   });
+
+  $('input[id=book_covers_attributes_0_image]').change(function(){
+    $(this).closest('form').submit();
+  });
 };
 
 $(document).ready(ready);

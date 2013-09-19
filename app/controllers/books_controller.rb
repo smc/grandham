@@ -58,6 +58,11 @@ class BooksController < ApplicationController
     @edits    = (@book.edits.approved + current_language.edits.where(book_id: @book.id)).sort
   end
 
+  def update_cover
+    @book.covers.create image: File.open(params[:book][:covers_attributes]['0'][:image].path)
+    redirect_to edit_language_book_path(@book.language, @book)
+  end
+
   private
 
   def find_book

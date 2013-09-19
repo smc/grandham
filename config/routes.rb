@@ -8,7 +8,9 @@ Grandham::Application.routes.draw do
   resources :publishers
   resources :libraries
   resources :authors
-  resources :books
+  resources :books do
+    post :update_cover, on: :member
+  end
 
   resource :search, only: [ :show ]
 

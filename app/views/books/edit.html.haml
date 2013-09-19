@@ -13,6 +13,13 @@
   .row
     .span2
       = image_tag @book.covers.last.image.url(:medium), class: 'img-polaroid'
+      %br
+      = link_to 'change cover', '#', onclick: "$('input[id=book_covers_attributes_0_image]').click();", style: 'text-align: center;display: block;'
+
+      .hide
+        = form_for @book, url: update_cover_book_path(@book), method: :post, remote: true do |f|
+          = f.fields_for :covers do |cover_form|
+            = cover_form.file_field :image
 
     .span8.item-information-section
       %h4= inplace_edit @book, :title
