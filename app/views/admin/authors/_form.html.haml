@@ -5,6 +5,12 @@
 
     = f.input :name, as: :string, input_html: { class: 'input-xxlarge' }
 
+    = f.fields_for :profile_pictures do |profile_picture_form|
+    .control-group
+      = profile_picture_form.label :image, 'Profile Picture', class: 'control-label'
+      .controls
+        = profile_picture_form.file_field :image
+
     .form-actions
       = f.submit 'Submit', class: 'btn btn-primary'
       = link_to 'Cancel', language_admin_authors_path(current_language), class: 'btn'

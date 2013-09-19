@@ -1,5 +1,5 @@
 class Publisher < ActiveRecord::Base
-  attr_accessible :name, :language_id, :grandham_id, :place
+  attr_accessible :name, :language_id, :grandham_id, :place, :logos_attributes
 
   belongs_to :language
 

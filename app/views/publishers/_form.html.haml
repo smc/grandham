@@ -5,6 +5,12 @@
   = f.input :name, as: :string, input_html: { class: 'input-xxlarge' }
   = f.input :place, as: :string, input_html: { class: 'input-xxlarge' }
 
+  = f.fields_for :logos do |logo_form|
+    .control-group
+      = logo_form.label :image, 'Logo', class: 'control-label'
+      .controls
+        = logo_form.file_field :image
+
   .form-actions
     = f.submit 'Submit', class: 'btn btn-primary'
     = link_to 'Cancel', language_publisher_path(@publisher.language, @publisher), class: 'btn'
