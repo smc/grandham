@@ -1,7 +1,7 @@
 class PublishersController < ApplicationController
   load_and_authorize_resource :publisher, :find_by => :find_by_grandham_id
 
-  respond_to :html
+  respond_to :html, :json
 
   before_filter :find_publisher, only: [ :show, :update ]
 

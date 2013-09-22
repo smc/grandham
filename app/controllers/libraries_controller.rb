@@ -1,7 +1,7 @@
 class LibrariesController < ApplicationController
   load_and_authorize_resource :library, :find_by => :find_by_grandham_id
 
-  respond_to :html
+  respond_to :html, :json
 
   before_filter :find_library, only: [ :show, :update, :books ]
 
