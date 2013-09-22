@@ -1,4 +1,6 @@
 Grandham::Application.routes.draw do
+  get "qr_generator/image"
+
   get "error/access_denied"
 
   devise_for :users

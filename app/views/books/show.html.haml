@@ -12,6 +12,7 @@
   .row
     .span2
       = image_tag @book.covers.last.image.url(:medium), class: 'img-polaroid'
+      = image_tag qr_for(@book), class: 'img-polaroid qr-code'
 
     .span8.item-information-section
       %h4= @book.title

@@ -23,6 +23,8 @@ gem "cancan"
 
 gem 'turbolinks'
 gem 'nprogress-rails'
+gem 'rqrcode-rails3'
+gem 'mini_magick'
 
 # Gems used only for assets and not required
 # in production environments by default.
