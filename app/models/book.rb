@@ -51,7 +51,7 @@ class Book < ActiveRecord::Base
   end
 
   def details
-    restricted_keys = [:id, :created_at, :updated_at, :approved, :reviewed, :grandham_id, :language_id]
+    restricted_keys = [:id, :created_at, :updated_at, :approved, :reviewed, :grandham_id, :language_id, :published]
     attrs = attributes.with_indifferent_access
     restricted_keys.collect{ |key| attrs.delete key }
     attrs
