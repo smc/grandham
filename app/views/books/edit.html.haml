@@ -73,12 +73,6 @@
         .span1
           .book-info
             %p.book-sub-heading
-              DDC
-            %p= inplace_edit @book, :ddc
-
-        .span1
-          .book-info
-            %p.book-sub-heading
               SERIES
             %p= inplace_edit @book, :series
       .row
@@ -98,13 +92,3 @@
         %p.book-sub-heading
           DESCRIPTION
         %p= inplace_edit @book, :description, type: :textarea
-
-      .book-info
-        %p.book-sub-heading
-          PREFACE
-        %p= inplace_edit @book, :preface, type: :textarea
-
-      .book-info
-        %p.book-sub-heading
-          NOTE
-        %p= inplace_edit @book, :note, type: :textarea
