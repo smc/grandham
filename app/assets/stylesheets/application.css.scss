@@ -16,17 +16,20 @@
 @import 'nprogress';
 @import 'nprogress-bootstrap';
 
-@import "bootswatch/readable/variables";
+@import "twitter/bootstrap";
 
-@import "bootstrap";
 
-body { padding-top: 60px; }
+// @import "bootswatch/readable/variables";
 
-@import "bootstrap-responsive";
+// @import "bootstrap";
 
-@import "bootswatch/readable/bootswatch";
+// body { padding-top: 60px; }
 
-@import 'font-awesome';
+// @import "bootstrap-responsive";
+
+// @import "bootswatch/readable/bootswatch";
+
+// @import 'font-awesome';
 
 
 ul.side-bar-list > li {
