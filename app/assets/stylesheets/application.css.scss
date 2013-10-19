@@ -19,114 +19,49 @@
 @import "twitter/bootstrap";
 
 
-// @import "bootswatch/readable/variables";
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 
-// @import "bootstrap";
+.header,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
 
-// body { padding-top: 60px; }
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
 
-// @import "bootstrap-responsive";
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
 
-// @import "bootswatch/readable/bootswatch";
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
 
-// @import 'font-awesome';
-
-
-ul.side-bar-list > li {
-  background-color: rgba(238, 238, 238, 0.37);
-  padding: 12px;
-  list-style-type: none;
-  margin-bottom: 15px;
-
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
-
-  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
-     -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
-          box-shadow: 0 1px 4px rgba(0,0,0,.065);
-
-  & a:hover {
-    text-decoration: none;
-    color: #6D5030;
+@media (min-width: 768px) {
+  .container {
+    max-width: 970px;
   }
 }
 
-ul.side-bar-list > li:hover{
-  cursor: pointer;
-  background-color: rgba(211, 193, 193, 0.37);
-}
+@media screen and (min-width: 768px) {
 
-a {
-  color: #267cb7;
-}
-
-.purr {
-  position: fixed;
-  top: 30px;
-  right: 100px;
-  width: 250px;
-  padding: 20px;
-  background-color: #FCC;
-  border: solid 2px #C66;
-  &:first-letter { text-transform: uppercase; }
-}
-
-// .best_in_place:hover {
-//   background-color: #eee;
-//   cursor: pointer;
-// }
-
-span.external_link {
-  font-size: 15px;
-}
-
-span.inplace-edit{
-  font-size: 15px;
-  &:hover {
-    cursor: pointer;
+  .header,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
   }
-}
 
-.inplace-edit-container {
-  display: inline;
-
-  // & span.inplace-edit {
-  //   visibility: hidden;
-  // }
-
-  // &:hover {
-  //   & span.inplace-edit {
-  //     visibility: visible;
-  //   }
-  // }
-}
-
-.inline-add {
-  font-size: 15px;
-  font-weight: normal;
-}
-
-ul.associated-books-list {
-  list-style-type: none;
-}
-
-ul.grandham-items-list {
-  list-style-type: none;
-}
-
-li.grandham-list-item {
-  margin-bottom: 15px;
-}
-
-.list-grandham-title {
-  margin-top: -2px;
-}
-
-.grandham-field-edit {
-  color: #267CB7;
-}
-
-img.qr-code{
-  margin-top: 20px;
+  .header {
+    margin-bottom: 15px;
+  }
 }
