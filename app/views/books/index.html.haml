@@ -1,12 +1,8 @@
-.container
-  %br
-  .row
-    = render partial: 'layouts/side_bar', locals: { active: 'books' }
+%br
 
-    .span9
-      %ul.grandham-items-list
-        - @books.each do |book|
-          = render partial: 'book', locals: { book: book }
+- @books.each do |book|
+  = render partial: 'book', locals: { book: book }
 
-      .list-pagination
-        = will_paginate @books, renderer: BootstrapPagination::Rails
+
+.grandham-list-pagination
+  = will_paginate @books, renderer: BootstrapPagination::Rails

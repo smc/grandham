@@ -1,12 +1,6 @@
-%li.grandham-list-item
-  .row
-    .span1
-      .list-item-book-cover
-        = image_tag book.covers.last.image.url(:medium), class: 'img-polaroid'
-    .span6
-      %h4.list-grandham-title
-        = link_to book.title, language_book_path(book.language, book)
-
-      %p
-        = link_to book.authors.first.name, language_author_path(book.authors.first.language, book.authors.first)
-        = ", ..." if book.authors.count > 1
+.media.grandham-list-item
+  %a.pull-left{href: "#"}
+    %img.media-object.grandham-list.img-thumbnail{alt: "...", src: book.covers.last.image.url(:thumb)}/
+  .media-body
+    %h4.media-heading
+      = link_to book.title, language_book_path(book.language, book)

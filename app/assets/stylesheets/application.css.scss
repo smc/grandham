@@ -65,3 +65,25 @@ body {
     margin-bottom: 15px;
   }
 }
+
+img.media-object.grandham-list {
+  max-height: 64px;
+  max-width: 64px;
+}
+
+h4.media-heading a {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+
+  &:hover {
+    color: #428BCA;
+    text-decoration: underline;
+  }
+}
+
+.grandham-list-item {
+ padding-bottom: 20px;
+ border-bottom: 1px solid #efefef;
+}
