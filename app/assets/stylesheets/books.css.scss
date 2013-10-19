@@ -2,36 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// Grandham lists
-
-.grandham-list > tr > td.tex-item {
-  width: 30%;
-}
-
-.list-pagination {
-  text-align: center;
-}
-
-.book-cover-page-large {
-  margin-top: 30px;
-  height: 160px;
-}
-
-.item-control-links {
-  margin-top: 10px;
-}
-
-.book-sub-heading {
-  font-size: 14px;
-}
-
-.book-info {
-  margin-top: 30px;
-   p {
-    line-height: 1em;
-  }
-}
-
-.item-information-section {
-  margin-top: -15px;
+p.book-information {
+  font-size: 1.2em;
 }

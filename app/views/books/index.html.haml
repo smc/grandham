@@ -1,8 +1,12 @@
-%br
+.row
+  .col-md-8
+    %br
 
-- @books.each do |book|
-  = render partial: 'book', locals: { book: book }
+    - @books.each do |book|
+      = render partial: 'book', locals: { book: book }
 
+    .grandham-list-pagination
+      = will_paginate @books, renderer: BootstrapPagination::Rails
 
-.grandham-list-pagination
-  = will_paginate @books, renderer: BootstrapPagination::Rails
+    - content_for :resources do
+      - render 'common/resources'

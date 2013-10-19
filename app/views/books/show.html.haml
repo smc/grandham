@@ -1,88 +1,87 @@
-.container
-  .row.item-control-links
-    .span3.offset9
-      = link_to edit_language_book_path(@book.language, @book), class: 'btn' do
-        %i.icon-edit
-        edit
+.row
+  .col-md-8
 
-      = link_to history_language_book_path(@book.language, @book), class: 'btn' do
-        %i.icon-time
-        history
+    %h2= @book.title
+    %br
 
-  .row
-    .span2
-      = image_tag @book.covers.last.image.url(:medium), class: 'img-polaroid'
-      = image_tag qr_for(@book), class: 'img-polaroid qr-code'
+    %h4 Basic Information
+    .row
+      .col-md-2
+        %p Authors
+      .col-md-6
+        %p.book-information= raw @book.authors.collect{ |a| link_to a.name, language_author_path(a.language, a) }.join(',')
 
-    .span8.item-information-section
-      %h4= @book.title
+    .row
+      .col-md-2
+        %p Publishers
+      .col-md-6
+        %p.book-information= raw @book.publishers.collect{ |p| link_to p.name, language_publisher_path(p.language, p) }.join(',')
 
-      .book-info
-        %p.book-sub-heading
-          = "AUTHOR".pluralize(@book.authors.count).upcase
-        - @book.authors.each do |author|
-          %p= link_to author.name, language_author_path(author.language, author)
+    .row
+      .col-md-2
+        %p ISBN
+      .col-md-6
+        %p.book-information= @book.isbn
 
-      .book-info
-        %p.book-sub-heading
-          = "PUBLISHER".pluralize(@book.publishers.count).upcase
-        - @book.publishers.each do |publisher|
-          %p= link_to publisher.name, language_publisher_path(publisher.language, publisher)
+    .row
+      .col-md-2
+        %p Pages
+      .col-md-6
+        %p.book-information= @book.pages
 
-      .book-info
-        %p.book-sub-heading
-          = "LIBRARY".pluralize(@book.libraries.count).upcase
-        - @book.libraries.each do |library|
-          %p= link_to library.name, language_library_path(library.language, library)
+    .row
+      .col-md-2
+        %p Year
+      .col-md-6
+        %p.book-information= @book.year
 
-      .book-info
-        %p.book-sub-heading
-          TITLE ORIGINAL
-        %p= @book.title_orginal
+    .row
+      .col-md-2
+        %p Edition
+      .col-md-6
+        %p.book-information= @book.edition
 
-      .book-info
-        %p.book-sub-heading
-          ISBN
-        %p= @book.isbn
+    .row
+      .col-md-2
+        %p Series
+      .col-md-6
+        %p.book-information= @book.series
 
-      .row
-        .span1
-          .book-info
-            %p.book-sub-heading
-              YEAR
-            %p= @book.year
-        .span1
-          .book-info
-            %p.book-sub-heading
-              PAGES
-            %p= @book.pages
+    .row
+      .col-md-2
+        %p Volume
+      .col-md-6
+        %p.book-information= @book.volume
 
-        .span1
-          .book-info
-            %p.book-sub-heading
-              EDITION
-            %p= @book.edition
+    %h4 More Information
 
+    .row
+      .col-md-2
+        %p Length
+      .col-md-6
+        %p.book-information= @book.year
 
-        .span1
-          .book-info
-            %p.book-sub-heading
-              SERIES
-            %p= @book.series
-      .row
-        .span1
-          .book-info
-            %p.book-sub-heading
-              LENGTH
-            %p= @book.length
+    .row
+      .col-md-2
+        %p Price
+      .col-md-6
+        %p.book-information= @book.price
 
-        .span2
-          .book-info
-            %p.book-sub-heading
-              PRICE
-            %p= @book.price
+    .row
+      .col-md-2
+        %p Original title
+      .col-md-6
+        %p.book-information= @book.title_orginal
 
-      .book-info
-        %p.book-sub-heading
-          DESCRIPTION
-        %p= @book.description
+    %br
+    %h4 Libraries
+    %ol
+      - @book.libraries.each do |library|
+        %li= link_to library.name, language_library_path(library.language, library)
+
+    %h4 Description
+    %p.book-information= @book.description
+
+  .col-md-4
+    .pull-right
+      = image_tag @book.covers.last.image.url(:medium), class: 'img-thumbnail'
