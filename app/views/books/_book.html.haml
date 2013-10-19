@@ -4,3 +4,6 @@
   .media-body
     %h4.media-heading
       = link_to book.title, language_book_path(book.language, book)
+
+    %p
+      = raw book.authors.collect{ |a| link_to a.name, language_author_path(a.language, a) }.join(',')

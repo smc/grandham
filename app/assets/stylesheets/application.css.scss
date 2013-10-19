@@ -71,16 +71,20 @@ img.media-object.grandham-list {
   max-width: 64px;
 }
 
-h4.media-heading a {
+h4.media-heading a, .media-body p a {
   color: #000;
   text-decoration: none;
   font-weight: bold;
-  font-size: 1em;
+  font-size: 1.1em;
 
   &:hover {
     color: #428BCA;
     text-decoration: underline;
   }
+}
+
+.media-body p a {
+  font-size: 1em;
 }
 
 .grandham-list-item {
