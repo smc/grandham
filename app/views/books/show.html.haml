@@ -5,73 +5,24 @@
     %br
 
     %h4 Basic Information
-    .row
-      .col-md-2
-        %p Authors
-      .col-md-6
-        %p.book-information= raw @book.authors.collect{ |a| link_to a.name, language_author_path(a.language, a) }.join(',')
+    - authors = raw @book.authors.collect{ |a| link_to a.name, language_author_path(a.language, a) }.join(',')
+    = render partial: 'books/book_information', locals: { field: 'Authors', value: authors }
 
-    .row
-      .col-md-2
-        %p Publishers
-      .col-md-6
-        %p.book-information= raw @book.publishers.collect{ |p| link_to p.name, language_publisher_path(p.language, p) }.join(',')
+    - publishers = raw @book.publishers.collect{ |p| link_to p.name, language_publisher_path(p.language, p) }.join(',')
+    = render partial: 'books/book_information', locals: { field: 'Publishers', value: publishers }
 
-    .row
-      .col-md-2
-        %p ISBN
-      .col-md-6
-        %p.book-information= @book.isbn
-
-    .row
-      .col-md-2
-        %p Pages
-      .col-md-6
-        %p.book-information= @book.pages
-
-    .row
-      .col-md-2
-        %p Year
-      .col-md-6
-        %p.book-information= @book.year
-
-    .row
-      .col-md-2
-        %p Edition
-      .col-md-6
-        %p.book-information= @book.edition
-
-    .row
-      .col-md-2
-        %p Series
-      .col-md-6
-        %p.book-information= @book.series
-
-    .row
-      .col-md-2
-        %p Volume
-      .col-md-6
-        %p.book-information= @book.volume
+    = book_information(@book, :isbn, 'ISBN')
+    = book_information(@book, :pages, 'Pages')
+    = book_information(@book, :year, 'Year')
+    = book_information(@book, :edition, 'Edition')
+    = book_information(@book, :series, 'Series')
+    = book_information(@book, :volume, 'Volume')
 
     %h4 More Information
 
-    .row
-      .col-md-2
-        %p Length
-      .col-md-6
-        %p.book-information= @book.year
-
-    .row
-      .col-md-2
-        %p Price
-      .col-md-6
-        %p.book-information= @book.price
-
-    .row
-      .col-md-2
-        %p Original title
-      .col-md-6
-        %p.book-information= @book.title_orginal
+    = book_information(@book, :length, 'Length')
+    = book_information(@book, :price, 'Price')
+    = book_information(@book, :title_orginal, 'Original title')
 
     %br
     %h4 Libraries
