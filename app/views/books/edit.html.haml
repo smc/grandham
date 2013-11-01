@@ -1,94 +1,36 @@
-.container
-  .row.item-control-links
-    .span3.offset9
-      - if params[:return_to] == 'admin'
-        - path = language_admin_books_path(@book.language)
-      - else
-        - path = language_book_path(@book.language, @book)
+.row
+  .col-md-12
+    %ul.nav.nav-tabs
+      %li
+        %a{href: "#"} Book
+      %li.active
+        %a{href: edit_language_book_path(@book.language, @book)} Edit
+      %li
+        %a{href: history_language_book_path(@book.language, @book)} History
 
-      = link_to path, class: 'btn' do
-        %i.icon-backward
-        back
+%br
 
-  .row
-    .span2
-      = image_tag @book.covers.last.image.url(:medium), class: 'img-polaroid'
-      %br
-      = link_to 'change cover', '#', onclick: "$('input[id=book_covers_attributes_0_image]').click();", style: 'text-align: center;display: block;'
+.row
+  .col-md-8
+    = simple_form_for @book, html: { class: 'form-horizontal' }, multipart: true do |f|
+      %fieldset
+        = f.input :title, as: :string, input_html: { class: 'input-xxlarge' }
 
-      .hide
-        = form_for @book, url: update_cover_book_path(@book), method: :post, remote: true do |f|
-          = f.fields_for :covers do |cover_form|
-            = cover_form.file_field :image
+        = f.fields_for :authors do |author_form|
+          = author_form.input :name, as: :string, input_html: { class: 'input-xxlarge' }, label: 'Author'
 
-    .span8.item-information-section
-      %h4= inplace_edit @book, :title
+        = f.fields_for :publishers do |publisher_form|
+          = publisher_form.input :name, as: :string, input_html: { class: 'input-xxlarge' }, label: 'Publisher'
 
-      .book-info
-        %p.book-sub-heading
-          = "AUTHOR".pluralize(@book.authors.count).upcase
-        - @book.authors.each do |author|
-          %p= inplace_edit author, :name
+        = f.fields_for :libraries do |library_form|
+          = library_form.input :name, as: :string, input_html: { class: 'input-xxlarge' }, label: 'Library'
 
-      .book-info
-        %p.book-sub-heading
-          = "PUBLISHER".pluralize(@book.publishers.count).upcase
-        - @book.publishers.each do |publisher|
-          %p= inplace_edit publisher, :name
+        = f.input :isbn, as: :string, input_html: { class: 'input-xxlarge' }, label: 'ISBN'
+        = f.input :year, as: :string, input_html: { class: 'input-xxlarge' }
+        = f.input :pages, as: :string, input_html: { class: 'input-xxlarge' }
+        = f.input :edition, as: :string, input_html: { class: 'input-xxlarge' }
+        = f.input :description, as: :text, input_html: { rows: 5, cols: 50, class: 'input-xxlarge' }
 
-      .book-info
-        %p.book-sub-heading
-          = "LIBRARY".pluralize(@book.libraries.count).upcase
-        - @book.libraries.each do |library|
-          %p= inplace_edit library, :name
-
-      .book-info
-        %p.book-sub-heading
-          TITLE ORIGINAL
-        %p= inplace_edit @book, :title_orginal
-
-      .book-info
-        %p.book-sub-heading
-          ISBN
-        %p= inplace_edit @book, :isbn
-
-      .row
-        .span1
-          .book-info
-            %p.book-sub-heading
-              YEAR
-            %p= inplace_edit @book, :year
-        .span1
-          .book-info
-            %p.book-sub-heading
-              PAGES
-            %p= inplace_edit @book, :pages
-
-        .span1
-          .book-info
-            %p.book-sub-heading
-              EDITION
-            %p= inplace_edit @book, :edition
-
-        .span1
-          .book-info
-            %p.book-sub-heading
-              SERIES
-            %p= inplace_edit @book, :series
-      .row
-        .span1
-          .book-info
-            %p.book-sub-heading
-              LENGTH
-            %p= inplace_edit @book, :length
-
-        .span2
-          .book-info
-            %p.book-sub-heading
-              PRICE
-            %p= inplace_edit @book, :price
-
-      .book-info
-        %p.book-sub-heading
-          DESCRIPTION
-        %p= inplace_edit @book, :description, type: :textarea
+        .form-actions
+          = f.submit 'Submit', class: 'btn btn-primary'
+          = link_to 'Cancel', root_path, class: 'btn'

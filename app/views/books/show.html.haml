@@ -4,9 +4,9 @@
       %li.active
         %a{href: "#"} Book
       %li
-        %a{href: "#"} Edit
+        %a{href: edit_language_book_path(@book.language, @book)} Edit
       %li
-        %a{href: "#"} History
+        %a{href: history_language_book_path(@book.language, @book)} History
 
 %br
 
