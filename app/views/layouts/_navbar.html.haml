@@ -33,6 +33,11 @@
               %i.icon-search
               = I18n.t('.search')
 
+          %li
+            = link_to about_path do
+              %i.icon-tasks
+              About
+
           - if user_signed_in?
             %li
               = render 'layouts/account_drop_down'
