@@ -1,3 +1,6 @@
+.row
+  = render partial: 'book_nav_links', locals: { activated_page: :history, book: @book }
+
 .container
   %br
   .row
@@ -20,5 +23,3 @@
               %p= "#{edit.user.login} edited #{edit.field} from '#{edit.old_value}' to '#{edit.new_value}'"
             - else
               %p= "#{edit.user.login} edited #{edit.editable_type} from '#{edit.old_value}' to '#{edit.new_value}'"
-
-

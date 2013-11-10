@@ -50,4 +50,9 @@ module ApplicationHelper
       end
     end
   end
+
+
+  def is_active(activated_page, page)
+    page == activated_page.to_s ? 'active' : ''
+  end
 end

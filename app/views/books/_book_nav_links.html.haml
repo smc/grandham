@@ -1,0 +1,8 @@
+.col-md-12
+  %ul.nav.nav-tabs
+    %li{ class: is_active(activated_page, 'show') }
+      = link_to 'Book', language_book_path(book.language, book)
+    %li{ class: is_active(activated_page, 'edit') }
+      = link_to 'Edit', edit_language_book_path(book.language, book)
+    %li{ class: is_active(activated_page, 'history') }
+      = link_to 'History', history_language_book_path(book.language, book)
