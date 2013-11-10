@@ -28,12 +28,13 @@
             = link_to 'Cancel', root_path, class: 'btn'
 
         .col-md-5
-          %h3 Authors
+          .authors.associated-record
+            %h3 Authors
 
-          = f.fields_for :authors do |author_form|
-            .input-group
-              = author_form.input :name, required: false, label: '', as: :string, input_html: { class: 'input-xxlarge' }
-              %span.input-group-btn
-                %button.btn.btn-default.btn-xs.remove-field{type: "button"} Remove
+            = f.fields_for :authors do |author_form|
+              .input-group.associated-item
+                = author_form.input :name, required: false, label: '', as: :string, input_html: { class: 'input-xxlarge' }
+                %span.input-group-btn
+                  %button.btn.btn-default.btn-xs.remove-field{type: "button"} Remove
 
-            = link_to "Add new author", '#'
+            = link_to "Add new author", '#', class: 'add-new-field', data: { recordlength: @book.authors.count }
