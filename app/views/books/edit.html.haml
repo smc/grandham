@@ -3,27 +3,37 @@
 
 %br
 
-.row
-  .col-md-8
+.container
+  .row
     = simple_form_for @book, html: { class: 'form-horizontal' }, multipart: true do |f|
       %fieldset
-        = f.input :title, as: :string, input_html: { class: 'input-xxlarge' }
+        .col-md-5
+          = f.input :title, as: :string, input_html: { class: 'input-xxlarge' }
 
-        = f.fields_for :authors do |author_form|
-          = author_form.input :name, as: :string, input_html: { class: 'input-xxlarge' }, label: 'Author'
 
-        = f.fields_for :publishers do |publisher_form|
-          = publisher_form.input :name, as: :string, input_html: { class: 'input-xxlarge' }, label: 'Publisher'
+          = f.fields_for :publishers do |publisher_form|
+            = publisher_form.input :name, as: :string, input_html: { class: 'input-xxlarge' }, label: 'Publisher'
 
-        = f.fields_for :libraries do |library_form|
-          = library_form.input :name, as: :string, input_html: { class: 'input-xxlarge' }, label: 'Library'
+          = f.fields_for :libraries do |library_form|
+            = library_form.input :name, as: :string, input_html: { class: 'input-xxlarge' }, label: 'Library'
 
-        = f.input :isbn, as: :string, input_html: { class: 'input-xxlarge' }, label: 'ISBN'
-        = f.input :year, as: :string, input_html: { class: 'input-xxlarge' }
-        = f.input :pages, as: :string, input_html: { class: 'input-xxlarge' }
-        = f.input :edition, as: :string, input_html: { class: 'input-xxlarge' }
-        = f.input :description, as: :text, input_html: { rows: 5, cols: 50, class: 'input-xxlarge' }
+          = f.input :isbn, as: :string, input_html: { class: 'input-xxlarge' }, label: 'ISBN'
+          = f.input :year, as: :string, input_html: { class: 'input-xxlarge' }
+          = f.input :pages, as: :string, input_html: { class: 'input-xxlarge' }
+          = f.input :edition, as: :string, input_html: { class: 'input-xxlarge' }
+          = f.input :description, as: :text, input_html: { rows: 5, cols: 50, class: 'input-xxlarge' }
 
-        .form-actions
-          = f.submit 'Submit', class: 'btn btn-primary'
-          = link_to 'Cancel', root_path, class: 'btn'
+          .form-actions
+            = f.submit 'Submit', class: 'btn btn-primary'
+            = link_to 'Cancel', root_path, class: 'btn'
+
+        .col-md-5
+          %h3 Authors
+
+          = f.fields_for :authors do |author_form|
+            .input-group
+              = author_form.input :name, required: false, label: '', as: :string, input_html: { class: 'input-xxlarge' }
+              %span.input-group-btn
+                %button.btn.btn-default.btn-xs.remove-field{type: "button"} Remove
+
+            = link_to "Add new author", '#'
