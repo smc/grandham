@@ -35,6 +35,6 @@
               .input-group.associated-item
                 = author_form.input :name, required: false, label: '', as: :string, input_html: { class: 'input-xxlarge' }
                 %span.input-group-btn
-                  %button.btn.btn-default.btn-xs.remove-field{type: "button"} Remove
+                  %button.btn.btn-default.btn-xs.remove-field{type: "button", data: { objecttype: 'author' }} Remove
 
             = link_to "Add new author", '#', class: 'add-new-field', data: { recordlength: @book.authors.count }

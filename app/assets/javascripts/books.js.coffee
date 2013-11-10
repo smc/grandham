@@ -17,5 +17,8 @@ $ ->
 
 
   $('.associated-record').on('click', '.remove-field', ->
-    $(@).closest('.associated-item').remove()
+    if $(@).closest('.associated-record').find('.associated-item').length > 1
+      $(@).closest('.associated-item').remove()
+    else
+      alert("Please add atleast one #{$(@).data('objecttype')}.")
     )
