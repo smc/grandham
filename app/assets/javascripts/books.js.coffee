@@ -5,6 +5,7 @@
 
 $ ->
   $('.add-new-field').click (event) ->
+
     associated_items = $(@).closest('.associated-record').find('.associated-item')
     count = $(@).data('recordlength') + 1
     $(@).data('recordlength', count)

@@ -32,9 +32,14 @@
             %h3 Authors
 
             = f.fields_for :authors do |author_form|
-              .input-group.associated-item
-                = author_form.input :name, required: false, label: '', as: :string, input_html: { class: 'input-xxlarge' }
-                %span.input-group-btn
-                  %button.btn.btn-default.btn-xs.remove-field{type: "button", data: { objecttype: 'author' }} Remove
+              = render partial: 'associated_record', locals: { form: author_form, object_type: 'author' }
 
             = link_to "Add new author", '#', class: 'add-new-field', data: { recordlength: @book.authors.count }
+
+          .authors.associated-record
+            %h3 Publishers
+
+            = f.fields_for :publishers do |publisher_form|
+              = render partial: 'associated_record', locals: { form: publisher_form, object_type: 'publisher' }
+
+            = link_to "Add new publisher", '#', class: 'add-new-field', data: { recordlength: @book.publishers.count }

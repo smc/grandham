@@ -1,0 +1,4 @@
+.input-group.associated-item
+  = form.input :name, required: false, label: '', as: :string, input_html: { class: 'input-xxlarge' }
+  %span.input-group-btn
+    %button.btn.btn-default.btn-xs.remove-field{type: "button", data: { objecttype: object_type }} Remove

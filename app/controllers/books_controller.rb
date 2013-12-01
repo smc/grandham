@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
   respond_to :html, :json
 
-  before_filter :find_book, only: [ :show, :update, :history ]
+  before_filter :find_book, only: [ :show, :update, :history, :edit ]
 
   def index
     collection = (current_language && current_language.books) || Book
@@ -51,6 +51,10 @@ class BooksController < ApplicationController
       record_edit @book, params[:book]
       format.json { respond_with_bip(@book) }
     end
+  end
+
+  def edit
+    @book.libraries.build if @book.publishers.empty?
   end
 
   def history
