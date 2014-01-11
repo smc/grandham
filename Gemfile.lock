@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/anjlab/bootstrap-rails.git
-  revision: 8826a3bfbbcfb18709f0e8bb0eff9cf921a479c3
-  specs:
-    anjlab-bootstrap-rails (3.0.0.3)
-      railties (>= 3.0)
-      sass (>= 3.2)
-
-GIT
   remote: git://github.com/rweng/jquery-datatables-rails.git
   revision: 494f752b8eb8350f33841c822a67d014c869219f
   specs:
@@ -52,6 +44,9 @@ GEM
     better_errors (0.9.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
+    bootstrap-sass-rails (3.0.3.0)
+      railties (>= 3.1.0)
+      sass-rails (>= 3.1.0)
     builder (3.0.4)
     cancan (1.6.10)
     capistrano (2.15.5)
@@ -252,9 +247,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  anjlab-bootstrap-rails!
   best_in_place
   better_errors
+  bootstrap-sass-rails
   cancan
   capistrano
   capybara

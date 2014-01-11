@@ -10,14 +10,12 @@
  *
  *= require_self
  *= require dataTables/jquery.dataTables.bootstrap
+ *= require twitter/bootstrap
  *= require_tree .
  */
 
 @import 'nprogress';
 @import 'nprogress-bootstrap';
-
-@import "twitter/bootstrap";
-
 
 body {
   padding-top: 20px;
