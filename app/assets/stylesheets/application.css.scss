@@ -93,3 +93,10 @@ h4.media-heading a, .media-body p a {
 .remove-field {
   margin: 0px -8px -6px 0px
 }
+
+.grandham-brand-logo {
+  color: #999;
+  &:hover {
+    text-decoration: none;
+  }
+}
