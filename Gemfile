@@ -2,31 +2,30 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'mysql2'
-gem 'haml-rails'
 gem 'devise'
-
-gem 'ruby-progressbar'
-gem 'jquery-rails'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap', '1.0.0'
 gem 'simple_form'
-
+gem 'jquery-rails'
+gem 'haml-rails'
 gem "paperclip", "~> 3.0"
+
+gem 'ruby-progressbar'
 
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
-gem 'best_in_place'
 gem "cancan"
 
 gem 'turbolinks'
 gem 'nprogress-rails'
+
 gem 'rqrcode-rails3'
 gem 'mini_magick'
+
+gem 'jbuilder'
+gem 'capistrano'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -36,16 +35,11 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'jquery-ui-rails'
   gem 'bootstrap-sass-rails'
-
-  # gem 'bootstrap-sass'
-  # gem 'bootswatch-rails'
-
-  # gem 'font-awesome-sass-rails'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :production do
+  gem 'therubyracer', :platforms => :ruby
 end
 
 group :test do
@@ -65,17 +59,3 @@ group :test, :development do
   gem 'rspec-rails'
   gem "factory_girl_rails", "~> 4.0"
 end
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
