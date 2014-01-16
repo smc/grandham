@@ -17,7 +17,6 @@
 
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
-//= require best_in_place
 //= require turbolinks
 //= require_tree .
 
