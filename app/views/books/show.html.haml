@@ -40,4 +40,4 @@
 
   .col-md-4
     .pull-right
-      = image_tag @book.covers.last.image.url(:medium), class: 'img-thumbnail'
+      = image_tag book_cover_picture(@book), class: 'img-thumbnail'

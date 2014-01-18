@@ -7,7 +7,7 @@
 
   .row
     .span2
-      = image_tag @author.profile_pictures.last.image.url(:medium), class: 'img-polaroid'
+      = image_tag author_profile_picture(@author), class: 'img-polaroid'
 
     .span8.item-information-section
       %h4= @author.name

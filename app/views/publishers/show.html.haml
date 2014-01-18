@@ -7,7 +7,7 @@
 
   .row
     .span2
-      = image_tag @publisher.logos.last.image.url(:medium), class: 'img-polaroid'
+      = image_tag publisher_logo(@publisher), class: 'img-polaroid'
 
     .span8.item-information-section
       %h4= @publisher.name
