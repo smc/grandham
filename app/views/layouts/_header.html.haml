@@ -9,9 +9,15 @@
         %span.glyphicon.glyphicon-search
         Search
     %li
-      %a{href: "#"}
-        %span.glyphicon.glyphicon-user
-        Sign in
+      - if user_signed_in?
+        = link_to destroy_user_session_path, method: :delete do
+          %span.glyphicon.glyphicon-user
+          Sign out
+      - else
+        = link_to new_user_session_path do
+          %span.glyphicon.glyphicon-user
+          Sign in
+
 
   %h3.text-muted
     = link_to '/', class: 'grandham-brand-logo' do
