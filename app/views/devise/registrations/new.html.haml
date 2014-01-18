@@ -1,10 +1,10 @@
 .container
   %br
   .row
-    .span10.offset2
+    .col-md-10.col-offset-2
       %h2 Sign up
       .row
-        .span4.sign-in-container
+        .col-md-6.sign-in-container
           = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
             = f.error_notification
             .form-inputs
@@ -15,14 +15,7 @@
 
               = f.button :submit, "Sign up", class: 'btn btn-primary'
 
-        .span5.social-sign-in-container
+        .col-md-4.social-sign-in-container
           %p
             Already have an account?
             = link_to 'Sign in', new_user_session_path
-          %br
-          %p Or you can
-          .row
-            .span2
-              %button.btn.btn-info Sign in with Facebook
-            .span2
-              %button.btn.btn-success Sign in with Google
