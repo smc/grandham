@@ -1,7 +1,6 @@
 .container
   %br
   .row
-    = render partial: 'layouts/side_bar', locals: { active: 'authors' }
 
     .span9
       %ul.grandham-items-list
@@ -10,3 +9,5 @@
 
       .list-pagination
         = will_paginate @authors, renderer: BootstrapPagination::Rails
+    - content_for :resources do
+      - render 'common/resources'

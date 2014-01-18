@@ -1,10 +1,8 @@
-%li.grandham-list-item
-  .row
-    .span1
-      .list-item-library-cover
-        = image_tag library.logos.last.image.url, class: 'img-polaroid'
-    .span6
-      %h4.list-grandham-title
+.media.grandham-list-item
+  %a.pull-left{href: "#"}
+    %img.media-object.grandham-list.img-thumbnail{alt: "...", src: library.logos.last.image.url(:thumb)}/
+    .media-body
+      %h4.media-heading
         = link_to library.name, language_library_path(library.language, library)
       - books_count = library.books.count
 
