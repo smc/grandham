@@ -11,7 +11,7 @@
   .col-md-5
     .btn-group.btn-group-justified
 
-      %a.btn.btn-default.active{type: "button"} Books
-      %a.btn.btn-default{type: "button"} Authors
-      %a.btn.btn-default{type: "button"} Publishers
-      %a.btn.btn-default{type: "button"} Libraries
+      %a.btn.btn-default.active{type: "button", href: current_language_path('books')} Books
+      %a.btn.btn-default{type: "button", href: current_language_path('authors')} Authors
+      %a.btn.btn-default{type: "button", href: current_language_path('publishers')} Publishers
+      %a.btn.btn-default{type: "button", href: current_language_path('libraries')} Libraries
