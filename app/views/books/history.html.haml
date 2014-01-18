@@ -1,25 +1,21 @@
 .row
   = render partial: 'book_nav_links', locals: { activated_page: :history, book: @book }
 
-.container
-  %br
-  .row
-    .span10.offset1
-      %h3
-        History of
-        = link_to @book.title, language_book_path(@book.language, @book)
-      .row
-        .span2
-          %p= @creation.created_at.strftime('%D %r')
-        .span7
-          %p= "#{@creation.user.login} created the book '#{@book.title}'"
+.row
+  .col-md-10.col-offset-1
+    %br
+    .row
+      .col-md-3
+        %p= @creation.created_at.strftime('%D %r')
+      .col-md-7
+        %p= "#{@creation.user.login} created the book '#{@book.title}'"
 
-      - @edits.each do |edit|
-        .row
-          .span2
-            %p= edit.created_at.strftime('%D %r')
-          .span7
-            - if edit.book_id.blank?
-              %p= "#{edit.user.login} edited #{edit.field} from '#{edit.old_value}' to '#{edit.new_value}'"
-            - else
-              %p= "#{edit.user.login} edited #{edit.editable_type} from '#{edit.old_value}' to '#{edit.new_value}'"
+    - @edits.each do |edit|
+      .row
+        .col-md-3
+          %p= edit.created_at.strftime('%D %r')
+        .col-md-7
+          - if edit.book_id.blank?
+            %p= "#{edit.user.login} edited #{edit.field} from '#{edit.old_value}' to '#{edit.new_value}'"
+          - else
+            %p= "#{edit.user.login} edited #{edit.editable_type} from '#{edit.old_value}' to '#{edit.new_value}'"
