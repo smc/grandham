@@ -33,13 +33,21 @@
 
                 = link_to "Add new author", '#', class: 'add-new-field', data: { recordlength: @book.authors.count }
 
-              .authors.associated-record
+            .col-md-5
+              .publishers.associated-records
                 %h3 Publishers
 
-                = f.fields_for :publishers do |publisher_form|
-                  = render partial: 'associated_record', locals: { form: publisher_form, object_type: 'publisher' }
+                - @book.publishers.each_with_index do |publisher, i|
+                  .row.associated-record{ data: { id: publisher.grandham_id, bookid: @book.grandham_id, type: 'publisher', count: (i+1) }}
+                    .col-md-12.highlight-form-removable-field
+                      .col-md-9
+                        %h4
+                          = link_to publisher.name, [publisher.language, publisher], target: '_blank'
+                      .col-md-1
+                        %button.btn.btn-default.remove-button Remove
 
                 = link_to "Add new publisher", '#', class: 'add-new-field', data: { recordlength: @book.publishers.count }
+
 
           %br
           .row
