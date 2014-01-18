@@ -1,28 +1,27 @@
-.container
-  .row.item-control-links
-    .span3.offset9
-      = link_to edit_language_author_path(@author.language, @author), class: 'btn' do
-        %i.icon-edit
-        edit
+.row
+  = render partial: 'author_nav_links', locals: { activated_page: :show, author: @author }
 
-  .row
-    .span2
-      = image_tag author_profile_picture(@author), class: 'img-polaroid'
+%br
+  
+.row
+  .col-md-8
 
-    .span8.item-information-section
-      %h4= @author.name
+    %h4= @author.name
+    %br
+    %h5= "Books (#{@author.books.count})"
 
-      %h5= "Books (#{@author.books.count})"
+    - @author.books.first(10).each do |book|
+      %li
+        = link_to language_book_path(book.language, book) do
+          = formatted_name book
 
-      %ul.associated-books-list
-        - @author.books.first(10).each do |book|
-          %li
-            %i.icon-book
-            = link_to language_book_path(book.language, book) do
-              = formatted_name book
+    - if @author.books.count > 10
+      %li
+        %br
+          = link_to 'more..', books_language_author_path(@author.language, @author) 
+              
+  .col-md-4
+    .pull-right
+      = image_tag @author.profile_pictures.last.image.url(:medium), class: 'img-polaroid'
 
-        - if @author.books.count > 10
-          %li
-            %br
-            %i.icon-list-ul
-            = link_to 'more..', books_language_author_path(@author.language, @author)
+

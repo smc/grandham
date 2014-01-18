@@ -1,29 +1,28 @@
-.container
-  .row.item-control-links
-    .span3.offset9
-      = link_to edit_language_publisher_path(@publisher.language, @publisher), class: 'btn' do
-        %i.icon-edit
-        edit
+.row
+  = render partial: 'publisher_nav_links', locals: {activated_page: :show, publisher: @publisher }
 
-  .row
-    .span2
+%br
+
+.row
+  .col-md-8
+
+    %h4= @publisher.name
+    %p= @publisher.place
+    %br
+    %h5= "Books (#{@publisher.books.count})"
+
+    - @publisher.books.first(10).each do |book|
+      %li
+        = link_to language_book_path(book.language, book) do
+          = formatted_name book
+
+    - if @publisher.books.count > 10
+      %li
+        %br
+          = link_to 'more..', books_language_publisher_path(@publisher.language, @publisher)
+
+  .col-md-4
+    .pull-right
       = image_tag publisher_logo(@publisher), class: 'img-polaroid'
 
-    .span8.item-information-section
-      %h4= @publisher.name
-      %p= @publisher.place
 
-      %h5= "Books (#{@publisher.books.count})"
-
-      %ul.associated-books-list
-        - @publisher.books.first(10).each do |book|
-          %li
-            %i.icon-book
-            = link_to language_book_path(book.language, book) do
-              = formatted_name book
-
-        - if @publisher.books.count > 10
-          %li
-            %br
-            %i.icon-list-ul
-            = link_to 'more..', books_language_publisher_path(@publisher.language, @publisher)

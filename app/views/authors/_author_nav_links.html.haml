@@ -1,0 +1,8 @@
+.col-md-12
+  %ul.nav.nav-tabs
+    %li{ class: is_active(activated_page, 'show') }
+      = link_to 'Author', language_author_path(author.language, author)
+    %li{ class: is_active(activated_page, 'edit') }
+      = link_to 'Edit', edit_language_author_path(author.language, author)
+    %li{ class: is_active(activated_page, 'hitory') }
+      = link_to 'History', '#' 
