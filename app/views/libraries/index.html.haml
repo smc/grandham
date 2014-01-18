@@ -1,13 +1,12 @@
-.container
-  %br
-  .row
+.row
+  .col-md-8
+    %br
 
-    .span9
-      %ul.grandham-items-list
-        - @libraries.each do |library|
-          = render partial: 'library', locals: { library: library }
+    - @libraries.each do |library|
+      = render partial: 'library', locals: { library: library }
 
-      .list-pagination
-        = will_paginate @libraries, renderer: BootstrapPagination::Rails
-        - content_for :resources do
-          - render 'common/resources'
+    .grandham-list-pagination
+      = will_paginate @libraries, renderer: BootstrapPagination::Rails
+
+- content_for :resources do
+  - render 'common/resources'

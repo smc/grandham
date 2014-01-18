@@ -1,13 +1,12 @@
-.container
-  %br
-  .row
+.row
+  .col-md-8
+    %br
 
-    .span9
-      %ul.grandham-items-list
-        - @authors.each do |author|
-          = render partial: 'author', locals: { author: author }
+    - @authors.each do |author|
+      = render partial: 'author', locals: { author: author }
 
-      .list-pagination
-        = will_paginate @authors, renderer: BootstrapPagination::Rails
-    - content_for :resources do
-      - render 'common/resources'
+    .grandham-list-pagination
+      = will_paginate @authors, renderer: BootstrapPagination::Rails
+
+- content_for :resources do
+  - render 'common/resources'
