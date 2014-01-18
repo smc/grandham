@@ -2,44 +2,40 @@
   = render partial: 'book_nav_links', locals: { activated_page: :edit, book: @book }
 
 %br
-
 .container
   .row
-    = simple_form_for @book, html: { class: 'form-horizontal' }, multipart: true do |f|
-      %fieldset
-        .col-md-5
-          = f.input :title, as: :string, input_html: { class: 'input-xxlarge' }
+    .col-md-12
+      = simple_form_for @book, html: { class: 'form-horizontal' }, multipart: true do |f|
+        %fieldset
+          .row
+            .col-md-5
+              = f.input :title, as: :string, input_html: { class: 'input-xxlarge' }
+              = f.input :isbn, as: :string, input_html: { class: 'input-xxlarge' }, label: 'ISBN'
+              = f.input :year, as: :string, input_html: { class: 'input-xxlarge' }
+              = f.input :pages, as: :string, input_html: { class: 'input-xxlarge' }
+              = f.input :edition, as: :string, input_html: { class: 'input-xxlarge' }
+              = f.input :description, as: :text, input_html: { rows: 5, cols: 50, class: 'input-xxlarge' }
 
+            .col-md-5
+              .authors.associated-record
+                %h3 Authors
 
-          = f.fields_for :publishers do |publisher_form|
-            = publisher_form.input :name, as: :string, input_html: { class: 'input-xxlarge' }, label: 'Publisher'
+                = f.fields_for :authors do |author_form|
+                  = render partial: 'associated_record', locals: { form: author_form, object_type: 'author' }
 
-          = f.fields_for :libraries do |library_form|
-            = library_form.input :name, as: :string, input_html: { class: 'input-xxlarge' }, label: 'Library'
+                = link_to "Add new author", '#', class: 'add-new-field', data: { recordlength: @book.authors.count }
 
-          = f.input :isbn, as: :string, input_html: { class: 'input-xxlarge' }, label: 'ISBN'
-          = f.input :year, as: :string, input_html: { class: 'input-xxlarge' }
-          = f.input :pages, as: :string, input_html: { class: 'input-xxlarge' }
-          = f.input :edition, as: :string, input_html: { class: 'input-xxlarge' }
-          = f.input :description, as: :text, input_html: { rows: 5, cols: 50, class: 'input-xxlarge' }
+              .authors.associated-record
+                %h3 Publishers
 
-          .form-actions
-            = f.submit 'Submit', class: 'btn btn-primary'
-            = link_to 'Cancel', root_path, class: 'btn'
+                = f.fields_for :publishers do |publisher_form|
+                  = render partial: 'associated_record', locals: { form: publisher_form, object_type: 'publisher' }
 
-        .col-md-5
-          .authors.associated-record
-            %h3 Authors
+                = link_to "Add new publisher", '#', class: 'add-new-field', data: { recordlength: @book.publishers.count }
 
-            = f.fields_for :authors do |author_form|
-              = render partial: 'associated_record', locals: { form: author_form, object_type: 'author' }
-
-            = link_to "Add new author", '#', class: 'add-new-field', data: { recordlength: @book.authors.count }
-
-          .authors.associated-record
-            %h3 Publishers
-
-            = f.fields_for :publishers do |publisher_form|
-              = render partial: 'associated_record', locals: { form: publisher_form, object_type: 'publisher' }
-
-            = link_to "Add new publisher", '#', class: 'add-new-field', data: { recordlength: @book.publishers.count }
+          %br
+          .row
+            .col-md-12.well
+              .form-actions
+                = f.submit 'Submit', class: 'btn btn-primary'
+                = link_to 'Cancel', root_path, class: 'btn'
