@@ -11,7 +11,7 @@
   .col-md-5
     .btn-group.btn-group-justified
 
-      %a.btn.btn-default.active{type: "button", href: current_language_path('books')} Books
-      %a.btn.btn-default{type: "button", href: current_language_path('authors')} Authors
-      %a.btn.btn-default{type: "button", href: current_language_path('publishers')} Publishers
-      %a.btn.btn-default{type: "button", href: current_language_path('libraries')} Libraries
+      %a.btn.btn-default{class: is_resource_active?('books'), type: "button", href: current_language_path('books')} Books
+      %a.btn.btn-default{class: is_resource_active?('authors'), type: "button", href: current_language_path('authors')} Authors
+      %a.btn.btn-default{class: is_resource_active?('publishers'), type: "button", href: current_language_path('publishers')} Publishers
+      %a.btn.btn-default{class: is_resource_active?('libraries'), type: "button", href: current_language_path('libraries')} Libraries

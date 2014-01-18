@@ -51,6 +51,9 @@ module ApplicationHelper
     end
   end
 
+  def is_resource_active?(grandham_resource)
+    'active' if params[:controller] == grandham_resource
+  end
 
   def is_active(activated_page, page)
     page == activated_page.to_s ? 'active' : ''
