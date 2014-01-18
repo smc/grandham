@@ -10,11 +10,9 @@
     %br
 
     %h4 Basic Information
-    - authors = raw @book.authors.collect{ |a| link_to a.name, language_author_path(a.language, a) }.join(',')
-    = render partial: 'books/book_information', locals: { field: 'Authors', value: authors }
 
-    - publishers = raw @book.publishers.collect{ |p| link_to p.name, language_publisher_path(p.language, p) }.join(',')
-    = render partial: 'books/book_information', locals: { field: 'Publishers', value: publishers }
+    = render partial: 'books/listed_information', locals: { field: 'Authors', records: @book.authors }
+    = render partial: 'books/listed_information', locals: { field: 'Publishers', records: @book.publishers }
 
     = book_information(@book, :isbn, 'ISBN')
     = book_information(@book, :pages, 'Pages')

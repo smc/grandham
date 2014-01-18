@@ -1,0 +1,11 @@
+.row
+  .col-md-2
+    %p= field
+  .col-md-6
+    %p.book-information= link_to records.first.name, [current_language, records.first]
+
+- if records.count > 1
+  - records[1..-1].each do |record|
+    .row
+      .col-md-6.col-md-offset-2
+        %p.book-information= link_to record.name, [current_language, record]
