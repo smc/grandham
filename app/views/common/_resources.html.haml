@@ -2,11 +2,12 @@
   .col-md-2
     .btn-group
       %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
-        Langauge
+        = (current_language && current_language.name) || 'Langauge'
         %span.caret
       %ul.dropdown-menu
-        %li
-          %a{href: "#"} Malayalam
+        - Language.all.each do |language|
+          %li
+            = link_to language.name, language_books_path(language)
 
   .col-md-5
     .btn-group.btn-group-justified
