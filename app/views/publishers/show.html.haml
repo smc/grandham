@@ -6,15 +6,15 @@
 .row
   .col-md-8
 
-    %h4= @publisher.name
+    %h2= @publisher.name
     %p= @publisher.place
     %br
-    %h5= "Books (#{@publisher.books.count})"
+    %h3= "Books (#{@publisher.books.count})"
 
     - @publisher.books.first(10).each do |book|
       %li
         = link_to language_book_path(book.language, book) do
-          = formatted_name book
+          %h4= formatted_name book
 
     - if @publisher.books.count > 10
       %li
@@ -23,6 +23,6 @@
 
   .col-md-4
     .pull-right
-      = image_tag publisher_logo(@publisher), class: 'img-polaroid'
+      = image_tag publisher_logo(@publisher), class: 'img-thumbnail'
 
 

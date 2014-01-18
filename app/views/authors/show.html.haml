@@ -2,26 +2,26 @@
   = render partial: 'author_nav_links', locals: { activated_page: :show, author: @author }
 
 %br
-  
+
 .row
   .col-md-8
 
-    %h4= @author.name
+    %h2= @author.name
     %br
-    %h5= "Books (#{@author.books.count})"
+    %h3= "Books (#{@author.books.count})"
 
     - @author.books.first(10).each do |book|
       %li
         = link_to language_book_path(book.language, book) do
-          = formatted_name book
+          %h4= formatted_name book
 
     - if @author.books.count > 10
       %li
         %br
-          = link_to 'more..', books_language_author_path(@author.language, @author) 
-              
+          = link_to 'more..', books_language_author_path(@author.language, @author)
+
   .col-md-4
     .pull-right
-      = image_tag author_profile_picture(@author), class: 'img-polaroid'
+      = image_tag author_profile_picture(@author), class: 'img-thumbnail'
 
 
