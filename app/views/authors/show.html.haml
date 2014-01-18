@@ -22,6 +22,6 @@
               
   .col-md-4
     .pull-right
-      = image_tag @author.profile_pictures.last.image.url(:medium), class: 'img-polaroid'
+      = image_tag author_profile_picture(@author), class: 'img-polaroid'
 
 
