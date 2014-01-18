@@ -1,29 +1,28 @@
-.container
-  .row.item-control-links
-    .span3.offset9
-      = link_to edit_language_library_path(@library.language, @library), class: 'btn' do
-        %i.icon-edit
-        edit
+.row
+  = render partial: 'library_nav_links', locals: { activated_page: :show, library: @library }
 
-  .row
-    .span2
+%br
+
+.row
+  .col-md-8
+
+    %h4= @library.name
+    %p= @library.place
+    %br
+    %h5= "Books (#{@library.books.count})"
+
+    - @library.books.first(10).each do |book|
+      %li
+        = link_to language_book_path(book.language, book) do
+          = formatted_name book
+
+    - if @library.books.count > 10
+      %li
+        %br
+        = link_to 'more..', books_language_library_path(@library.language, @library)
+
+  .col-md-4
+    .pull-right
       = image_tag library_logo(@library), class: 'img-polaroid'
+      
 
-    .span8.item-information-section
-      %h4= @library.name
-      %p= @library.place
-
-      %h5= "Books (#{@library.books.count})"
-
-      %ul.associated-books-list
-        - @library.books.first(10).each do |book|
-          %li
-            %i.icon-book
-            = link_to language_book_path(book.language, book) do
-              = formatted_name book
-
-        - if @library.books.count > 10
-          %li
-            %br
-            %i.icon-list-ul
-            = link_to 'more..', books_language_library_path(@library.language, @library)
