@@ -16,4 +16,12 @@ module BooksHelper
   def book_information(book, key, field)
     render partial: 'books/book_information', locals: { field: field, value: book.send(key) }
   end
+
+  def add_new_book_path
+      if current_language
+          new_language_book_path
+      else
+          new_book_path
+      end
+  end
 end
