@@ -19,7 +19,7 @@ module BooksHelper
 
   def add_new_book_path
       if current_language
-          new_language_book_path
+          new_language_book_path(current_language) 
       else
           new_book_path
       end
