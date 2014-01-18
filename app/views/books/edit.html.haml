@@ -20,8 +20,15 @@
               .authors.associated-record
                 %h3 Authors
 
-                = f.fields_for :authors do |author_form|
-                  = render partial: 'associated_record', locals: { form: author_form, object_type: 'author' }
+                - @book.authors.each do |author|
+                  .row
+                    .col-md-12.highlight-form-removable-field
+                      .col-md-9
+                        %h4
+                          = link_to author.name, [author.language, author], target: '_blank'
+                      .col-md-1
+                        %button.btn.btn-default.remove-button Remove
+
 
                 = link_to "Add new author", '#', class: 'add-new-field', data: { recordlength: @book.authors.count }
 
