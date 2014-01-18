@@ -11,7 +11,7 @@ role :web, "dev.grandham.org"
 role :app, "dev.grandham.org"
 role :db,  "dev.grandham.org", :primary => true
 
-set :branch, 'bootstrap_3'
+set :branch, 'master'
 
 set :user, 'deployer'
 set :use_sudo, false
