@@ -4,6 +4,28 @@
 
 
 $ ->
+
+  $('.remove-button').click (event) ->
+    associated_record       = $(@).closest('.associated-record')
+    book_id                 = associated_record.data('bookid')
+    associated_record_id    = associated_record.data('id')
+    associated_record_type  = associated_record.data('type')
+    associated_record_count = associated_record.data('count')
+
+    status_string = "removed-#{associated_record_id}"
+
+    $('.associated-record-changes').append($('<input>',
+                                              {
+                                                name: "#{associated_record_type}_removed_#{associated_record_count}",
+                                                value: associated_record_id,
+                                                type: 'hidden'
+                                              }
+                                            )
+                                          )
+
+    associated_record.remove()
+    return false
+
   $('.add-new-field').click (event) ->
 
     associated_items = $(@).closest('.associated-record').find('.associated-item')

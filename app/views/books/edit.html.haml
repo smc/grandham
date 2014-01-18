@@ -16,19 +16,20 @@
               = f.input :edition, as: :string, input_html: { class: 'input-xxlarge' }
               = f.input :description, as: :text, input_html: { rows: 5, cols: 50, class: 'input-xxlarge' }
 
+            .associated-record-changes
+
             .col-md-5
-              .authors.associated-record
+              .authors.associated-records
                 %h3 Authors
 
-                - @book.authors.each do |author|
-                  .row
+                - @book.authors.each_with_index do |author, i|
+                  .row.associated-record{ data: { id: author.grandham_id, bookid: @book.grandham_id, type: 'author', count: (i+1) }}
                     .col-md-12.highlight-form-removable-field
                       .col-md-9
                         %h4
                           = link_to author.name, [author.language, author], target: '_blank'
                       .col-md-1
                         %button.btn.btn-default.remove-button Remove
-
 
                 = link_to "Add new author", '#', class: 'add-new-field', data: { recordlength: @book.authors.count }
 
