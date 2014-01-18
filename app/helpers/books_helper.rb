@@ -1,4 +1,12 @@
 module BooksHelper
+  def book_cover_picture(book)
+    if book.covers.empty?
+      '/book_cover_missing.png'
+    else
+      book.covers.last.image.url(:thumb)
+    end
+  end
+
   def formatted_name(book)
     year = "(#{book.year})" unless book.year.blank?
 

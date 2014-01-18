@@ -1,6 +1,6 @@
 .media.grandham-list-item
   %a.pull-left{href: "#"}
-    %img.media-object.grandham-list.img-thumbnail{alt: "...", src: author.profile_pictures.last.image.url(:thumb)}/
+    %img.media-object.grandham-list.img-thumbnail{alt: "...", src: author_profile_picture(author)}/
     .media-body
       %h4.media-heading
         = link_to author.name, language_author_path(author.language, author)

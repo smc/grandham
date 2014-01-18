@@ -1,6 +1,6 @@
 .media.grandham-list-item
   %a.pull-left{href: "#"}
-    %img.media-object.grandham-list.img-thumbnail{alt: "...", src: library.logos.last.image.url(:thumb)}/
+    %img.media-object.grandham-list.img-thumbnail{alt: "...", src: library_logo(library)}/
     .media-body
       %h4.media-heading
         = link_to library.name, language_library_path(library.language, library)
