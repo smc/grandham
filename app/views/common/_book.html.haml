@@ -1,0 +1,9 @@
+.media.grandham-list-item
+  %a.pull-left{href: "#"}
+    %img.media-object.grandham-list.img-thumbnail{alt: "...", src: book_cover_picture(book)}/
+  .media-body
+    %h4.media-heading
+      = link_to book.title, language_book_path(book.language, book)
+
+    %p
+      = book.year

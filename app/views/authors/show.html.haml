@@ -11,9 +11,7 @@
     %h3= "Books (#{@author.books.count})"
 
     - @author.books.first(10).each do |book|
-      %li
-        = link_to language_book_path(book.language, book) do
-          %h4= formatted_name book
+      = render partial: 'common/book', locals: { book: book }
 
     - if @author.books.count > 10
       %li
