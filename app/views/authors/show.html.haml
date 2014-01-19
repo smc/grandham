@@ -8,7 +8,7 @@
 
     %h2= @author.name
     %br
-    %h3= "Books (#{@author.books.count})"
+    %h4= "Books"
 
     - @author.books.first(10).each do |book|
       = render partial: 'common/book', locals: { book: book }

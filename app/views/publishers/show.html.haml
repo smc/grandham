@@ -9,7 +9,7 @@
     %h2= @publisher.name
     %p= @publisher.place
     %br
-    %h3= "Books (#{@publisher.books.count})"
+    %h4= "Books"
 
     - @publisher.books.first(10).each do |book|
       = render partial: 'common/book', locals: { book: book }
