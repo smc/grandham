@@ -1,4 +1,9 @@
+.row
+  = render partial: 'author_nav_links', locals: { activated_page: :edit, author: @author }
+
+%br
+
 .container
   .row
-    .span8.offset1
+    .col-md-8.col-offset-1
       = render 'form'
