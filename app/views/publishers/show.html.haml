@@ -15,9 +15,8 @@
       = render partial: 'common/book', locals: { book: book }
 
     - if @publisher.books.count > 10
-      %li
-        %br
-          = link_to 'more..', books_language_publisher_path(@publisher.language, @publisher)
+      %br
+        = link_to 'more..', books_language_publisher_path(@publisher.language, @publisher)
 
   .col-md-4
     .pull-right
