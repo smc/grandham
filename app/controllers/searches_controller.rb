@@ -1,5 +1,13 @@
 class SearchesController < ApplicationController
-  def show
-    @results = Search.new(params[:query]).results
+  def books
+  end
+
+  def authors
+  end
+
+  def publishers
+  end
+
+  def libraries
   end
 end

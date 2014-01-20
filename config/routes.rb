@@ -14,7 +14,12 @@ Grandham::Application.routes.draw do
     post :update_cover, on: :member
   end
 
-  resource :search, only: [ :show ]
+  resource :search do
+    get :books, on: :member
+    get :authors, on: :member
+    get :publishers, on: :member
+    get :libraries, on: :member
+  end
 
   root to: 'books#index'
 

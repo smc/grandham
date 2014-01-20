@@ -1,0 +1,10 @@
+.col-md-12
+  %ul.nav.nav-tabs
+    %li{ class: is_active(activated_page, 'books') }
+      = link_to 'Books', books_search_path
+    %li{ class: is_active(activated_page, 'authors') }
+      = link_to 'Authors', authors_search_path
+    %li{ class: is_active(activated_page, 'publishers') }
+      = link_to 'Publishers', publishers_search_path
+    %li{ class: is_active(activated_page, 'libraries') }
+      = link_to 'Libraries', libraries_search_path
