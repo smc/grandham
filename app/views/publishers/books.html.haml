@@ -1,13 +1,10 @@
-.container
-  .row
-    .span9.offset1
-      %h4
-        Books by publisher:
-        = link_to @publisher.name, language_publisher_path(@publisher.language, @publisher)
-      %br
-      %ul.grandham-items-list
-        - @books.each do |book|
-          = render partial: 'books/book', locals: { book: book }
+.row
+  .col-offset-8
+    %h4
+      Books by publisher:
+      = link_to @publisher.name, language_publisher_path(@publisher.language, @publisher)
+    %br
+    - @books.each do |book|
+      = render partial: 'books/book', locals: { book: book }
 
-      .list-pagination
-        = will_paginate @books, renderer: BootstrapPagination::Rails
+    = will_paginate @books, renderer: BootstrapPagination::Rails
