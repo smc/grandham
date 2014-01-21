@@ -26,31 +26,6 @@ module ApplicationHelper
     end
   end
 
-  def inplace_edit_activator_id(object, field)
-    "#{object.class.to_s.downcase}-#{object.grandham_id}-#{field}"
-  end
-
-  def edit_icon(object, field)
-    content_tag :span, class: 'inplace-edit', id: inplace_edit_activator_id(object, field) do
-      content_tag :i, class: 'icon-pencil grandham-field-edit' do
-      end
-    end
-  end
-
-  def inplace_edit(object, field, params = {})
-    params.merge!(activator: "##{inplace_edit_activator_id(object, field)}" )
-
-    content_tag :div, class: 'inplace-edit-container' do
-      if params[:grandham_link]
-        path = "language_#{object.class.to_s.downcase}_path"
-        text = best_in_place(object, field, params)
-        "#{external_link(object)} #{text} #{edit_icon(object, field)}".html_safe
-      else
-        "#{best_in_place(object, field, params)} #{edit_icon(object, field)}".html_safe
-      end
-    end
-  end
-
   def is_resource_active?(grandham_resource)
     'active' if params[:controller] == grandham_resource
   end
