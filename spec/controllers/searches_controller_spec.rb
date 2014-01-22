@@ -8,7 +8,7 @@ describe SearchesController do
       expect(response).to be_success
     end
 
-    it "should invoke Search.new" do
+    xit "should invoke Search.new" do
       Search.any_instance.should_receive(:results).once
 
       get :show, query: 'Hello World'
