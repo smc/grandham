@@ -1,2 +1,13 @@
 .row
   = render partial: 'search_nav_links', locals: { activated_page: :books }
+
+.container
+  .row
+    .col-md-8.col-offset-1
+      %brs
+      %form{ action: search_path, method: 'get' }
+        .form-group.string.required
+          %input{ name: 'query', value: params[:query], class: 'input-xxlarge', placeholder: 'Search Title, Author, Publisher, Library, Keyword' }
+          %button.btn-success{ type: 'submit' }
+            %i.icon-search
+            = I18n.t('.search')
