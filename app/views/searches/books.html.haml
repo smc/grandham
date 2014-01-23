@@ -7,7 +7,7 @@
       %brs
       %form{ action: search_path, method: 'get' }
         .form-group.string.required
-          %input{ name: 'query', value: params[:query], class: 'input-xxlarge', placeholder: 'Search Title, Author, Publisher, Library, Keyword' }
+          %input{ name: 'query', value: params[:query], class: 'input-xxlarge', placeholder: 'Title' }
           %button.btn-success{ type: 'submit' }
             %i.icon-search
             = I18n.t('.search')
