@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  # Disable all json responses for now
+  before_filter :disable_json
+
   protect_from_forgery
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -20,6 +23,12 @@ class ApplicationController < ActionController::Base
   include EditHelper
 
   private
+
+  def disable_json
+    if request.format.to_s.include?('json')
+      redirect_to error_access_denied_path
+    end
+  end
 
   def after_sign_in_path_for(user)
     if user.is_an_admin?
