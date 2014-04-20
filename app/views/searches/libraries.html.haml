@@ -1,2 +1,17 @@
 .row
   = render partial: 'search_nav_links', locals: { activated_page: :libraries }
+
+%br
+.container
+  .row
+    .col-md-8.col-offset-1
+      %form{ action: libraries_search_path, method: 'get' }
+        .form-group
+          %input{ name: 'query', value: params[:query], class: 'input-xxlarge search-field', placeholder: 'Search libraries' }
+          %button.btn-success{ type: 'submit', class: 'btn btn-primary' }
+            %span.glyphicon-search.glyphicon
+            = I18n.t('.search')
+      %br
+      - if @results && @results.any?
+        - @results.each do |library|
+          = render partial: 'libraries/library', locals: { library: library }
