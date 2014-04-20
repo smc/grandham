@@ -26,6 +26,6 @@ class SearchesController < ApplicationController
   end
 
   def get_results
-    @results = Search.new(resource(params[:action]), params[:query]).results if params[:query]
+    @results = Search.new(resource(params[:action]), params[:query]).results if params[:query].present?
   end
 end
