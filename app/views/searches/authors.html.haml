@@ -1,2 +1,17 @@
 .row
   = render partial: 'search_nav_links', locals: { activated_page: :authors }
+
+%br
+.container
+  .row
+    .col-md-8.col-offset-1
+      %form{ action: authors_search_path, method: 'get' }
+        .form-group
+          %input{ name: 'query', value: params[:query], class: 'input-xxlarge search-field', placeholder: 'Search authors' }
+          %button.btn-success{ type: 'submit', class: 'btn btn-primary' }
+            %span.glyphicon-search.glyphicon
+            = I18n.t('.search')
+      %br
+      - if @results && @results.any?
+        - @results.each do |author|
+          = render partial: 'authors/author', locals: { author: author }
