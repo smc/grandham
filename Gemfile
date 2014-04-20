@@ -12,6 +12,7 @@ gem 'haml-rails'
 gem "paperclip", "~> 3.0"
 
 gem 'ruby-progressbar'
+gem 'progress_bar'
 
 gem 'sunspot_rails'
 gem 'sunspot_solr'

@@ -5,10 +5,13 @@
 .container
   .row
     .col-md-8.col-offset-1
-      %brs
       %form{ action: books_search_path, method: 'get' }
         .form-group
           %input{ name: 'query', value: params[:query], class: 'input-xxlarge search-field', placeholder: 'Search books' }
           %button.btn-success{ type: 'submit', class: 'btn btn-primary' }
             %span.glyphicon-search.glyphicon
             = I18n.t('.search')
+      %br
+      - if @results && @results.any?
+        - @results.each do |book|
+          = render partial: 'books/book', locals: { book: book }
