@@ -21,7 +21,7 @@ $ ->
                                                 type: 'hidden'
                                               }
                                             )
-                                          )
+    )
 
     associated_record.remove()
     return false
