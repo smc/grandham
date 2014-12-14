@@ -2,12 +2,14 @@ module EditHelper
   def record_edit(object, object_params, book_id = nil)
     object_params.keys.each do |field|
       # Safeguarding the following .send call.
-      return unless object.class.new.attributes.keys.include?(field)
+
+      next unless object.class.new.attributes.keys.include?(field)
 
       old_value = object.send(field)
       new_value = object_params[field]
 
       unless old_value.to_s == new_value.to_s
+
         if current_user.is_an_admin?
           object.update_attributes object_params
           state = 'approved'
