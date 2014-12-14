@@ -1,14 +1,14 @@
 .container
   %br
   .row
-    .span4.offset1
+    .col-md-4.offset1
       .admin-widget
         .caption
           %h3 New
         .value
           %p= link_to current_language.new_items.not_reviewed.count, language_admin_new_items_path(current_language)
 
-    .span4.offset2
+    .col-md-4.offset2
       .admin-widget
         .caption
           %h3 Edits
@@ -17,28 +17,28 @@
 
   %br
   .row
-    .span10.offset1
+    .col-md-10.offset1
       .admin-widget.large
         .caption
           %h3 Status
         .status
           .row
-            .span2
+            .col-md-2
               %h4= link_to 'Books', language_admin_books_path(current_language)
-            .span3
+            .col-md-3
               %h4= current_language.books.count
           .row
-            .span2
+            .col-md-2
               %h4= link_to 'Authors', language_admin_authors_path(current_language)
-            .span3
+            .col-md-3
               %h4= current_language.authors.count
           .row
-            .span2
+            .col-md-2
               %h4= link_to 'Publishers', language_admin_publishers_path(current_language)
-            .span3
+            .col-md-3
               %h4= current_language.publishers.count
           .row
-            .span2
+            .col-md-2
               %h4= link_to 'Libraries', language_admin_libraries_path(current_language)
-            .span3
+            .col-md-3
               %h4= current_language.libraries.count
