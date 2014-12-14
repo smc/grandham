@@ -4,54 +4,5 @@
 %br
 .container
   .row
-    .col-md-12
-      = simple_form_for @book, html: { class: 'form-horizontal' }, multipart: true do |f|
-        %fieldset
-          .row
-            .col-md-5
-              = f.input :title, as: :string, input_html: { class: 'input-xxlarge' }
-              = f.input :isbn, as: :string, input_html: { class: 'input-xxlarge' }, label: 'ISBN'
-              = f.input :year, as: :string, input_html: { class: 'input-xxlarge' }
-              = f.input :pages, as: :string, input_html: { class: 'input-xxlarge' }
-              = f.input :edition, as: :string, input_html: { class: 'input-xxlarge' }
-              = f.input :description, as: :text, input_html: { rows: 5, cols: 50, class: 'input-xxlarge' }
-
-            .associated-record-changes
-
-            .col-md-5
-              .authors.associated-records
-                %h3 Authors
-
-                - @book.authors.each_with_index do |author, i|
-                  .row.associated-record{ data: { id: author.grandham_id, bookid: @book.grandham_id, type: 'author', count: (i+1) }}
-                    .col-md-12.highlight-form-removable-field
-                      .col-md-9
-                        %h4
-                          = link_to author.name, [author.language, author], target: '_blank'
-                      .col-md-1
-                        %button.btn.btn-default.remove-button Remove
-
-                = link_to "Add new author", '#', class: 'add-new-field', data: { recordlength: @book.authors.count }
-
-            .col-md-5
-              .publishers.associated-records
-                %h3 Publishers
-
-                - @book.publishers.each_with_index do |publisher, i|
-                  .row.associated-record{ data: { id: publisher.grandham_id, bookid: @book.grandham_id, type: 'publisher', count: (i+1) }}
-                    .col-md-12.highlight-form-removable-field
-                      .col-md-9
-                        %h4
-                          = link_to publisher.name, [publisher.language, publisher], target: '_blank'
-                      .col-md-1
-                        %button.btn.btn-default.remove-button Remove
-
-                = link_to "Add new publisher", '#', class: 'add-new-field', data: { recordlength: @book.publishers.count }
-
-
-          %br
-          .row
-            .col-md-12.well
-              .form-actions
-                = f.submit 'Submit', class: 'btn btn-primary'
-                = link_to 'Cancel', root_path, class: 'btn'
+    .col-md-8.col-offset-1
+      = render 'form'
