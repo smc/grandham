@@ -1,22 +1,22 @@
 require "rvm/capistrano"
 require 'bundler/capistrano'
 
-set :rvm_ruby_string, 'ruby-1.9.3-p392@grandham1'
+set :rvm_ruby_string, "ruby-2.1.5@grandham"
 set :rvm_type, :user
 
 set :application, "grandham"
 set :repository,  "git@github.com:smc/grandham.git"
 
-role :web, "dev.grandham.org"
-role :app, "dev.grandham.org"
-role :db,  "dev.grandham.org", :primary => true
+role :web, "grandham.org"
+role :app, "grandham.org"
+role :db,  "grandham.org", :primary => true
 
 set :branch, 'master'
 
-set :user, 'deployer'
+set :user, 'grandham'
 set :use_sudo, false
 
-set :deploy_to, "/var/rails_apps/staging/#{application}"
+set :deploy_to, "/home/grandham/production/"
 
 set :rails_env, 'production'
 
