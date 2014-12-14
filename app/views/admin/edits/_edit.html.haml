@@ -15,25 +15,25 @@
 
     %p
       .row
-        %code.span2.edit-attribute Edited in book
-        .span8
+        %code.col-md-2.edit-attribute Edited in book
+        .col-md-8
           = link_to edit.book.grandham_id, language_book_path(edit.book.language, edit.book), target: '_blank'
 
   %p
     .row
-      %code.span2.edit-attribute= edit.editable_type
-      .span8
+      %code.col-md-2.edit-attribute= edit.editable_type
+      .col-md-8
         = link_to edit.editable.grandham_id, send("language_#{edit.editable_type.downcase}_path", edit.editable.language, edit.editable), target: '_blank'
   %p
     .row
-      %code.span2.edit-attribute= "#{edit.field.capitalize} (old)"
-      .span8
+      %code.col-md-2.edit-attribute= "#{edit.field.capitalize} (old)"
+      .col-md-8
         = edit.old_value
 
   %p
     .row
-      %code.span2.edit-attribute= "#{edit.field.capitalize} (new)"
-      .span8
+      %code.col-md-2.edit-attribute= "#{edit.field.capitalize} (new)"
+      .col-md-8
         = edit.new_value
 
   %br
