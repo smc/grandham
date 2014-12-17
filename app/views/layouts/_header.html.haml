@@ -11,9 +11,7 @@
         Search
     %li
       - if user_signed_in?
-        = link_to destroy_user_session_path, method: :delete do
-          %span.glyphicon.glyphicon-user
-          Sign out
+        = render 'layouts/account_drop_down'
       - else
         = link_to new_user_session_path do
           %span.glyphicon.glyphicon-user
