@@ -39,6 +39,7 @@ namespace :deploy do
   task :copy_env_specific_files, :roles => :app, :except => { :no_release => true } do
     run "cp #{shared_path}/.rvmrc #{current_path}/.rvmrc"
     run "cp #{shared_path}/database.yml #{current_path}/config/database.yml"
+    run "cp #{shared_path}/production.rb #{current_path}/config/environments/production.rb"
     run "cd #{current_path}/vendor && ln -s #{shared_path}/bundle/ ."
     run "cd #{current_path} && bundle install --quiet --without development test --path vendor/bundle"
   end
