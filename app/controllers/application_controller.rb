@@ -25,8 +25,10 @@ class ApplicationController < ActionController::Base
   private
 
   def disable_json
-    if request.format.to_s.include?('json')
-      redirect_to error_access_denied_path
+    unless current_user && current_user.is_an_admin?
+      if request.format.to_s.include?('json')
+        redirect_to error_access_denied_path
+      end
     end
   end
 
