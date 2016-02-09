@@ -49,6 +49,8 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'poltergeist'
+  # shoulda matchers from thoughtbot for some simple specs
+  gem 'shoulda-matchers'
 end
 
 group :development do
