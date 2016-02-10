@@ -31,7 +31,14 @@ class Book < ActiveRecord::Base
   has_many :covers, as: :imageable
   accepts_nested_attributes_for :covers
 
-  validates_presence_of :title
+  validates_presence_of :title, :isbn
+
+  validates :pages, numericality: { only_integers: true } 
+  validates :year, numericality: { 
+    only_integers: true,
+    greater_than: 1499,
+    less_than: 2200
+  }
 
   after_create :process_associated_records
 

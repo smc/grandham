@@ -213,6 +213,8 @@ GEM
       websocket (~> 1.0.4)
     sextant (0.2.4)
       rails (>= 3.2)
+    shoulda-matchers (2.8.0)
+      activesupport (>= 3.0.0)
     simple_form (2.1.1)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -289,6 +291,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   selenium-webdriver
   sextant
+  shoulda-matchers
   simple_form
   sunspot_rails
   sunspot_solr
