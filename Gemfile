@@ -16,7 +16,7 @@ gem 'progress_bar'
 
 gem 'sunspot_rails'
 gem 'sunspot_solr'
-gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+gem 'jquery-datatables-rails', '~> 3.3.0'
 gem "cancan"
 
 gem 'turbolinks'

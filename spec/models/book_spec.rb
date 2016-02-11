@@ -6,6 +6,7 @@ describe Book do
   it{ should validate_presence_of(:isbn) }
 
   it{ should validate_numericality_of(:year) }
+  it{ should validate_numericality_of(:pages) }
 
   it{ should belong_to(:language) }
 
