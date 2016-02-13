@@ -27,7 +27,7 @@ describe BooksController do
     end
 
     it "should return http success on json request" do
-      get :index, format: :json
+      get :index
       response.should be_success
     end
 
@@ -42,7 +42,7 @@ describe BooksController do
 
   describe "GET show" do
     it "should return http success on json request" do
-      get :show, id: @book, format: :json
+      get :show, id: @book
       response.should be_success
     end
 
