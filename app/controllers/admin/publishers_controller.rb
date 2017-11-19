@@ -20,7 +20,7 @@ class Admin::PublishersController < AdminController
   end
 
   def create
-    @publisher = current_language.publishers.new(params[:publisher])
+    @publisher = current_language.publishers.new(publisher_params)
 
     if @publisher.save
       redirect_to language_admin_publishers_path(current_language), notice: 'Publisher was successfully created.'
@@ -30,7 +30,7 @@ class Admin::PublishersController < AdminController
   end
 
   def update
-    if @publisher.update_attributes(params[:publisher])
+    if @publisher.update_attributes(publisher_params)
       redirect_to language_admin_publishers_path(current_language), notice: 'Publisher was successfully updated.'
     else
       render action: 'edit'
@@ -38,6 +38,10 @@ class Admin::PublishersController < AdminController
   end
 
   private
+
+  def publisher_params
+    params.require(:publisher).permit(:name, :created_at, :updated_at, :language_id, :grandham_id, :place)
+  end
 
   def find_publisher
     @publisher = current_language.publishers.find_by(grandham_id: params[:id])

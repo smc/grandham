@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Library < ApplicationRecord
-  # attr_accessible :name, :language_id, :grandham_id, :place, :logos_attributes
+  #
 
   belongs_to :language
 

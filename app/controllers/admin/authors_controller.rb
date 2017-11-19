@@ -20,7 +20,7 @@ class Admin::AuthorsController < AdminController
   end
 
   def create
-    @author = current_language.authors.new(params[:author])
+    @author = current_language.authors.new(author_params)
 
     if @author.save
       redirect_to language_admin_authors_path(current_language), notice: 'Author was successfully created.'
@@ -30,7 +30,7 @@ class Admin::AuthorsController < AdminController
   end
 
   def update
-    if @author.update_attributes(params[:author])
+    if @author.update_attributes(author_params)
       redirect_to language_admin_authors_path(current_language), notice: 'Author was successfully updated.'
     else
       render action: 'edit'
@@ -38,6 +38,10 @@ class Admin::AuthorsController < AdminController
   end
 
   private
+
+  def author_params
+    params.require(:author).permit(:name, :created_at, :updated_at, :language_id, :grandham_id)
+  end
 
   def find_author
     @author = current_language.authors.find_by(grandham_id: params[:id])

@@ -20,7 +20,7 @@ class Admin::LibrariesController < AdminController
   end
 
   def create
-    @library = current_language.libraries.new(params[:library])
+    @library = current_language.libraries.new(library_params)
 
     if @library.save
       redirect_to language_admin_libraries_path(current_language), notice: 'Library was successfully created.'
@@ -30,7 +30,7 @@ class Admin::LibrariesController < AdminController
   end
 
   def update
-    if @library.update_attributes(params[:library])
+    if @library.update_attributes(library_params)
       redirect_to language_admin_libraries_path(current_language), notice: 'Library was successfully updated.'
     else
       render action: 'edit'
@@ -38,6 +38,10 @@ class Admin::LibrariesController < AdminController
   end
 
   private
+
+  def library_params
+    params.require(:library).permit(:name, :grandham_id, :language_id, :created_at, :updated_at, :place)
+  end
 
   def find_library
     @library = current_language.libraries.find_by(grandham_id: params[:id])

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Author < ApplicationRecord
-  # attr_accessible :name, :language_id, :grandham_id, :profile_pictures_attributes
+  #
 
   belongs_to :language, optional: true
 

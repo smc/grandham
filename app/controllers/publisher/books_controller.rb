@@ -12,7 +12,7 @@ class Publisher::BooksController < PublisherController
   end
 
   def create
-    @book = Book.unscoped.new(params[:book])
+    @book = Book.unscoped.new(book_params)
 
     @book.publishers << current_user.publisher
 
@@ -25,5 +25,11 @@ class Publisher::BooksController < PublisherController
       @book.covers.build
       render 'new'
     end
+  end
+
+  private
+
+  def book_params
+    params.require(:book).permit(:grandham_id, :language_id, :title, :isbn, :pages, :year, :description, :edition, :ddc, :volume, :series, :price, :length, :title_orginal, :illustrator, :note, :preface, :created_at, :updated_at, :approved, :published)
   end
 end

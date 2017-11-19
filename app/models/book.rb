@@ -3,11 +3,7 @@
 class Book < ApplicationRecord
   default_scope -> { where(approved: true, published: true) }
 
-  # attr_accessible :title, :isbn, :pages, :year, :description, :edition, \
-  #                 :authors_attributes, :publishers_attributes, :libraries_attributes, \
-  #                 :ddc, :volume, :series, :price, :length, :title_orginal, :illustrator, \
-  #                 :note, :grandham_id, :language_id, :preface, :covers_attributes, \
-  #                 :published
+  #
   #
   belongs_to :language
 
