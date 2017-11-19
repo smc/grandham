@@ -2,8 +2,9 @@
 
 class ApplicationController < ActionController::Base
   # Disable all json responses for now
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :exception, prepend: true
   before_action :disable_json
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   protect_from_forgery
 
@@ -68,4 +69,10 @@ class ApplicationController < ActionController::Base
     Book.where('grandham_id = ?', params[:id]).first
   end
   helper_method :current_book
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:login])
+  end
 end

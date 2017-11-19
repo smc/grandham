@@ -3,8 +3,6 @@
 class Book < ApplicationRecord
   default_scope -> { where(approved: true, published: true) }
 
-  #
-  #
   belongs_to :language
 
   before_create :set_grandham_id
@@ -30,7 +28,7 @@ class Book < ApplicationRecord
 
   validates :title, :isbn, presence: true
 
-  validates :pages, numericality: { only_integers: true }
+  validates :pages, numericality: { only_integers: true }, allow_blank: true
   validates :year, numericality: {
     only_integers: true,
     greater_than: 1499,

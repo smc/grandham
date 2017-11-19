@@ -20,9 +20,9 @@ class User < ApplicationRecord
   has_many :edits
   has_many :new_items
 
-  belongs_to :language
-  belongs_to :publisher
-  belongs_to :library
+  belongs_to :language, optional: true
+  belongs_to :publisher, optional: true
+  belongs_to :library, optional: true
 
   def role?(key)
     role == key.to_s

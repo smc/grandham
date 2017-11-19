@@ -18,7 +18,7 @@ namespace :grandham do
       'Preface'     => 'preface',
       'Length'      => 'length',
       'Price'       => 'price',
-      'Note'        => 'Note',
+      'Note'        => 'note',
       'DDC'         => 'ddc',
       'Illustrator' => 'illustrator'
     }
@@ -32,7 +32,8 @@ namespace :grandham do
         book_obj[new_key] = book[old_key] unless book[old_key] == 'None'
       end
 
-      book_obj.save && book_obj.approve!
+      book_obj.save! && book_obj.approve!
+
 
       book_obj.new_items.create user_id: User.first.id, language_id: Language.first.id, state: 'approved'
 
