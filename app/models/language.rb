@@ -1,5 +1,7 @@
-class Language < ActiveRecord::Base
-  attr_accessible :name, :short_code
+# frozen_string_literal: true
+
+class Language < ApplicationRecord
+  # attr_accessible :name, :short_code
 
   has_many :books
   has_many :authors

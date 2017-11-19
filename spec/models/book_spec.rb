@@ -1,23 +1,23 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Book do
+  it { is_expected.to validate_presence_of(:title) }
+  it { is_expected.to validate_presence_of(:isbn) }
 
-  it{ should validate_presence_of(:title) }
-  it{ should validate_presence_of(:isbn) }
+  it { is_expected.to validate_numericality_of(:year) }
+  it { is_expected.to validate_numericality_of(:pages) }
 
-  it{ should validate_numericality_of(:year) }
-  it{ should validate_numericality_of(:pages) }
+  it { is_expected.to belong_to(:language) }
 
-  it{ should belong_to(:language) }
-
-  it{ should have_many(:authors) }
-  it{ should have_many(:authorships) }
-  it{ should have_many(:publications) }
-  it{ should have_many(:publishers) }
-  it{ should have_many(:availabilities) }
-  it{ should have_many(:libraries) }
-  it{ should have_many(:edits) }
-  it{ should have_many(:new_items) }
-  it{ should have_many(:covers) }
-
+  it { is_expected.to have_many(:authors) }
+  it { is_expected.to have_many(:authorships) }
+  it { is_expected.to have_many(:publications) }
+  it { is_expected.to have_many(:publishers) }
+  it { is_expected.to have_many(:availabilities) }
+  it { is_expected.to have_many(:libraries) }
+  it { is_expected.to have_many(:edits) }
+  it { is_expected.to have_many(:new_items) }
+  it { is_expected.to have_many(:covers) }
 end

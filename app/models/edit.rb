@@ -1,5 +1,7 @@
-class Edit < ActiveRecord::Base
-  attr_accessible :reviewed_by_user_id, :field, :new_value, :old_value, :state, :user_id, :language_id, :book_id
+# frozen_string_literal: true
+
+class Edit < ApplicationRecord
+  # attr_accessible :reviewed_by_user_id, :field, :new_value, :old_value, :state, :user_id, :language_id, :book_id
 
   belongs_to :editable, polymorphic: true
   belongs_to :language

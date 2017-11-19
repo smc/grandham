@@ -1,38 +1,40 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe BooksController do
-  before(:each) do
+  before do
     @book = FactoryGirl.create :book
   end
 
-  describe "GET index" do
-    context "current_language" do
-      it "should set current language" do
-        get :index, language_id: @book.language.short_code
-        expect(controller.send :current_language).not_to be_nil
+  describe 'GET index' do
+    context 'current_language' do
+      it 'sets current language' do
+        get :index, params: { language_id: @book.language.short_code }
+        expect(controller.send(:current_language)).not_to be_nil
       end
     end
 
-    context "current_book" do
-      it "should set current book" do
-        get :show, id: @book.grandham_id
-        expect(controller.send :current_book).not_to be_nil
+    context 'current_book' do
+      it 'sets current book' do
+        get :show, params: { id: @book.grandham_id }
+        expect(controller.send(:current_book)).not_to be_nil
       end
     end
 
-    it "assigns all books as @books" do
+    it 'assigns all books as @books' do
       get :index
       assigns(:books).should be_a ActiveRecord::Relation
       assigns(:books).should include(@book)
     end
 
-    it "should return http success on json request" do
+    it 'returns http success on json request' do
       get :index
       response.should be_success
     end
 
-    describe "influence of language parameter" do
-      before(:each) do
+    describe 'influence of language parameter' do
+      before do
         5.times do
           book = FactoryGirl.create :book
         end
@@ -40,21 +42,21 @@ describe BooksController do
     end
   end
 
-  describe "GET show" do
-    it "should return http success on json request" do
-      get :show, id: @book
+  describe 'GET show' do
+    it 'returns http success on json request' do
+      get :show, params: { id: @book }
       response.should be_success
     end
 
-    it "should assign book as @book" do
-      get :show, id: @book
+    it 'assigns book as @book' do
+      get :show, params: { id: @book }
       assigns(:book).should eq @book
     end
   end
 
-  describe "GET show" do
-    it "should find and assign @book" do
-      get :show, id: @book, language_id: @book.language
+  describe 'GET show' do
+    it 'finds and assign @book' do
+      get :show, params: { id: @book, language_id: @book.language }
       expect(assigns[:book]).to eq @book
     end
   end

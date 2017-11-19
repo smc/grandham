@@ -1,13 +1,14 @@
-class Book < ActiveRecord::Base
+# frozen_string_literal: true
 
+class Book < ApplicationRecord
   default_scope where(approved: true, published: true)
 
-  attr_accessible :title, :isbn, :pages, :year, :description, :edition, \
-                  :authors_attributes, :publishers_attributes, :libraries_attributes, \
-                  :ddc, :volume, :series, :price, :length, :title_orginal, :illustrator, \
-                  :note, :grandham_id, :language_id, :preface, :covers_attributes, \
-                  :published
-
+  # attr_accessible :title, :isbn, :pages, :year, :description, :edition, \
+  #                 :authors_attributes, :publishers_attributes, :libraries_attributes, \
+  #                 :ddc, :volume, :series, :price, :length, :title_orginal, :illustrator, \
+  #                 :note, :grandham_id, :language_id, :preface, :covers_attributes, \
+  #                 :published
+  #
   belongs_to :language
 
   before_create :set_grandham_id
@@ -31,10 +32,10 @@ class Book < ActiveRecord::Base
   has_many :covers, as: :imageable
   accepts_nested_attributes_for :covers
 
-  validates_presence_of :title, :isbn
+  validates :title, :isbn, presence: true
 
-  validates :pages, numericality: { only_integers: true } 
-  validates :year, numericality: { 
+  validates :pages, numericality: { only_integers: true }
+  validates :year, numericality: {
     only_integers: true,
     greater_than: 1499,
     less_than: 2200
@@ -54,7 +55,7 @@ class Book < ActiveRecord::Base
 
   def approve!
     self.approved = true
-    self.save
+    save
   end
 
   def name
@@ -62,9 +63,9 @@ class Book < ActiveRecord::Base
   end
 
   def details
-    restricted_keys = [:id, :created_at, :updated_at, :approved, :reviewed, :grandham_id, :language_id, :published]
+    restricted_keys = %i[id created_at updated_at approved reviewed grandham_id language_id published]
     attrs = attributes.with_indifferent_access
-    restricted_keys.collect{ |key| attrs.delete key }
+    restricted_keys.collect { |key| attrs.delete key }
     attrs
   end
 
@@ -73,15 +74,15 @@ class Book < ActiveRecord::Base
   end
 
   def self.associated_records
-    ['Author', 'Publisher', 'Library']
+    %w[Author Publisher Library]
   end
 
   def publish!
-    self.update_attribute :published, true
+    update_attribute :published, true
   end
 
   def unpublish!
-    self.update_attribute :published, false
+    update_attribute :published, false
   end
 
   private
@@ -91,8 +92,8 @@ class Book < ActiveRecord::Base
   end
 
   def remove_duplicate_associated_objects(klass)
-    self.send(klass.to_s.downcase.pluralize).each do |object|
-      if existing_object = klass.where([ "name = ? and id <> ?", object.name, object.id]).first
+    send(klass.to_s.downcase.pluralize).each do |object|
+      if existing_object = klass.where(['name = ? and id <> ?', object.name, object.id]).first
         existing_object.books << self
         object.destroy
       end
@@ -103,11 +104,11 @@ class Book < ActiveRecord::Base
     associated_objects_array = [Author, Publisher, Library]
 
     associated_objects_array.each do |klass|
-      self.send(klass.to_s.downcase.pluralize).update_all(language_id: self.language_id)
+      send(klass.to_s.downcase.pluralize).update_all(language_id: language_id)
     end
 
-    associated_objects_array.each{ |klass| remove_duplicate_associated_objects(klass) }
+    associated_objects_array.each { |klass| remove_duplicate_associated_objects(klass) }
 
-    self.covers.create if self.covers.empty?
+    covers.create if covers.empty?
   end
 end

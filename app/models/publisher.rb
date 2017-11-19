@@ -1,9 +1,11 @@
-class Publisher < ActiveRecord::Base
-  attr_accessible :name, :language_id, :grandham_id, :place, :logos_attributes
+# frozen_string_literal: true
+
+class Publisher < ApplicationRecord
+  # attr_accessible :name, :language_id, :grandham_id, :place, :logos_attributes
 
   belongs_to :language
 
-  validates_presence_of :name
+  validates :name, presence: true
 
   has_many :publications
   has_many :books, through: :publications
@@ -27,7 +29,7 @@ class Publisher < ActiveRecord::Base
   private
 
   def set_default_logo
-    self.logos.create if self.logos.empty?
+    logos.create if logos.empty?
   end
 
   def set_grandham_id

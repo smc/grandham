@@ -1,20 +1,23 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   # Disable all json responses for now
-  before_filter :disable_json
+  protect_from_forgery with: :exception
+  before_action :disable_json
 
   protect_from_forgery
 
-  rescue_from CanCan::AccessDenied do |exception|
+  rescue_from CanCan::AccessDenied do |_exception|
     if user_signed_in?
       session[:access_denied_path] = request.url
       redirect_to error_access_denied_path
     else
       session[:redirect_url] = request.url
-      redirect_to new_user_session_path, :alert => alert_message
+      redirect_to new_user_session_path, alert: alert_message
     end
   end
 
-  before_filter do |controller|
+  before_action do |_controller|
     if user_signed_in? && (redirect_path = session.delete(:redirect_url))
       redirect_to redirect_path
     end
@@ -25,7 +28,7 @@ class ApplicationController < ActionController::Base
   private
 
   def disable_json
-    unless current_user && current_user.is_an_admin?
+    unless current_user&.is_an_admin?
       if request.format.to_s.include?('json')
         redirect_to error_access_denied_path
       end
@@ -50,8 +53,8 @@ class ApplicationController < ActionController::Base
 
   def alert_message
     if request.path == '/books/new'
-      "Please sign in to add a new book"
-    elsif request.path =~ /.*\/books\/.*edit/
+      'Please sign in to add a new book'
+    elsif request.path.match?(/.*\/books\/.*edit/)
       "Please sign in to edit the book '#{current_book.title}'"
     end
   end

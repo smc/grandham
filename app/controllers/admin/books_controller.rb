@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class Admin::BooksController < AdminController
-  load_and_authorize_resource :book, :find_by => :find_by_grandham_id
+  load_and_authorize_resource :book, find_by: :find_by_grandham_id
 
   respond_to :html, :json
 
-  before_filter :find_book, only: [ :show, :update, :publish, :unpublish ]
+  before_action :find_book, only: %i[show update publish unpublish]
 
   def index
     @books = current_language.books.unscoped
@@ -33,7 +35,7 @@ class Admin::BooksController < AdminController
   end
 
   def destroy
-    @book = Book.find_by_grandham_id(params[:id])
+    @book = Book.find_by(grandham_id: params[:id])
     @book.destroy
 
     respond_to do |format|
@@ -45,6 +47,6 @@ class Admin::BooksController < AdminController
   private
 
   def find_book
-    @book = Book.unscoped.find_by_grandham_id(params[:id])
+    @book = Book.unscoped.find_by(grandham_id: params[:id])
   end
 end

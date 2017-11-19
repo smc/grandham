@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AuthorsHelper
   def author_profile_picture(author)
     if author.profile_pictures.empty?

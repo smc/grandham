@@ -1,4 +1,6 @@
-class User < ActiveRecord::Base
+# frozen_string_literal: true
+
+class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :token_authenticatable,
   # :lockable, :timeoutable and :omniauthable
@@ -6,12 +8,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :login, :publisher_id, :library_id
+  # attr_accessible :email, :password, :password_confirmation, :remember_me, :login, :publisher_id, :library_id
   # attr_accessible :title, :body
 
   validates :login, uniqueness: true, presence: true
 
-  ROLES = %w[super_admin admin contributor publisher librarian]
+  ROLES = %w[super_admin admin contributor publisher librarian].freeze
 
   after_create :set_default_role
 
@@ -30,16 +32,16 @@ class User < ActiveRecord::Base
     self.role        = 'super_admin'
     self.language_id = language.id
 
-    self.save
+    save
   end
 
   def is_an_admin?
-    ['super_admin', 'admin'].include? role
+    %w[super_admin admin].include? role
   end
 
   private
 
   def set_default_role
-    self.update_attribute :role, 'contributor' unless role
+    update_attribute :role, 'contributor' unless role
   end
 end

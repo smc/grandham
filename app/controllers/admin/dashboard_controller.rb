@@ -1,6 +1,7 @@
-class Admin::DashboardController < AdminController
-  authorize_resource :class => false
+# frozen_string_literal: true
 
-  def index
-  end
+class Admin::DashboardController < AdminController
+  authorize_resource class: false
+
+  def index; end
 end

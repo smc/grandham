@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Publisher::BooksController < PublisherController
-  load_and_authorize_resource :book, :find_by => :find_by_grandham_id
+  load_and_authorize_resource :book, find_by: :find_by_grandham_id
 
   def new
     @book = Book.unscoped.new
@@ -21,7 +23,7 @@ class Publisher::BooksController < PublisherController
       redirect_to language_book_path(@book.language, @book)
     else
       @book.covers.build
-      render "new"
+      render 'new'
     end
   end
 end

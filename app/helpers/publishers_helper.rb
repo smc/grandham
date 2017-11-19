@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PublishersHelper
   def publisher_logo(publisher)
     if publisher.logos.empty?

@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class Admin::AuthorsController < AdminController
-  load_and_authorize_resource :author, :find_by => :find_by_grandham_id
+  load_and_authorize_resource :author, find_by: :find_by_grandham_id
 
   respond_to :html
 
-  before_filter :find_author, except: [ :index, :new ]
+  before_action :find_author, except: %i[index new]
 
   def index
     @authors = current_language.authors
@@ -11,8 +13,7 @@ class Admin::AuthorsController < AdminController
     respond_with @authors
   end
 
-  def edit
-  end
+  def edit; end
 
   def new
     @author = current_language.authors.new
@@ -24,7 +25,7 @@ class Admin::AuthorsController < AdminController
     if @author.save
       redirect_to language_admin_authors_path(current_language), notice: 'Author was successfully created.'
     else
-      render action: "new"
+      render action: 'new'
     end
   end
 
@@ -32,13 +33,13 @@ class Admin::AuthorsController < AdminController
     if @author.update_attributes(params[:author])
       redirect_to language_admin_authors_path(current_language), notice: 'Author was successfully updated.'
     else
-      render action: "edit"
+      render action: 'edit'
     end
   end
 
   private
 
   def find_author
-    @author = current_language.authors.find_by_grandham_id(params[:id])
+    @author = current_language.authors.find_by(grandham_id: params[:id])
   end
 end

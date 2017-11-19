@@ -1,11 +1,11 @@
-Grandham::Application.routes.draw do
-  get "qr_generator/image"
+# frozen_string_literal: true
 
-  get "error/access_denied"
+Grandham::Application.routes.draw do
+  get 'qr_generator/image'
+
+  get 'error/access_denied'
 
   devise_for :users
-
-
 
   resources :publishers
   resources :libraries

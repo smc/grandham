@@ -1,2 +1,4 @@
-json.(@field, :short_id)
-json.(@field, :name)
+# frozen_string_literal: true
+
+json.call(@field, :short_id)
+json.call(@field, :name)

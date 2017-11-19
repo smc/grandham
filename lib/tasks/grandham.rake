@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 namespace :grandham do
   desc "Import information from old Malayalagrandham database (from exported json file). Set the file path in 'FROM' environment variable"
-  task :import => :environment do
-    language = Language.find_by_short_code('ML')
+  task import: :environment do
+    language = Language.find_by(short_code: 'ML')
     books = JSON.load(open(File.join(ENV['FROM'])).read)
-    import_progress_bar = ProgressBar.create(:format => '%a |%b>%i| %p%% %t', :total => books.count)
+    import_progress_bar = ProgressBar.create(format: '%a |%b>%i| %p%% %t', total: books.count)
 
     import_map = {
       'Title'       => 'title',

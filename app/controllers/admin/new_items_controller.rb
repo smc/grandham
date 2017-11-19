@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class Admin::NewItemsController < AdminController
   load_and_authorize_resource :new_item
 
-  before_filter :find_new_item, except: [ :index ]
+  before_action :find_new_item, except: [:index]
 
   def index
     @new_items = current_language.new_items.not_reviewed
@@ -13,11 +15,11 @@ class Admin::NewItemsController < AdminController
 
     @new_item.update_attributes state: 'approved', reviewed_by_user_id: current_user.id
 
-    if current_language.new_items.not_reviewed.empty?
-      path = language_admin_dashboard_index_path(current_language)
-    else
-      path = language_admin_new_items_path(current_language)
-    end
+    path = if current_language.new_items.not_reviewed.empty?
+             language_admin_dashboard_index_path(current_language)
+           else
+             language_admin_new_items_path(current_language)
+           end
 
     redirect_to path
   end
@@ -25,11 +27,11 @@ class Admin::NewItemsController < AdminController
   def discard
     @new_item.update_attributes state: 'discarded', reviewed_by_user_id: current_user.id
 
-    if current_language.new_items.not_reviewed.empty?
-      path = language_admin_dashboard_index_path(current_language)
-    else
-      path = language_admin_new_items_path(current_language)
-    end
+    path = if current_language.new_items.not_reviewed.empty?
+             language_admin_dashboard_index_path(current_language)
+           else
+             language_admin_new_items_path(current_language)
+           end
 
     redirect_to path
   end

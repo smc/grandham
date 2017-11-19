@@ -24,3 +24,8 @@
 /solr/pids/*
 /solr/pids/development/sunspot-solr-development.pid
 /solr/default/data/*
+
+/node_modules
+/yarn-error.log
+
+.byebug_history

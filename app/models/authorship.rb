@@ -1,5 +1,7 @@
-class Authorship < ActiveRecord::Base
-  attr_accessible :author_id, :book_id
+# frozen_string_literal: true
+
+class Authorship < ApplicationRecord
+  # attr_accessible :author_id, :book_id
 
   belongs_to :author
   belongs_to :book
