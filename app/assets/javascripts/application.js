@@ -15,8 +15,8 @@
 
 //= require twitter/bootstrap
 
-//= require dataTables/jquery.dataTables
-//= require dataTables/jquery.dataTables.bootstrap
+//= require datatables.net/js/jquery.dataTables.js
+//= require datatables.net-bs/js/dataTables.bootstrap
 //= require turbolinks
 //= require_tree .
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Library::BooksController < LibraryController
-  load_and_authorize_resource :book, find_by: :find_by_grandham_id
+  load_and_authorize_resource :book, find_by: :grandham_id
 
   def new
     @book = Book.unscoped.new

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class LibrariesController < ApplicationController
-  load_and_authorize_resource :library, find_by: :find_by_grandham_id
+  load_and_authorize_resource :library, find_by: :grandham_id
 
   respond_to :html, :json
 

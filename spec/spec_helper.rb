@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] = 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -48,11 +50,11 @@ RSpec.configure do |config|
     TestSeeds.seed!
   end
 
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.start
   end
 
-  config.after(:each) do
+  config.after do
     DatabaseCleaner.clean
   end
 
@@ -61,5 +63,14 @@ RSpec.configure do |config|
     ::Sunspot.session = ::Sunspot::Rails::StubSessionProxy.new(::Sunspot.session)
   end
 
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.infer_spec_type_from_file_location!
+end
+require 'shoulda/matchers'
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
 end

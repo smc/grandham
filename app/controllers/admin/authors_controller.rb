@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::AuthorsController < AdminController
-  load_and_authorize_resource :author, find_by: :find_by_grandham_id
+  load_and_authorize_resource :author, find_by: :grandham_id
 
   respond_to :html
 

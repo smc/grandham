@@ -50,6 +50,7 @@ group :test do
   gem 'selenium-webdriver'
   # shoulda matchers from thoughtbot for some simple specs
   gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
 end
 
 group :development do

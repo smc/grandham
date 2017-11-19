@@ -3,7 +3,7 @@
 class Publisher < ApplicationRecord
   # attr_accessible :name, :language_id, :grandham_id, :place, :logos_attributes
 
-  belongs_to :language
+  belongs_to :language, optional: true
 
   validates :name, presence: true
 
