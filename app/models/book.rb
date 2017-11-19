@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Book < ApplicationRecord
-  default_scope where(approved: true, published: true)
+  default_scope -> { where(approved: true, published: true) }
 
   # attr_accessible :title, :isbn, :pages, :year, :description, :edition, \
   #                 :authors_attributes, :publishers_attributes, :libraries_attributes, \

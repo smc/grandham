@@ -16,7 +16,7 @@ gem 'will_paginate-bootstrap', '1.0.0'
 gem 'progress_bar'
 gem 'ruby-progressbar'
 
-gem 'cancan'
+gem 'cancancan'
 gem 'jquery-datatables-rails', '~> 3.3.0'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
