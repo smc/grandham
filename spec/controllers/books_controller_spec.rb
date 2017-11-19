@@ -24,13 +24,13 @@ describe BooksController do
 
     it 'assigns all books as @books' do
       get :index
-      assigns(:books).should be_a ActiveRecord::Relation
-      assigns(:books).should include(@book)
+      expect(assigns(:books)).to be_a ActiveRecord::Relation
+      expect(assigns(:books)).to include(@book)
     end
 
     it 'returns http success on json request' do
       get :index
-      response.should be_success
+      expect(response).to be_success
     end
 
     describe 'influence of language parameter' do
@@ -45,12 +45,12 @@ describe BooksController do
   describe 'GET show' do
     it 'returns http success on json request' do
       get :show, params: { id: @book }
-      response.should be_success
+      expect(response).to be_success
     end
 
     it 'assigns book as @book' do
       get :show, params: { id: @book }
-      assigns(:book).should eq @book
+      expect(assigns(:book)).to eq @book
     end
   end
 

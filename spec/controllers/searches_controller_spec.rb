@@ -37,7 +37,7 @@ describe SearchesController do
     end
 
     xit 'should invoke Search.new' do
-      Search.any_instance.should_receive(:results).once
+      expect_any_instance_of(Search).to receive(:results).once
 
       get :show, params: { query: 'Hello World' }
     end
