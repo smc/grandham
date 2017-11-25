@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
   before_action :disable_json
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  protect_from_forgery
-
   rescue_from CanCan::AccessDenied do |_exception|
     if user_signed_in?
       session[:access_denied_path] = request.url
