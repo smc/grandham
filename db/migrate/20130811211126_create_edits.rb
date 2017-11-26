@@ -1,4 +1,4 @@
-class CreateEdits < ActiveRecord::Migration
+class CreateEdits < ActiveRecord::Migration[4.2]
   def change
     create_table :edits do |t|
       t.string :field

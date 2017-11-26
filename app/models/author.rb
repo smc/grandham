@@ -1,7 +1,9 @@
-class Author < ActiveRecord::Base
-  attr_accessible :name, :language_id, :grandham_id, :profile_pictures_attributes
+# frozen_string_literal: true
 
-  belongs_to :language
+class Author < ApplicationRecord
+  #
+
+  belongs_to :language, optional: true
 
   has_many :authorships
   has_many :books, through: :authorships
@@ -11,7 +13,7 @@ class Author < ActiveRecord::Base
   has_many :profile_pictures, as: :imageable
   accepts_nested_attributes_for :profile_pictures
 
-  validates_presence_of :name
+  validates :name, presence: true
 
   before_create :set_grandham_id
   after_create :set_default_profile_picture
@@ -27,7 +29,7 @@ class Author < ActiveRecord::Base
   private
 
   def set_default_profile_picture
-    self.profile_pictures.create if self.profile_pictures.empty?
+    profile_pictures.create if profile_pictures.empty?
   end
 
   def set_grandham_id

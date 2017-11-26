@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 namespace :grandham do
   desc "Import information from old Malayalagrandham database (from exported json file). Set the file path in 'FROM' environment variable"
-  task :import => :environment do
-    language = Language.find_by_short_code('ML')
+  task import: :environment do
+    language = Language.find_by(short_code: 'ML')
     books = JSON.load(open(File.join(ENV['FROM'])).read)
-    import_progress_bar = ProgressBar.create(:format => '%a |%b>%i| %p%% %t', :total => books.count)
+    import_progress_bar = ProgressBar.create(format: '%a |%b>%i| %p%% %t', total: books.count)
 
     import_map = {
       'Title'       => 'title',
@@ -16,7 +18,7 @@ namespace :grandham do
       'Preface'     => 'preface',
       'Length'      => 'length',
       'Price'       => 'price',
-      'Note'        => 'Note',
+      'Note'        => 'note',
       'DDC'         => 'ddc',
       'Illustrator' => 'illustrator'
     }
@@ -30,7 +32,8 @@ namespace :grandham do
         book_obj[new_key] = book[old_key] unless book[old_key] == 'None'
       end
 
-      book_obj.save && book_obj.approve!
+      book_obj.save! && book_obj.approve!
+
 
       book_obj.new_items.create user_id: User.first.id, language_id: Language.first.id, state: 'approved'
 

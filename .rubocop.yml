@@ -1,0 +1,38 @@
+require: rubocop-rspec
+
+Style/Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false
+
+Metrics/LineLength:
+  Description: 'Limit lines to 100 characters.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#80-character-limits'
+  Enabled: true
+  Max: 100
+
+Style/AndOr:
+  Description: 'Use &&/|| instead of and/or.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-and-or-or'
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - config/initializers/*.rb
+    - 'vendor/**/*'
+    - 'db/**/*'
+    - 'tmp/**/*'
+    - 'bin/**/*'
+    - spec/rails_helper.rb
+    - spec/spec_helper.rb
+    - test/test_helper.rb
+    - Guardfile
+    - config/application.rb
+    - db/schema.rb
+
+Rails:
+  Enabled: true
+

@@ -1,5 +1,6 @@
-class Search
+# frozen_string_literal: true
 
+class Search
   attr_reader :query, :resource
 
   def initialize(resource, query)
@@ -8,6 +9,6 @@ class Search
   end
 
   def results
-    resource.search{ fulltext query }.results
+    resource.search { fulltext query }.results
   end
 end

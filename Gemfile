@@ -1,65 +1,77 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '~> 5.1'
 
-gem 'mysql2'
 gem 'devise'
+gem 'haml-rails'
+gem 'jquery-rails'
+gem 'mysql2'
+gem 'paperclip', '~> 3.0'
+gem 'simple_form'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap', '1.0.0'
-gem 'simple_form'
-gem 'jquery-rails'
-gem 'haml-rails'
-gem "paperclip", "~> 3.0"
 
-gem 'ruby-progressbar'
 gem 'progress_bar'
+gem 'ruby-progressbar'
 
+gem 'cancancan'
+gem 'jquery-datatables-rails', '~> 3.3.0'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
-gem 'jquery-datatables-rails', '~> 3.3.0'
-gem "cancan"
 
-gem 'turbolinks'
 gem 'nprogress-rails'
+gem 'turbolinks'
 
-gem 'rqrcode-rails3'
 gem 'mini_magick'
+gem 'rqrcode-rails3'
 
-gem 'jbuilder'
 gem 'capistrano'
-gem 'rvm-capistrano'
+gem 'jbuilder'
+gem 'rvm-capistrano', require: false
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'haml'
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'jquery-ui-rails'
-  gem 'bootstrap-sass-rails'
-  gem 'uglifier', '>= 1.0.3'
-end
+gem 'bootstrap-sass-rails'
+gem 'coffee-rails'
+gem 'haml'
+gem 'jquery-ui-rails'
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.0.3'
 
 group :production do
-  gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', platforms: :ruby
 end
 
 group :test do
   gem 'database_cleaner'
-  gem 'capybara'
-  gem 'selenium-webdriver'
   gem 'poltergeist'
+  gem 'selenium-webdriver'
   # shoulda matchers from thoughtbot for some simple specs
   gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
 end
 
 group :development do
-  gem 'sextant'
   gem 'better_errors'
-  gem "letter_opener"
+  gem 'letter_opener'
+  gem 'sextant'
+  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'pry'
 end
 
 group :test, :development do
+  gem 'factory_girl_rails', '~> 4.0'
   gem 'rspec-rails'
-  gem "factory_girl_rails", "~> 4.0"
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '~> 2.13'
+  gem 'selenium-webdriver'
 end

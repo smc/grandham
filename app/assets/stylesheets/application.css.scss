@@ -9,7 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require dataTables/jquery.dataTables.bootstrap
+ *= require datatables.net-bs/css/dataTables.bootstrap.css
  *= require twitter/bootstrap
  *= require_tree .
  */

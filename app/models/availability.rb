@@ -1,5 +1,7 @@
-class Availability < ActiveRecord::Base
-  attr_accessible :book_id, :library_id
+# frozen_string_literal: true
+
+class Availability < ApplicationRecord
+  #
 
   belongs_to :library
   belongs_to :book

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryGirl.define do
   factory :book do
     language
@@ -7,7 +9,7 @@ FactoryGirl.define do
     pages '13'
     isbn '3333333333333'
 
-    after(:create) do |book, evaluator|
+    after(:create) do |book, _evaluator|
       book.authors << FactoryGirl.create(:author, language_id: Language.default.id)
       book.publishers << FactoryGirl.create(:publisher, language_id: Language.default.id)
       book.covers.create

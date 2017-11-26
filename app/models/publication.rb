@@ -1,5 +1,7 @@
-class Publication < ActiveRecord::Base
-  attr_accessible :book_id, :publisher_id
+# frozen_string_literal: true
+
+class Publication < ApplicationRecord
+  #
 
   belongs_to :publisher
   belongs_to :book

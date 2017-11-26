@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 class BooksController < ApplicationController
-  load_and_authorize_resource :book, :find_by => :find_by_grandham_id
+  load_and_authorize_resource :book, find_by: :grandham_id
 
   respond_to :html, :json
 
-  before_filter :find_book, only: [ :show, :update, :history, :edit ]
+  before_action :find_book, only: %i[show update history edit]
 
   def index
-    collection = (current_language && current_language.books) || Book
-    @books = collection.paginate(:page => params[:page], :per_page => 10)
+    collection = (current_language&.books) || Book
+    @books = collection.paginate(page: params[:page], per_page: 10)
     respond_with @books
   end
 
@@ -24,7 +26,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.unscoped.new(params[:book])
+    @book = Book.unscoped.new(book_params)
     if @book.save
       if current_user.is_an_admin?
         @book.approve!
@@ -40,7 +42,7 @@ class BooksController < ApplicationController
       redirect_to redirect_path
     else
       @book.covers.build
-      render "new"
+      render 'new'
     end
   end
 
@@ -68,7 +70,11 @@ class BooksController < ApplicationController
 
   private
 
+  def book_params
+    params.require(:book).permit(:grandham_id, :language_id, :title, :isbn, :pages, :year, :description, :edition, :ddc, :volume, :series, :price, :length, :title_orginal, :illustrator, :note, :preface, :created_at, :updated_at, :approved, :published)
+  end
+
   def find_book
-    @book = Book.find_by_grandham_id(params[:id])
+    @book = Book.find_by(grandham_id: params[:id])
   end
 end

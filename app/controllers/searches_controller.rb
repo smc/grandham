@@ -1,22 +1,20 @@
+# frozen_string_literal: true
+
 class SearchesController < ApplicationController
-  before_filter :get_results
+  before_action :get_results
 
-  def books
-  end
+  def books; end
 
-  def authors
-  end
+  def authors; end
 
-  def publishers
-  end
+  def publishers; end
 
-  def libraries
-  end
+  def libraries; end
 
   private
 
   def resource(action)
-    resources = ['books', 'authors', 'libraries', 'publishers']
+    resources = %w[books authors libraries publishers]
 
     if resources.include?(action)
       action.camelcase.singularize.constantize

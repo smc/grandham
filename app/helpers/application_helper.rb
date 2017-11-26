@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def languages_menu_heading
     if current_language
       "Language (#{current_language.short_code})"
     else
-      "Language (all)"
+      'Language (all)'
     end
   end
 

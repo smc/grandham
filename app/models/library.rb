@@ -1,5 +1,7 @@
-class Library < ActiveRecord::Base
-  attr_accessible :name, :language_id, :grandham_id, :place, :logos_attributes
+# frozen_string_literal: true
+
+class Library < ApplicationRecord
+  #
 
   belongs_to :language
 
@@ -25,7 +27,7 @@ class Library < ActiveRecord::Base
   private
 
   def set_default_logo
-    self.logos.create if self.logos.empty?
+    logos.create if logos.empty?
   end
 
   def set_grandham_id

@@ -1,4 +1,4 @@
-class AddGrandhamIdForExisitingPublishers < ActiveRecord::Migration
+class AddGrandhamIdForExisitingPublishers < ActiveRecord::Migration[4.2]
   def up
     Publisher.all.each do |publisher|
       unless publisher.grandham_id

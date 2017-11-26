@@ -1,4 +1,4 @@
-class CreateNewItems < ActiveRecord::Migration
+class CreateNewItems < ActiveRecord::Migration[4.2]
   def change
     create_table :new_items do |t|
       t.integer :reviewed_by_user_id

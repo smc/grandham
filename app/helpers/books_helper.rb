@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module BooksHelper
   def book_cover_picture(book)
     if book.covers.empty?
@@ -8,7 +10,7 @@ module BooksHelper
   end
 
   def formatted_name(book)
-    year = "(#{book.year})" unless book.year.blank?
+    year = "(#{book.year})" if book.year.present?
 
     "#{book.title} #{year}"
   end
@@ -18,10 +20,10 @@ module BooksHelper
   end
 
   def add_new_book_path
-      if current_language
-          new_language_book_path(current_language) 
-      else
-          new_book_path
-      end
+    if current_language
+      new_language_book_path(current_language)
+    else
+      new_book_path
+    end
   end
 end

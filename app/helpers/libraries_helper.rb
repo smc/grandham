@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module LibrariesHelper
   def library_logo(library)
     if library.logos.empty?
