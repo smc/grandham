@@ -3,7 +3,7 @@
 require 'rvm/capistrano'
 require 'bundler/capistrano'
 
-set :rvm_ruby_string, 'ruby-2.1.5@grandham'
+set :rvm_ruby_string, 'ruby-2.4.2@grandham'
 set :rvm_type, :user
 
 set :application, 'grandham'

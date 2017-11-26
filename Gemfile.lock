@@ -127,7 +127,7 @@ GEM
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
-    jquery-datatables-rails (3.3.0)
+    jquery-datatables-rails (3.4.0)
       actionpack (>= 3.1)
       jquery-rails
       railties (>= 3.1)
@@ -156,6 +156,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mimemagic (0.3.0)
     mini_magick (4.8.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
@@ -176,11 +177,12 @@ GEM
     nprogress-rails (0.2.0.2)
     options (2.3.2)
     orm_adapter (0.5.0)
-    paperclip (3.5.4)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
+    paperclip (4.3.7)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
       mime-types
+      mimemagic (= 0.3.0)
     poltergeist (1.16.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -351,7 +353,7 @@ DEPENDENCIES
   haml
   haml-rails
   jbuilder
-  jquery-datatables-rails (~> 3.3.0)
+  jquery-datatables-rails (~> 3.4.0)
   jquery-rails
   jquery-ui-rails
   letter_opener
@@ -359,7 +361,7 @@ DEPENDENCIES
   mini_magick
   mysql2
   nprogress-rails
-  paperclip (~> 3.0)
+  paperclip (~> 4.0)
   poltergeist
   progress_bar
   pry
