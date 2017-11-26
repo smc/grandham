@@ -3,7 +3,7 @@
 namespace :grandham do
   desc "Import information from old Malayalagrandham database (from exported json file). Set the file path in 'FROM' environment variable"
   task import: :environment do
-    language = Language.find_by(short_code: 'ML')
+    language = Language.find_or_create_by(short_code: 'ML')
     books = JSON.load(open(File.join(ENV['FROM'])).read)
     import_progress_bar = ProgressBar.create(format: '%a |%b>%i| %p%% %t', total: books.count)
 
@@ -31,6 +31,8 @@ namespace :grandham do
       import_map.each do |old_key, new_key|
         book_obj[new_key] = book[old_key] unless book[old_key] == 'None'
       end
+
+      book_obj.validate_isbn = false
 
       book_obj.save! && book_obj.approve!
 

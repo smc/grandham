@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Book < ApplicationRecord
+  attr_accessor :validate_isbn
+
   default_scope -> { where(approved: true, published: true) }
 
   belongs_to :language
@@ -26,7 +28,8 @@ class Book < ApplicationRecord
   has_many :covers, as: :imageable
   accepts_nested_attributes_for :covers
 
-  validates :title, :isbn, presence: true
+  validates :title, presence: true
+  validates :isbn, presence: true, if: :validate_isbn
 
   validates :pages, numericality: { only_integers: true }, allow_blank: true
   validates :year, numericality: {
