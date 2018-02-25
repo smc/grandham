@@ -38,7 +38,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 set :keep_releases, 5
 
-#Default value to keep db dumps for 5 days 
+#Default value to keep db dumps for 5 days
 set :db_dump_retention, 5
 
 set :bundle_without, %w{development test utils}.join(' ')
@@ -49,5 +49,5 @@ set :bundle_jobs, 4
 
 before 'deploy:migrate', 'db:backup'
 after 'deploy:finishing', 'deploy:cleanup'
-after 'deploy:cleanup', 'unicorn:restart'
-after 'deploy:cleanup', 'delayed_job:restart'
+#after 'deploy:cleanup', 'unicorn:restart'
+#after 'deploy:cleanup', 'delayed_job:restart'

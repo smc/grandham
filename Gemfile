@@ -4,43 +4,33 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.1'
 
-gem 'devise'
-gem 'haml-rails'
-gem 'jquery-rails'
-gem 'mysql2'
-gem 'paperclip', '~> 4.0'
-gem 'simple_form'
-gem 'will_paginate', '~> 3.0'
-gem 'will_paginate-bootstrap', '1.0.0'
-
-gem 'progress_bar'
-gem 'ruby-progressbar'
-
+gem 'bootstrap-sass-rails'
 gem 'cancancan'
+gem 'coffee-rails'
+gem 'devise'
+gem 'haml'
+gem 'haml-rails'
+gem 'jbuilder'
 gem 'jquery-datatables-rails', '~> 3.4.0'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'mini_magick'
+gem 'mysql2'
+gem 'nprogress-rails'
+gem 'paperclip', '~> 4.0'
+gem 'progress_bar'
+gem 'rqrcode-rails3'
+gem 'ruby-progressbar'
+gem 'sass-rails', '~> 5.0'
+gem 'simple_form'
+gem 'sshkit'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
-
-gem 'nprogress-rails'
 gem 'turbolinks'
-
-gem 'mini_magick'
-gem 'rqrcode-rails3'
-
-gem 'jbuilder'
-
-# Gems used only for assets and not required
-# in production environments by default.
-gem 'bootstrap-sass-rails'
-gem 'coffee-rails'
-gem 'haml'
-gem 'jquery-ui-rails'
-gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.0.3'
-
-group :production do
-  gem 'therubyracer', platforms: :ruby
-end
+gem 'unicorn'
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap', '1.0.0'
 
 group :test do
   gem 'database_cleaner'
@@ -62,6 +52,12 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry'
+
+  gem 'capistrano', '3.4.0'
+  # gem 'boxy-cap'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
 end
 
 group :test, :development do
@@ -73,11 +69,3 @@ group :test, :development do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
 end
-
-gem 'boxy-cap', github: 'bigbinary/boxy-cap'
-gem 'capistrano'
-gem 'capistrano-rbenv'
-gem 'capistrano-rails', github: 'capistrano/rails'
-gem 'capistrano-bundler'
-gem 'sshkit'
-gem 'unicorn'
