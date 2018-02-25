@@ -1,55 +1,53 @@
-# frozen_string_literal: true
+# config valid only for current version of Capistrano
+lock '3.4.0'
 
-require 'rvm/capistrano'
-require 'bundler/capistrano'
+set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_ruby, '2.3.0'
 
-set :rvm_ruby_string, 'ruby-2.4.2@grandham'
-set :rvm_type, :user
-
+#TODO: Check the application name
 set :application, 'grandham'
-set :repository,  'git@github.com:smc/grandham.git'
 
-role :web, 'grandham.org'
-role :app, 'grandham.org'
-role :db,  'grandham.org', primary: true
+#TODO: Replace with valid github url
+set :repo_url, 'git@github.com:smc/grandham.git'
 
-set :branch, 'master'
+# Default branch is :master
+ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
-set :user, 'grandham'
-set :use_sudo, false
+# Default deploy_to directory is /var/www/my_app_name
+set :deploy_to, "/data/apps/#{fetch(:application)}"
 
-set :deploy_to, '/home/grandham/production/'
-
-set :rails_env, 'production'
-
+# Default value for :scm is :git
 set :scm, :git
-set :deploy_via, 'remote_cache'
-set :ssh_options, forward_agent: true
-set :copy_exclude, '.git/*'
-set :copy_cache, true
 
-namespace :deploy do
-  task :start, roles: :app, except: { no_release: true } do
-    run "#{try_sudo} touch #{File.join(current_path, 'tmp', 'restart.txt')}"
-  end
-  task :stop do; end
+# Default value for :format is :pretty
+set :format, :pretty
 
-  task :db_migrate, roles: :app, except: { no_release: true } do
-    run "cd #{current_path} && bundle exec rake db:migrate RAILS_ENV=#{rails_env}"
-  end
+# Default value for :log_level is :debug
+set :log_level, :debug
 
-  task :copy_env_specific_files, roles: :app, except: { no_release: true } do
-    run "cp #{shared_path}/.rvmrc #{current_path}/.rvmrc"
-    run "cp #{shared_path}/database.yml #{current_path}/config/database.yml"
-    run "cp #{shared_path}/production.rb #{current_path}/config/environments/production.rb"
-    run "cd #{current_path}/vendor && ln -s #{shared_path}/bundle/ ."
-    run "cd #{current_path} && bundle install --quiet --without development test --path vendor/bundle"
-  end
+# Default value for :pty is false
+set :pty, true
 
-  task :restart, roles: :app, except: { no_release: true } do
-    run "#{try_sudo} touch #{File.join(current_path, 'tmp', 'restart.txt')}"
-  end
-end
+# Default value for :linked_files is []
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', '.rbenv-vars')
 
-after 'deploy:create_symlink', 'deploy:copy_env_specific_files'
-after 'deploy:copy_env_specific_files', 'deploy:db_migrate'
+# Default value for linked_dirs is []
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'config/settings',
+                                               'vendor/bundle', 'public/system', 'db/backups', 'uploads')
+
+
+set :keep_releases, 5
+
+#Default value to keep db dumps for 5 days 
+set :db_dump_retention, 5
+
+set :bundle_without, %w{development test utils}.join(' ')
+
+set :git_tag_name, proc { Time.now.to_s.gsub(/[-\s\:\+]+/, '-') }
+
+set :bundle_jobs, 4
+
+before 'deploy:migrate', 'db:backup'
+after 'deploy:finishing', 'deploy:cleanup'
+after 'deploy:cleanup', 'unicorn:restart'
+after 'deploy:cleanup', 'delayed_job:restart'

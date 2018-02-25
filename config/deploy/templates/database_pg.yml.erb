@@ -1,0 +1,20 @@
+# store your custom template at foo/bar/database.yml.erb `set :template_dir, "foo/bar"`
+#
+# example of database template
+
+base: &base
+  adapter: postgresql
+  encoding: unicode
+  timeout: 5000
+  username: deployer
+# password: <%#= ask(:db_password, SecureRandom.base64(6)) && fetch(:db_password) %>
+# host: localhost
+# port: 5432
+
+test:
+  database: <%= fetch(:application) %>_test
+  <<: *base
+
+<%= fetch(:rails_env).to_s %>:
+  database: <%= fetch(:application) %>_<%= fetch(:rails_env).to_s %>
+  <<: *base

@@ -27,9 +27,7 @@ gem 'turbolinks'
 gem 'mini_magick'
 gem 'rqrcode-rails3'
 
-gem 'capistrano'
 gem 'jbuilder'
-gem 'rvm-capistrano', require: false
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -75,3 +73,11 @@ group :test, :development do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
 end
+
+gem 'boxy-cap', github: 'bigbinary/boxy-cap'
+gem 'capistrano'
+gem 'capistrano-rbenv'
+gem 'capistrano-rails', github: 'capistrano/rails'
+gem 'capistrano-bundler'
+gem 'sshkit'
+gem 'unicorn'

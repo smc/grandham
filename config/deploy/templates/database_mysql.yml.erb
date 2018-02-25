@@ -1,0 +1,20 @@
+# store your custom template at foo/bar/database_mysql.yml.erb `set :template_dir, "foo/bar"`
+#
+# example of database template
+
+base: &base
+  adapter: mysql2
+  timeout: 5000
+  username: deployer
+  password:
+# password: <%#= ask(:db_password, SecureRandom.base64(6)) && fetch(:db_password) %>
+  host: 127.0.0.1
+  port: 3306
+
+test:
+  database: <%= fetch(:application) %>_test
+  <<: *base
+
+<%= fetch(:rails_env).to_s %>:
+  database: <%= fetch(:application) %>_<%= fetch(:rails_env).to_s %>
+  <<: *base
