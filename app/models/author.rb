@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Author < ApplicationRecord
-  #
-
   belongs_to :language, optional: true
 
   has_many :authorships

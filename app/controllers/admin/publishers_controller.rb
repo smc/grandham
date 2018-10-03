@@ -30,7 +30,7 @@ class Admin::PublishersController < AdminController
   end
 
   def update
-    if @publisher.update_attributes(publisher_params)
+    if @publisher.update(publisher_params)
       redirect_to language_admin_publishers_path(current_language), notice: 'Publisher was successfully updated.'
     else
       render action: 'edit'

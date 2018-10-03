@@ -30,7 +30,7 @@ class Admin::LibrariesController < AdminController
   end
 
   def update
-    if @library.update_attributes(library_params)
+    if @library.update(library_params)
       redirect_to language_admin_libraries_path(current_language), notice: 'Library was successfully updated.'
     else
       render action: 'edit'

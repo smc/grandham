@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Language < ApplicationRecord
-  #
-
   has_many :books
   has_many :authors
   has_many :publishers

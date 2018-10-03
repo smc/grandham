@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Edit < ApplicationRecord
-  #
-
   belongs_to :editable, polymorphic: true
   belongs_to :language
 

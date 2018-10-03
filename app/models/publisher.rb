@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Publisher < ApplicationRecord
-  #
-
   belongs_to :language, optional: true
 
   validates :name, presence: true

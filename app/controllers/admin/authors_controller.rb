@@ -30,7 +30,7 @@ class Admin::AuthorsController < AdminController
   end
 
   def update
-    if @author.update_attributes(author_params)
+    if @author.update(author_params)
       redirect_to language_admin_authors_path(current_language), notice: 'Author was successfully updated.'
     else
       render action: 'edit'
