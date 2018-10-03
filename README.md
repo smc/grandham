@@ -1,9 +1,6 @@
-Grandham.org, Bibliographic Data Project.
+# Grandham, Bibliographic Data Project.
 
 [![Build Status](https://travis-ci.org/smc/grandham.svg?branch=master)](https://travis-ci.org/smc/grandham)
-[![Dependency Status](https://gemnasium.com/badges/github.com/smc/grandham.svg)](https://gemnasium.com/github.com/smc/grandham)
-
-# Grandham, Bibliographic Data Project.
 
  Grandham is a project intended to make available reliable bibliographic information on all Malayalam books published in Kerala and elsewhere. This Open data set contains Complete bibliography data from first Impression to 1995. This project wants to add following features to Malayalagrandham DB and build it as a bibliography web service
 
@@ -14,7 +11,7 @@ Grandham.org, Bibliographic Data Project.
 * A module for building qr code of bibliography with a malayalagrandham link
 * Crowd sourced way for input and an approval queue interface for submissions.
 * MARC21 and MARCXML support
-* A dynamic visualisation interface for book information browsing
+* A dynamic visualization interface for book information browsing
 * proper API , and app work flow documentation 
 
 ## Installation
@@ -46,4 +43,4 @@ rails s
 
 ## License
 
-AGPL
+MPL
