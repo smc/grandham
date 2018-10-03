@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe BooksController do
   before do
-    @book = FactoryGirl.create :book
+    @book = FactoryBot.create :book
   end
 
   describe 'GET index' do
@@ -30,13 +30,13 @@ describe BooksController do
 
     it 'returns http success on json request' do
       get :index
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     describe 'influence of language parameter' do
       before do
         5.times do
-          book = FactoryGirl.create :book
+          book = FactoryBot.create :book
         end
       end
     end
@@ -45,7 +45,7 @@ describe BooksController do
   describe 'GET show' do
     it 'returns http success on json request' do
       get :show, params: { id: @book }
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'assigns book as @book' do

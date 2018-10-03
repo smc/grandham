@@ -2,9 +2,9 @@
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :availability do
-    library_id ''
-    book_id 1
+    library_id { '' }
+    book_id { 1 }
   end
 end

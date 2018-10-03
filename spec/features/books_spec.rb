@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe 'Books' do
   before (:all) do
-    @book = FactoryGirl.create :book
+    @book = FactoryBot.create :book
   end
 
   context "Book's individual page'" do

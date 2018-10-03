@@ -8,7 +8,7 @@ describe SearchesController do
       it 'returns http_success' do
         get :books
 
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
@@ -16,7 +16,7 @@ describe SearchesController do
       it 'returns http_success' do
         get :authors
 
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
@@ -24,7 +24,7 @@ describe SearchesController do
       it 'returns http_success' do
         get :libraries
 
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
@@ -32,7 +32,7 @@ describe SearchesController do
       it 'returns http_success' do
         get :publishers
 
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 

@@ -2,9 +2,9 @@
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :authorship do
-    author_id 1
-    book_id 1
+    author_id { 1 }
+    book_id { 1 }
   end
 end

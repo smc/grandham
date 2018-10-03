@@ -2,8 +2,8 @@
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :publisher do
-    name 'Sample Publisher'
+    name { 'Sample Publisher' }
   end
 end
