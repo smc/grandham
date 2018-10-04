@@ -37,6 +37,7 @@ gem 'bootstrap-sass-rails'
 gem 'coffee-rails'
 gem 'haml'
 gem 'jquery-ui-rails'
+gem 'meta-tags'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.0.3'
 

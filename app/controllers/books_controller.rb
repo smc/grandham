@@ -13,7 +13,20 @@ class BooksController < ApplicationController
     respond_with @books
   end
 
-  def show
+  def show # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+    @page_description = @book.description
+    @page_keywords = [@book.year, @book.language.name].join(', ')
+    set_meta_tags og: {
+      title:    @book.title,
+      type:     'books.book',
+      url:      request.url,
+      image: view_context.book_cover_picture(@book),
+      description: @book.description,
+      books:    {
+        isbn: @book.isbn,
+        author: @book.authors.pluck(:name)
+      }
+    }
     respond_with @book
   end
 
@@ -71,7 +84,10 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:grandham_id, :language_id, :title, :isbn, :pages, :year, :description, :edition, :ddc, :volume, :series, :price, :length, :title_orginal, :illustrator, :note, :preface, :created_at, :updated_at, :approved, :published)
+    params.require(:book).permit(:grandham_id, :language_id, :title, :isbn, :pages, :year, 
+                                 :description, :edition, :ddc, :volume, :series, :price, 
+                                 :length, :title_orginal, :illustrator, :note, :preface, 
+                                 :created_at, :updated_at, :approved, :published)
   end
 
   def find_book
