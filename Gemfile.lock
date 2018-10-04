@@ -126,6 +126,8 @@ GEM
       railties (>= 3.0.0)
     faraday (0.15.3)
       multipart-post (>= 1.2, < 3)
+    fast_jsonapi (1.4)
+      activesupport (>= 4.2)
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -408,6 +410,7 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_bot_rails
+  fast_jsonapi
   haml
   haml-rails
   jbuilder

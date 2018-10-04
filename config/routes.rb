@@ -71,4 +71,9 @@ Grandham::Application.routes.draw do
       get :books, on: :member
     end
   end
+  namespace :api do
+    namespace :v1 do
+      resources :books, only: [:show, :index]
+    end
+  end
 end
