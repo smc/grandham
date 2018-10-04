@@ -1,6 +1,7 @@
 # Grandham, Bibliographic Data Project.
 
 [![Build Status](https://travis-ci.org/smc/grandham.svg?branch=master)](https://travis-ci.org/smc/grandham)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f57724a16256ec2f7532/maintainability)](https://codeclimate.com/github/smc/grandham/maintainability)
 
  Grandham is a project intended to make available reliable bibliographic information on all Malayalam books published in Kerala and elsewhere. This Open data set contains Complete bibliography data from first Impression to 1995. This project wants to add following features to Malayalagrandham DB and build it as a bibliography web service
 
