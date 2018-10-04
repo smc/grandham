@@ -40,7 +40,7 @@ class Book < ApplicationRecord
   scope :not_reviewed, -> { where(reviewed: false) }
   scope :approved, -> { where(approved: true) }
 
-  searchkick word: %i[title description title_orginal approved]
+  searchkick word_start: %i[description title_orginal approved], word_middle: [:title]
 
   def approve!
     self.approved = true
