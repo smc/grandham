@@ -7,7 +7,6 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
-require 'sunspot/rails/spec_helper'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -55,11 +54,6 @@ RSpec.configure do |config|
 
   config.after do
     DatabaseCleaner.clean
-  end
-
-  # Stubbing out Sunspot
-  config.before(:suite) do
-    ::Sunspot.session = ::Sunspot::Rails::StubSessionProxy.new(::Sunspot.session)
   end
 
   config.include Devise::Test::ControllerHelpers, type: :controller

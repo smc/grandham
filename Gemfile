@@ -18,8 +18,6 @@ gem 'ruby-progressbar'
 
 gem 'cancancan'
 gem 'jquery-datatables-rails', '~> 3.4.0'
-gem 'sunspot_rails'
-gem 'sunspot_solr'
 
 gem 'nprogress-rails'
 gem 'turbolinks'
@@ -38,7 +36,9 @@ gem 'coffee-rails'
 gem 'haml'
 gem 'jquery-ui-rails'
 gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.0.3'
+gem 'uglifier', '>= 2.0.3'
+
+gem 'searchkick'
 
 group :production do
   gem 'therubyracer', platforms: :ruby

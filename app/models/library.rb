@@ -14,9 +14,7 @@ class Library < ApplicationRecord
   before_create :set_grandham_id
   after_create :set_default_logo
 
-  searchable do
-    text :name
-  end
+  searchkick word: [:name]
 
   def to_param
     grandham_id

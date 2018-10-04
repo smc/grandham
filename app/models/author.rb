@@ -16,9 +16,7 @@ class Author < ApplicationRecord
   before_create :set_grandham_id
   after_create :set_default_profile_picture
 
-  searchable do
-    text :name
-  end
+  searchkick word: [:name]
 
   def to_param
     grandham_id

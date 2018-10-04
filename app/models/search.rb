@@ -9,6 +9,6 @@ class Search
   end
 
   def results
-    resource.search { fulltext query }.results
+    resource.search(query).results
   end
 end
