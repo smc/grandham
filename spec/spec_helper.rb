@@ -2,12 +2,11 @@
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] = 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
-require 'sunspot/rails/spec_helper'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -57,13 +56,22 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  # Stubbing out Sunspot
-  config.before(:suite) do
-    ::Sunspot.session = ::Sunspot::Rails::StubSessionProxy.new(::Sunspot.session)
-  end
-
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.infer_spec_type_from_file_location!
+
+  config.before(:suite) do
+    # reindex models
+    # Book.reindex
+
+    # and disable callbacks
+    Searchkick.disable_callbacks
+  end
+
+  config.around(:each, search: true) do |example|
+    Searchkick.callbacks(true) do
+      example.run
+    end
+  end
 end
 require 'shoulda/matchers'
 
