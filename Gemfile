@@ -41,6 +41,8 @@ gem 'uglifier', '>= 2.0.3'
 
 gem 'searchkick'
 
+gem 'puma'
+
 group :production do
   gem 'therubyracer', platforms: :ruby
 end
