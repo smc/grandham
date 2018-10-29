@@ -42,6 +42,7 @@ gem 'uglifier', '>= 2.0.3'
 gem 'searchkick'
 
 gem 'puma'
+gem 'sendgrid-actionmailer'
 
 group :production do
   gem 'therubyracer', platforms: :ruby

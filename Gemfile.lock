@@ -178,6 +178,7 @@ GEM
     minitest (5.11.3)
     multi_json (1.13.1)
     multipart-post (2.0.0)
+    mustermann (1.0.3)
     mysql2 (0.5.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -211,6 +212,8 @@ GEM
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.5)
+    rack-protection (2.0.4)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.1)
@@ -272,6 +275,7 @@ GEM
     rspec-support (3.8.0)
     ruby-progressbar (1.10.0)
     ruby_dep (1.5.0)
+    ruby_http_client (3.3.0)
     ruby_parser (3.11.0)
       sexp_processor (~> 4.9)
     rubyzip (1.2.2)
@@ -295,6 +299,12 @@ GEM
     selenium-webdriver (3.14.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
+    sendgrid-actionmailer (2.0.1)
+      mail (~> 2.5)
+      sendgrid-ruby (~> 5.2)
+    sendgrid-ruby (5.3.0)
+      ruby_http_client (~> 3.3.0)
+      sinatra (>= 1.4.7, < 3)
     sexp_processor (4.11.0)
     sextant (0.2.4)
       rails (>= 3.2)
@@ -303,6 +313,11 @@ GEM
     simple_form (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
+    sinatra (2.0.4)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.4)
+      tilt (~> 2.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -387,6 +402,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   searchkick
   selenium-webdriver
+  sendgrid-actionmailer
   sextant
   shoulda-matchers
   simple_form

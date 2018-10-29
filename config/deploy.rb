@@ -9,9 +9,9 @@ set :rvm_type, :user
 set :application, 'grandham'
 set :repository,  'git@github.com:smc/grandham.git'
 
-role :web, 'grandham.org'
-role :app, 'grandham.org'
-role :db,  'grandham.org', primary: true
+role :web, 'grandham.in'
+role :app, 'grandham.in'
+role :db,  'grandham.in', primary: true
 
 set :branch, 'master'
 
