@@ -1,55 +1,41 @@
-# frozen_string_literal: true
+# config valid for current version and patch releases of Capistrano
+lock "~> 3.11.0"
 
-require 'rvm/capistrano'
-require 'bundler/capistrano'
+set :application, "Grandham"
+set :repo_url, "git@github.com:smc/grandham.git"
 
-set :rvm_ruby_string, 'ruby-2.4.2@grandham'
-set :rvm_type, :user
+# Default branch is :master
+# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
-set :application, 'grandham'
-set :repository,  'git@github.com:smc/grandham.git'
+# Default deploy_to directory is /var/www/my_app_name
+set :deploy_to, "/home/smc/grandham"
 
-role :web, 'grandham.in'
-role :app, 'grandham.in'
-role :db,  'grandham.in', primary: true
+set :rvm1_map_bins, %w(rake gem bundle ruby bundle puma pumactl)
 
-set :branch, 'master'
+# Default value for :format is :airbrussh.
+# set :format, :airbrussh
 
-set :user, 'grandham'
-set :use_sudo, false
+# You can configure the Airbrussh format using :format_options.
+# These are the defaults.
+# set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
 
-set :deploy_to, '/home/grandham/production/'
+# Default value for :pty is false
+# set :pty, true
 
-set :rails_env, 'production'
+# Default value for :linked_files is []
+append :linked_files, "config/database.yml"
 
-set :scm, :git
-set :deploy_via, 'remote_cache'
-set :ssh_options, forward_agent: true
-set :copy_exclude, '.git/*'
-set :copy_cache, true
+# Default value for linked_dirs is []
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
-namespace :deploy do
-  task :start, roles: :app, except: { no_release: true } do
-    run "#{try_sudo} touch #{File.join(current_path, 'tmp', 'restart.txt')}"
-  end
-  task :stop do; end
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
-  task :db_migrate, roles: :app, except: { no_release: true } do
-    run "cd #{current_path} && bundle exec rake db:migrate RAILS_ENV=#{rails_env}"
-  end
+# Default value for local_user is ENV['USER']
+# set :local_user, -> { `git config user.name`.chomp }
 
-  task :copy_env_specific_files, roles: :app, except: { no_release: true } do
-    run "cp #{shared_path}/.rvmrc #{current_path}/.rvmrc"
-    run "cp #{shared_path}/database.yml #{current_path}/config/database.yml"
-    run "cp #{shared_path}/production.rb #{current_path}/config/environments/production.rb"
-    run "cd #{current_path}/vendor && ln -s #{shared_path}/bundle/ ."
-    run "cd #{current_path} && bundle install --quiet --without development test --path vendor/bundle"
-  end
+# Default value for keep_releases is 5
+# set :keep_releases, 5
 
-  task :restart, roles: :app, except: { no_release: true } do
-    run "#{try_sudo} touch #{File.join(current_path, 'tmp', 'restart.txt')}"
-  end
-end
-
-after 'deploy:create_symlink', 'deploy:copy_env_specific_files'
-after 'deploy:copy_env_specific_files', 'deploy:db_migrate'
+# Uncomment the following to require manually verifying the host key before first deploy.
+# set :ssh_options, verify_host_key: :secure

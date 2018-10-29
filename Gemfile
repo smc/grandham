@@ -25,9 +25,7 @@ gem 'turbolinks'
 gem 'mini_magick'
 gem 'rqrcode-rails3'
 
-gem 'capistrano'
 gem 'jbuilder'
-gem 'rvm-capistrano', require: false
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -44,6 +42,9 @@ gem 'searchkick'
 gem 'puma'
 gem 'sendgrid-actionmailer'
 
+gem 'puma'
+gem 'sendgrid-actionmailer'
+
 group :production do
   gem 'therubyracer', platforms: :ruby
 end
@@ -51,7 +52,6 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'poltergeist'
-  gem 'selenium-webdriver'
   # shoulda matchers from thoughtbot for some simple specs
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
@@ -65,7 +65,11 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'capistrano', '~> 3.11', require: false
+  gem 'capistrano-rails', '~> 1.4', require: false
+  gem 'capistrano3-puma'
   gem 'pry'
+  gem 'rvm1-capistrano3', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
