@@ -42,9 +42,6 @@ gem 'searchkick'
 gem 'puma'
 gem 'sendgrid-actionmailer'
 
-gem 'puma'
-gem 'sendgrid-actionmailer'
-
 group :production do
   gem 'therubyracer', platforms: :ruby
 end
