@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require "spec_helper"
 
 # Specs in this file have access to a helper object that includes
 # the Admin::DashboardHelper. For example:

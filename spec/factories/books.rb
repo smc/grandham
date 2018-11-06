@@ -4,10 +4,10 @@ FactoryBot.define do
   factory :book do
     language
 
-    title { 'Sample title' }
-    year { '2013' }
-    pages { '13' }
-    isbn { '3333333333333' }
+    title { "Sample title" }
+    year { "2013" }
+    pages { "13" }
+    isbn { "3333333333333" }
 
     after(:create) do |book, _evaluator|
       book.authors << FactoryBot.create(:author, language_id: Language.default.id)

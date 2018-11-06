@@ -10,8 +10,8 @@ class User < ApplicationRecord
 
   after_create :set_default_role
 
-  has_many :edits
-  has_many :new_items
+  has_many :edits, dependent: :destroy
+  has_many :new_items, dependent: :destroy
 
   belongs_to :language, optional: true
   belongs_to :publisher, optional: true
@@ -22,19 +22,19 @@ class User < ApplicationRecord
   end
 
   def set_as_super_admin(language)
-    self.role        = 'super_admin'
+    self.role        = "super_admin"
     self.language_id = language.id
 
     save
   end
 
-  def is_an_admin?
+  def admin?
     %w[super_admin admin].include? role
   end
 
   private
 
   def set_default_role
-    update_attribute :role, 'contributor' unless role
+    update_attribute :role, "contributor" unless role
   end
 end

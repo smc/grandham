@@ -4,7 +4,7 @@
 
 FactoryBot.define do
   factory :language do
-    name { 'English' }
+    name { "English" }
     sequence(:short_code) { |n| "en#{n}" }
   end
 end

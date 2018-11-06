@@ -3,7 +3,7 @@
 module BooksHelper
   def book_cover_picture(book)
     if book.covers.empty?
-      '/book_cover_missing.png'
+      "/book_cover_missing.png"
     else
       book.covers.last.image.url(:thumb)
     end
@@ -16,7 +16,7 @@ module BooksHelper
   end
 
   def book_information(book, key, field)
-    render partial: 'books/book_information', locals: { field: field, value: book.send(key) }
+    render partial: "books/book_information", locals: { field: field, value: book.send(key) }
   end
 
   def add_new_book_path

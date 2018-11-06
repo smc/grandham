@@ -13,16 +13,16 @@ class BooksController < ApplicationController
     respond_with @books
   end
 
-  def show # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+  def show
     @page_description = @book.description
-    @page_keywords = [@book.year, @book.language.name].join(', ')
+    @page_keywords = [@book.year, @book.language.name].join(", ")
     set_meta_tags og: {
-      title:    @book.title,
-      type:     'books.book',
-      url:      request.url,
+      title: @book.title,
+      type: "books.book",
+      url: request.url,
       image: view_context.book_cover_picture(@book),
       description: @book.description,
-      books:    {
+      books: {
         isbn: @book.isbn,
         author: @book.authors.pluck(:name)
       }
@@ -41,21 +41,21 @@ class BooksController < ApplicationController
   def create
     @book = Book.unscoped.new(book_params)
     if @book.save
-      if current_user.is_an_admin?
+      if current_user.admin?
         @book.approve!
-        state = 'approved'
+        state = "approved"
         redirect_path = language_book_path(@book.language, @book)
       else
-        state = 'open'
+        state = "open"
         redirect_path = root_path
-        flash[:notice] = 'The book you added has been submitted for approval. Thank you!'
+        flash[:notice] = "The book you added has been submitted for approval. Thank you!"
       end
 
       @book.new_items.create user_id: current_user.id, language_id: @book.language.id, state: state
       redirect_to redirect_path
     else
       @book.covers.build
-      render 'new'
+      render "new"
     end
   end
 
@@ -77,16 +77,16 @@ class BooksController < ApplicationController
   end
 
   def update_cover
-    @book.covers.create image: File.open(params[:book][:covers_attributes]['0'][:image].path)
+    @book.covers.create image: File.open(params[:book][:covers_attributes]["0"][:image].path)
     redirect_to edit_language_book_path(@book.language, @book)
   end
 
   private
 
   def book_params
-    params.require(:book).permit(:grandham_id, :language_id, :title, :isbn, :pages, :year, 
-                                 :description, :edition, :ddc, :volume, :series, :price, 
-                                 :length, :title_orginal, :illustrator, :note, :preface, 
+    params.require(:book).permit(:grandham_id, :language_id, :title, :isbn, :pages, :year,
+                                 :description, :edition, :ddc, :volume, :series, :price,
+                                 :length, :title_orginal, :illustrator, :note, :preface,
                                  :created_at, :updated_at, :approved, :published)
   end
 

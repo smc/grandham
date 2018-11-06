@@ -3,12 +3,12 @@
 class Author < ApplicationRecord
   belongs_to :language, optional: true
 
-  has_many :authorships
+  has_many :authorships, dependent: :destroy
   has_many :books, through: :authorships
 
-  has_many :edits, as: :editable
+  has_many :edits, as: :editable, dependent: :destroy
 
-  has_many :profile_pictures, as: :imageable
+  has_many :profile_pictures, as: :imageable, dependent: :destroy
   accepts_nested_attributes_for :profile_pictures
 
   validates :name, presence: true

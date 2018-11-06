@@ -5,7 +5,7 @@ module ApplicationHelper
     if current_language
       "Language (#{current_language.short_code})"
     else
-      'Language (all)'
+      "Language (all)"
     end
   end
 
@@ -20,19 +20,19 @@ module ApplicationHelper
   def external_link(object)
     path = "language_#{object.class.to_s.downcase}_path"
 
-    content_tag :span, class: 'external_link' do
+    content_tag :span, class: "external_link" do
       link_to send(path, object.language, object) do
-        content_tag :i, class: 'icon-external-link' do
+        content_tag :i, class: "icon-external-link" do
         end
       end
     end
   end
 
   def is_resource_active?(grandham_resource)
-    'active' if params[:controller] == grandham_resource
+    "active" if params[:controller] == grandham_resource
   end
 
   def is_active(activated_page, page)
-    page == activated_page.to_s ? 'active' : ''
+    page == activated_page.to_s ? "active" : ""
   end
 end

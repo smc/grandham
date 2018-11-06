@@ -13,7 +13,7 @@ class Admin::NewItemsController < AdminController
     object = current_language.send(@new_item.creatable_type.downcase.pluralize).unscoped.find(@new_item.creatable_id)
     object.approve!
 
-    @new_item.update state: 'approved', reviewed_by_user_id: current_user.id
+    @new_item.update state: "approved", reviewed_by_user_id: current_user.id
 
     path = if current_language.new_items.not_reviewed.empty?
              language_admin_dashboard_index_path(current_language)
@@ -25,7 +25,7 @@ class Admin::NewItemsController < AdminController
   end
 
   def discard
-    @new_item.update state: 'discarded', reviewed_by_user_id: current_user.id
+    @new_item.update state: "discarded", reviewed_by_user_id: current_user.id
 
     path = if current_language.new_items.not_reviewed.empty?
              language_admin_dashboard_index_path(current_language)

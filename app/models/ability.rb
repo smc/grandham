@@ -7,12 +7,12 @@ class Ability
     user ||= User.new
 
     case controller_namespace
-    when 'Admin'
+    when "Admin"
       can :manage, :all if user.role? :admin
       can :manage, :all if user.role? :super_admin
-    when 'Publisher'
+    when "Publisher"
       can :manage, :all if user.role? :publisher
-    when 'Library'
+    when "Library"
       can :manage, :all if user.role? :librarian
     else
       can :manage, :all if user.role? :admin

@@ -7,23 +7,26 @@ class Book < ApplicationRecord
 
   before_create :set_grandham_id
 
-  has_many :authorships
+  has_many :authorships, dependent: :destroy
   has_many :authors, through: :authorships
   accepts_nested_attributes_for :authors
 
-  has_many :publications
+  has_many :publications, dependent: :destroy
+
   has_many :publishers, through: :publications
   accepts_nested_attributes_for :publishers
 
-  has_many :availabilities
+  has_many :availabilities, dependent: :destroy
+
   has_many :libraries, through: :availabilities
   accepts_nested_attributes_for :libraries
 
-  has_many :edits, as: :editable
+  has_many :edits, as: :editable, dependent: :destroy
 
-  has_many :new_items, as: :creatable
+  has_many :new_items, as: :creatable, dependent: :destroy
 
-  has_many :covers, as: :imageable
+  has_many :covers, as: :imageable, dependent: :destroy
+
   accepts_nested_attributes_for :covers
 
   validates :title, :isbn, presence: true
@@ -52,7 +55,8 @@ class Book < ApplicationRecord
   end
 
   def details
-    restricted_keys = %i[id created_at updated_at approved reviewed grandham_id language_id published]
+    restricted_keys = %i[id created_at updated_at approved
+                         reviewed grandham_id language_id published]
     attrs = attributes.with_indifferent_access
     restricted_keys.collect { |key| attrs.delete key }
     attrs
@@ -82,7 +86,8 @@ class Book < ApplicationRecord
 
   def remove_duplicate_associated_objects(klass)
     send(klass.to_s.downcase.pluralize).each do |object|
-      if existing_object = klass.where(['name = ? and id <> ?', object.name, object.id]).first
+      existing_object = klass.where(name: object.name).where.not(id: object.id).first
+      if existing_object
         existing_object.books << self
         object.destroy
       end

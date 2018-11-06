@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require "spec_helper"
 
-describe 'Books' do
+describe "Books" do
   before (:all) do
     @book = FactoryBot.create :book
   end

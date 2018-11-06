@@ -16,7 +16,7 @@ class QrGeneratorController < ApplicationController
   private
 
   def url_for_object(object_identifier)
-    type, grandham_id = object_identifier.split('_')
+    type, grandham_id = object_identifier.split("_")
     object = type.constantize.where(grandham_id: grandham_id).first
 
     url_for([object.language, object])

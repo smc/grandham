@@ -23,17 +23,17 @@ class Admin::AuthorsController < AdminController
     @author = current_language.authors.new(author_params)
 
     if @author.save
-      redirect_to language_admin_authors_path(current_language), notice: 'Author was successfully created.'
+      redirect_to language_admin_authors_path(current_language), notice: "Author was successfully created."
     else
-      render action: 'new'
+      render action: "new"
     end
   end
 
   def update
     if @author.update(author_params)
-      redirect_to language_admin_authors_path(current_language), notice: 'Author was successfully updated.'
+      redirect_to language_admin_authors_path(current_language), notice: "Author was successfully updated."
     else
-      render action: 'edit'
+      render action: "edit"
     end
   end
 

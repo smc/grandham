@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 require: rubocop-rspec
 
 Style/Documentation:
@@ -8,7 +10,7 @@ Metrics/LineLength:
   Description: 'Limit lines to 100 characters.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#80-character-limits'
   Enabled: true
-  Max: 100
+  Max: 150
 
 Style/AndOr:
   Description: 'Use &&/|| instead of and/or.'
@@ -17,6 +19,9 @@ Style/AndOr:
 
 Style/FrozenStringLiteralComment:
   Enabled: true
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
 
 AllCops:
   TargetRubyVersion: 2.4

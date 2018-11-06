@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.0"
 
@@ -10,7 +12,7 @@ set :repo_url, "git@github.com:smc/grandham.git"
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/smc/grandham"
 
-set :rvm1_map_bins, %w(rake gem bundle ruby bundle puma pumactl)
+set :rvm1_map_bins, %w[rake gem bundle ruby bundle puma pumactl]
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh

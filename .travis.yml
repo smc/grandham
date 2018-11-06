@@ -28,6 +28,7 @@ before_script:
 script:
   - bundle exec rake test
   - bundle exec rake spec
+  - bundle exec rubocop
 
 notifications:
   email:

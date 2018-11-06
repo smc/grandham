@@ -5,12 +5,12 @@ class Publisher < ApplicationRecord
 
   validates :name, presence: true
 
-  has_many :publications
+  has_many :publications, dependent: :destroy
   has_many :books, through: :publications
 
-  has_many :edits, as: :editable
+  has_many :edits, as: :editable, dependent: :destroy
 
-  has_many :logos, as: :imageable
+  has_many :logos, as: :imageable, dependent: :destroy
   accepts_nested_attributes_for :logos
 
   before_create :set_grandham_id

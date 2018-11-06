@@ -39,7 +39,7 @@ class Admin::BooksController < AdminController
     @book.destroy
 
     respond_to do |format|
-      format.html { redirect_to language_admin_books_path(current_language), notice: 'Book was successfully deleted.' }
+      format.html { redirect_to language_admin_books_path(current_language), notice: "Book was successfully deleted." }
       format.json { head :no_content }
     end
   end

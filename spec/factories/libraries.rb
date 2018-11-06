@@ -4,8 +4,8 @@
 
 FactoryBot.define do
   factory :library do
-    name { 'MyText' }
-    grandham_id { 'MyString' }
+    name { "MyText" }
+    grandham_id { "MyString" }
     language_id { 1 }
   end
 end

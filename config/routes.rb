@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 Grandham::Application.routes.draw do
-  get 'qr_generator/image'
+  get "qr_generator/image"
 
-  get 'error/access_denied'
+  get "error/access_denied"
 
   devise_for :users
 
@@ -21,7 +21,7 @@ Grandham::Application.routes.draw do
     get :libraries, on: :member
   end
 
-  root to: 'books#index'
+  root to: "books#index"
 
   resources :language do
     namespace :publisher do

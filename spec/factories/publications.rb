@@ -4,7 +4,7 @@
 
 FactoryBot.define do
   factory :publication do
-    publisher_id { '' }
+    publisher_id { "" }
     book_id { 1 }
   end
 end

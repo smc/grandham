@@ -4,6 +4,6 @@
 
 FactoryBot.define do
   factory :author do
-    name { 'Sample Author' }
+    name { "Sample Author" }
   end
 end

@@ -23,17 +23,17 @@ class Admin::LibrariesController < AdminController
     @library = current_language.libraries.new(library_params)
 
     if @library.save
-      redirect_to language_admin_libraries_path(current_language), notice: 'Library was successfully created.'
+      redirect_to language_admin_libraries_path(current_language), notice: "Library was successfully created."
     else
-      render action: 'new'
+      render action: "new"
     end
   end
 
   def update
     if @library.update(library_params)
-      redirect_to language_admin_libraries_path(current_language), notice: 'Library was successfully updated.'
+      redirect_to language_admin_libraries_path(current_language), notice: "Library was successfully updated."
     else
-      render action: 'edit'
+      render action: "edit"
     end
   end
 

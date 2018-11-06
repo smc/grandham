@@ -4,9 +4,9 @@
 
 FactoryBot.define do
   factory :new_item do
-    reviewed_by_user_id { '' }
-    status { 'MyString' }
-    user_id { '' }
-    language_id { '' }
+    reviewed_by_user_id { "" }
+    status { "MyString" }
+    user_id { "" }
+    language_id { "" }
   end
 end

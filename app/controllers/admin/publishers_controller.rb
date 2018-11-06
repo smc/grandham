@@ -23,17 +23,17 @@ class Admin::PublishersController < AdminController
     @publisher = current_language.publishers.new(publisher_params)
 
     if @publisher.save
-      redirect_to language_admin_publishers_path(current_language), notice: 'Publisher was successfully created.'
+      redirect_to language_admin_publishers_path(current_language), notice: "Publisher was successfully created."
     else
-      render action: 'new'
+      render action: "new"
     end
   end
 
   def update
     if @publisher.update(publisher_params)
-      redirect_to language_admin_publishers_path(current_language), notice: 'Publisher was successfully updated.'
+      redirect_to language_admin_publishers_path(current_language), notice: "Publisher was successfully updated."
     else
-      render action: 'edit'
+      render action: "edit"
     end
   end
 

@@ -4,7 +4,7 @@
 
 FactoryBot.define do
   factory :availability do
-    library_id { '' }
+    library_id { "" }
     book_id { 1 }
   end
 end

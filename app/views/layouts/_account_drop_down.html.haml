@@ -3,7 +3,7 @@
   = current_user.login
   %b.caret
 %ul.dropdown-menu
-  - if current_user.is_an_admin?
+  - if current_user.admin?
     %li
       = link_to 'Dashboard', language_admin_dashboard_index_path(current_user.language)
   - elsif current_user.role == 'publisher'
