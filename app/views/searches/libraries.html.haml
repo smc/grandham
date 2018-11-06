@@ -13,5 +13,5 @@
             = I18n.t('.search')
       %br
       - if @results && @results.any?
-        - @results.each do |library|
-          = render partial: 'libraries/library', locals: { library: library }
+        = render @results
+        = will_paginate @results, renderer: BootstrapPagination::Rails
