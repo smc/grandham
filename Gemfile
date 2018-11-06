@@ -67,6 +67,7 @@ group :development do
   gem "capistrano3-puma"
   gem "pry"
   gem "rubocop", require: false
+  gem "rubocop-rspec", require: false
   gem "rvm1-capistrano3", require: false
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
