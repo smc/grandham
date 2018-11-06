@@ -2,8 +2,7 @@
   .col-md-8
     %br
 
-    - @libraries.each do |library|
-      = render partial: 'library', locals: { library: library }
+    = render @libraries
 
     .grandham-list-pagination
       = will_paginate @libraries, renderer: BootstrapPagination::Rails
