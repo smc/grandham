@@ -73,7 +73,10 @@ Grandham::Application.routes.draw do
   end
   namespace :api do
     namespace :v1 do
-      resources :books, only: [:show, :index]
+      resources :books, only: %i[show index]
+      resources :authors, only: %i[show index]
+      resources :libraries, only: %i[show index]
+      resources :publishers, only: %i[show index]
     end
   end
 end

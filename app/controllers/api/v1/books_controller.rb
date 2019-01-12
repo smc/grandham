@@ -17,6 +17,6 @@ class Api::V1::BooksController < ApiBaseController
   private
 
   def set_book
-    @book = Book.find_by(grandham_id: params[:id])
+    @book = Book.find_by!(grandham_id: params[:id])
   end
 end
