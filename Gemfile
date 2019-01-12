@@ -43,6 +43,8 @@ gem "puma"
 gem "sendgrid-actionmailer"
 
 gem 'fast_jsonapi'
+gem 'puma'
+gem 'sidekiq'
 
 group :production do
   gem "therubyracer", platforms: :ruby

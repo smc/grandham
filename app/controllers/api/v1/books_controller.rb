@@ -1,13 +1,17 @@
 # frozen_string_literal: true
 
-class Api::V1::BooksController < ApplicationController
+class Api::V1::BooksController < ApiBaseController
   before_action :set_book, only: :show
+  before_action :parse_json_api_params
+
   def show
     render json: BookSerializer.new(@book)
   end
 
   def index
-    render json: BookSerialiizer.new(Book.all)
+    render json: BookSerializer.new(
+      Book.paginate(page: @query.page_number, per_page: @query.per_page)
+    )
   end
 
   private
