@@ -42,9 +42,8 @@ gem "searchkick"
 gem "puma"
 gem "sendgrid-actionmailer"
 
-gem 'fast_jsonapi'
-gem 'puma'
-gem 'sidekiq'
+gem "fast_jsonapi"
+gem "sidekiq"
 
 group :production do
   gem "therubyracer", platforms: :ruby

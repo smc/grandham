@@ -8,8 +8,8 @@ class JsonApiQueryParser
   end
 
   def call
-    @page_number = params.dig('page', 'number') || 1
-    @per_page = params.dig('page', 'size') || 20
+    @page_number = params.dig("page", "number") || 1
+    @per_page = params.dig("page", "size") || 20
   end
 
   private

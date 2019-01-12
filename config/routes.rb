@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Grandham::Application.routes.draw do
+Grandham::Application.routes.draw do # rubocop:disable Metrics/BlockLength
   get "qr_generator/image"
 
   get "error/access_denied"
