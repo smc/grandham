@@ -10,7 +10,7 @@ class JsonApiQueryParser
   def call
     @page_number = params.dig("page", "number") || 1
     @per_page = params.dig("page", "size") || 20
-    @search_query = params["query"]
+    @search_query = MalayalamTextNormalizer.new(params["query"]).call
   end
 
   private

@@ -24,6 +24,7 @@ class SearchesController < ApplicationController
   end
 
   def get_results
-    @results = Search.new(resource(params[:action]), params[:query], params[:page]).results if params[:query].present?
+    search_query = MalayalamTextNormalizer.new(params[:query]).call
+    @results = Search.new(resource(params[:action]), search_query, params[:page]).results if params[:query].present?
   end
 end
