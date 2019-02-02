@@ -9,9 +9,13 @@ class Api::V1::LibrariesController < ApiBaseController
   end
 
   def index
-    render json: LibrarySerializer.new(
-      Library.paginate(page: @query.page_number, per_page: @query.per_page)
-    )
+    @libraries = if @query.search_query.present?
+                   Library.search(@query.search_query, page: @query.page_number, per_page: @query.per_page)
+                 else
+                   Library.paginate(page: @query.page_number, per_page: @query.per_page)
+                 end
+
+    render json: LibrarySerializer.new(@libraries)
   end
 
   private

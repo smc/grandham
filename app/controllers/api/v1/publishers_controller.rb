@@ -9,9 +9,13 @@ class Api::V1::PublishersController < ApiBaseController
   end
 
   def index
-    render json: PublisherSerializer.new(
-      Publisher.paginate(page: @query.page_number, per_page: @query.per_page)
-    )
+    @publishers = if @query.search_query.present?
+                    Publisher.search(@query.search_query, page: @query.page_number, per_page: @query.per_page)
+                  else
+                    Publisher.paginate(page: @query.page_number, per_page: @query.per_page)
+                  end
+
+    render json: PublisherSerializer.new(@publishers)
   end
 
   private

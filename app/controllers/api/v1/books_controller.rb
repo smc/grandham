@@ -9,9 +9,16 @@ class Api::V1::BooksController < ApiBaseController
   end
 
   def index
-    render json: BookSerializer.new(
-      Book.paginate(page: @query.page_number, per_page: @query.per_page)
-    )
+    @books = if @query.search_query.present?
+               Book
+                 .includes(:authors, :libraries)
+                 .search(@query.search_query, page: @query.page_number, per_page: @query.per_page)
+             else
+               Book
+                 .includes(:authors, :libraries)
+                 .paginate(page: @query.page_number, per_page: @query.per_page)
+             end
+    render json: BookSerializer.new(@books, include: %i[authors libraries])
   end
 
   private
