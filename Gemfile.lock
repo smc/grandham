@@ -397,6 +397,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   bootstrap-sass-rails
+  bundler
   byebug
   cancancan
   capistrano (~> 3.11)
