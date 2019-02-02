@@ -4,6 +4,8 @@ language: ruby
 rvm:
   - 2.3.5
   - 2.4.2
+  - 2.5.3
+  - 2.6.1
   - ruby-head
 
 cache:
@@ -13,6 +15,7 @@ cache:
   yarn: true
 
 install:
+  - gem install bundler
   - bundle install
   - nvm install node
   - node -v
