@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Grandham::Application.routes.draw do
+Grandham::Application.routes.draw do # rubocop:disable Metrics/BlockLength
   get "qr_generator/image"
 
   get "error/access_denied"
@@ -69,6 +69,14 @@ Grandham::Application.routes.draw do
 
     resources :libraries do
       get :books, on: :member
+    end
+  end
+  namespace :api do
+    namespace :v1 do
+      resources :books, only: %i[show index]
+      resources :authors, only: %i[show index]
+      resources :libraries, only: %i[show index]
+      resources :publishers, only: %i[show index]
     end
   end
 end
